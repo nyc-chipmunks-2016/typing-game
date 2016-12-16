@@ -18,6 +18,7 @@ L-Type is a javascript game that allows users to practice and improve their typi
   - Accuracy (as a percentage)
 
 ## Extra Features (future development)
+- Add varying difficulty levels
 - Incorporate bonus features or power ups that the user can use:
   - Extra lives
   - A "bomb" that will clear the screen
