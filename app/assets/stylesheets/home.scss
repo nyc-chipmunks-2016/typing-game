@@ -1,3 +1,24 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+
+  background: #9B88EF;
+}
+
+
+
+.jumbotron {
+  background-color:#FFDC60;
+    // background-image: asset-url('game.png');
+    background-size: cover;
+    min-height: 450px;
+
+
+}
+
+.jumbotron h1 {
+
+  background-color:#45F0DF;
+}
