@@ -20,7 +20,7 @@
         <li>
           <div class="">
             <label for="password">Password:</label>
-            <input type="text" name="user[password]" value="">
+            <input type="password" name="user[password]" value="">
           </div>
         </li>
         <li>
@@ -42,14 +42,14 @@
           <div class="loginfields">
               <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
               <label for="username">Username:</label>
-              <input class="login_text_field" type="text" name="sessions[username]" value="">
+              <input class="login_text_field" type="text" name="session[username]" value="">
           </div>
         </li>
         <li>
           <div class="loginfields">
             <form class="" action="/sessions" method="post">
               <label for="password">Password:</label>
-              <input class="login_text_field" type="text" name="sessions[password]" value="">
+              <input class="login_text_field" type="password" name="session[password]" value="">
           </div>
         </li>
         <li>

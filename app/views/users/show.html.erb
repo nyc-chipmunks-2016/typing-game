@@ -1,2 +1,27 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<!-- <div class="gravatar">
+    <%= gravatar_for @user, size: 150 %>
+</div>
+
+<div class="profile-page">
+  <h1><%=current_user.username%>'s Stats:</h1>
+  <ul>
+    <li>Highest Score:</li>
+  </ul>
+</div> -->
+
+<div class="container">
+    <div class="col-sm-12">
+	    <div class="col-sm-3 margin-img">
+		    <img id="img-profile" class="img-thumbnail img-center img-rounded"<%= gravatar_for @user, size: 150 %>
+	    </div>
+	    <div class="col-sm-7 well margin-well">
+	   		<h1><u><i class="glyphicon glyphicon-user"></i><%=current_user.username%>'s Stats:</u></h1>
+        <ul>
+          <li>Highest Score:</li>
+          <li>Highest Score:</li>
+          <li>Highest Score:</li>
+          <li>Highest Score:</li>
+        </ul>
+		</div>
+	</div>
+</div>
