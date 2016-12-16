@@ -47,7 +47,7 @@ GEM
     builder (3.2.2)
     byebug (9.0.6)
     coderay (1.1.1)
-    coffee-script-source (1.11.1)
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.1)
     debug_inspector (0.0.2)
