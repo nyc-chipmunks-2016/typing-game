@@ -1,24 +1,26 @@
-# README
+# L-Type (Lava/Laser Type)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Team
+- [Allain Dollete](https://github.com/jdollete)
+- [Arshdeep Singh](https://github.com/arsy209)
+- [Asiya Gizatulina](https://github.com/asyaasha)
+- [Evan Renaud](https://github.com/evanrenaud)
+- [Jung Choi](https://github.com/mr-jungchoi)
 
-Things you may want to cover:
+## Description
+L-Type is a javascript game that allows users to practice and improve their typing speed and accuracy through a fun and competitive game.
 
-* Ruby version
+## MVP
+- A playable javascript game where words are falling and the player has to type in the words before they hit the "lava" to gain points. If a word hits the "lava" the player loses a life.
+- Players can create an account and save their game statistics, such as:
+  - High Score
+  - Type Speed (in words per minute)
+  - Accuracy (as a percentage)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Extra Features (future development)
+- Add varying difficulty levels
+- Incorporate bonus features or power ups that the user can use:
+  - Extra lives
+  - A "bomb" that will clear the screen
+- Create different "badges" for players to gain when they achieve a certain high score or have played a certain amount of games
+- Have a multiplayer function where two or more players can play against each other simultaneously
