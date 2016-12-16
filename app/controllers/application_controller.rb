@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :logged_in?, :authorized?, :current_user
-  include SessionsHelper
 
   def login(user)
     session[:user_id] = user.id
@@ -19,5 +18,4 @@ class ApplicationController < ActionController::Base
   def authorized?(user)
     logged_in? && current_user == user
   end
-  
 end
