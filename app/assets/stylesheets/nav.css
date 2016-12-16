@@ -1,3 +1,11 @@
+.loginfields {
+  padding: 10px;
+}
+
+.login_text_field {
+  border-radius: 5px;
+}
+
 #logout {
      background:none!important;
      border:none;

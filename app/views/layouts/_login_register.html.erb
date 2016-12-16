@@ -1,14 +1,14 @@
 <!-- Registration Form -->
 <ul class="nav navbar-nav navbar-right">
   <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
     <ul class="dropdown-menu">
       <form class="" action="/users" method="post">
         <li>
           <div class="">
               <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-              <label for="username">Username:</label>
-              <input type="text" name="user[username]" value="">
+              <label for="username">Email:</label>
+              <input type="text" name="user[email]" value="">
           </div>
         </li>
         <li>
@@ -25,7 +25,7 @@
         </li>
         <li>
           <div class="">
-            <input type="submit" name="" value="Register!">
+            <input class="btn-primary" type="submit" name="" value="Register!">
           </div>
         </li>
       </form>
@@ -35,26 +35,26 @@
 <!-- Login Drop Down -->
 <ul class="nav navbar-nav navbar-right">
   <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
     <ul class="dropdown-menu">
       <form class="" action="/sessions" method="post">
         <li>
-          <div class="">
+          <div class="loginfields">
               <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
               <label for="username">Username:</label>
-              <input type="text" name="sessions[username]" value="">
+              <input class="login_text_field" type="text" name="sessions[username]" value="">
           </div>
         </li>
         <li>
-          <div class="">
+          <div class="loginfields">
             <form class="" action="/sessions" method="post">
               <label for="password">Password:</label>
-              <input type="text" name="sessions[password]" value="">
+              <input class="login_text_field" type="text" name="sessions[password]" value="">
           </div>
         </li>
         <li>
-          <div class="">
-            <input type="submit" name="" value="Login!">
+          <div class="loginfields">
+            <input class="btn-primary" type="submit" name="" value="Login!">
           </div>
         </li>
       </form>
