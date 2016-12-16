@@ -31,9 +31,11 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
         </ul>
-
-        <%= render partial: "layouts/loginregister" %>
-        
+        <% if !logged_in? %>
+          <%= render partial: "layouts/login_register" %>
+        <% else %>
+          <%= render partial: "layouts/logged_in" %>
+        <% end %>
       </div>
     </nav>
 

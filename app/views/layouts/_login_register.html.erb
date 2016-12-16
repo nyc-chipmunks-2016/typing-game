@@ -6,6 +6,7 @@
       <form class="" action="/users" method="post">
         <li>
           <div class="">
+              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
               <label for="username">Username:</label>
               <input type="text" name="user[username]" value="">
           </div>
@@ -39,6 +40,7 @@
       <form class="" action="/sessions" method="post">
         <li>
           <div class="">
+              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
               <label for="username">Username:</label>
               <input type="text" name="sessions[username]" value="">
           </div>
