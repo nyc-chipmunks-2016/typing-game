@@ -1,4 +1,4 @@
-<div class="gravatar">
+<!-- <div class="gravatar">
     <%= gravatar_for @user, size: 150 %>
 </div>
 
@@ -7,4 +7,21 @@
   <ul>
     <li>Highest Score:</li>
   </ul>
+</div> -->
+
+<div class="container">
+    <div class="col-sm-12">
+	    <div class="col-sm-3 margin-img">
+		    <img id="img-profile" class="img-thumbnail img-center img-rounded"<%= gravatar_for @user, size: 150 %>
+	    </div>
+	    <div class="col-sm-7 well margin-well">
+	   		<h1><u><i class="glyphicon glyphicon-user"></i><%=current_user.username%>'s Stats:</u></h1>
+        <ul>
+          <li>Highest Score:</li>
+          <li>Highest Score:</li>
+          <li>Highest Score:</li>
+          <li>Highest Score:</li>
+        </ul>
+		</div>
+	</div>
 </div>

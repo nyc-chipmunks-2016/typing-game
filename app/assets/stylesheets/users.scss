@@ -3,13 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.profile-page{
-
-  padding-left: 40%;
+.img-center{
+    display: block;
+	margin: 0px auto;
+	text-align: center;
 }
-
-.gravatar {
-padding-top: 10px;
-padding-right: 50px;
-
+#img-profile{
+	padding: 10px;
+}
+.container #img-profile{
+	margin-top: 16px;
+}
+.margin-img{
+	margin-right: 20px;
+}
+.text-center{
+	margin-top: 10px;
 }
