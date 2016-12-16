@@ -35,34 +35,35 @@
 <!-- Registration Form -->
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign Up <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span></a>
             <ul id=”dropdown-login” class="dropdown-menu">
+              <form class="" action="/users" method="post">
               <li>
                 <div class="">
-                  <form class="" action="/sessions" method="post">
                     <label for="username">Username:</label>
-                    <input type="text" name="sessions[username]" value="">
-                  </form>
+                    <input type="text" name="user[username]" value="">
                 </div>
               </li>
               <li>
                 <div class="">
-                  <form class="" action="/sessions" method="post">
-                    <label for="username">Username:</label>
-                    <input type="text" name="sessions[username]" value="">
-                  </form>
+                  <label for="username">Username:</label>
+                  <input type="text" name="user[username]" value="">
                 </div>
               </li>
               <li>
                 <div class="">
-                  <form class="" action="/sessions" method="post">
-                    <label for="password">Password:</label>
-                    <input type="text" name="sessions[password]" value="">
-                  </form>
+                  <label for="password">Password:</label>
+                  <input type="text" name="user[password]" value="">
+                </div>
+              </li>
+              <li>
+                <div class="">
+                  <input type="submit" name="" value="Register!">
                 </div>
               </li>
             </ul>
           </li>
+        </form>
         </ul>
 <!-- Login Drop Down -->
         <ul class="nav navbar-nav navbar-right">

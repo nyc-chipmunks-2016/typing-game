@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   resources :users
   resources :games, except: [:edit, :index, :show, :update]
 
