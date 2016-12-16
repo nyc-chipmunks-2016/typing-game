@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20161216160538) do
   create_table "words", force: :cascade do |t|
     t.string   "text",       null: false
     t.integer  "points",     null: false
+    t.integer  "x",          null: false
+    t.integer  "y",          null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
