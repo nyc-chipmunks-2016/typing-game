@@ -4,11 +4,98 @@
     <title>TypingGame</title>
     <%= csrf_meta_tags %>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+        </ul>
+
+<!-- Registration Form -->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <form class="" action="/users" method="post">
+                <li>
+                  <div class="">
+                      <label for="username">Username:</label>
+                      <input type="text" name="user[username]" value="">
+                  </div>
+                </li>
+                <li>
+                  <div class="">
+                    <label for="username">Username:</label>
+                    <input type="text" name="user[username]" value="">
+                  </div>
+                </li>
+                <li>
+                  <div class="">
+                    <label for="password">Password:</label>
+                    <input type="text" name="user[password]" value="">
+                  </div>
+                </li>
+                <li>
+                  <div class="">
+                    <input type="submit" name="" value="Register!">
+                  </div>
+                </li>
+              </form>
+            </ul>
+          </li>
+        </ul>
+<!-- Login Drop Down -->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <form class="" action="/sessions" method="post">
+                <li>
+                  <div class="">
+                      <label for="username">Username:</label>
+                      <input type="text" name="sessions[username]" value="">
+                  </div>
+                </li>
+                <li>
+                  <div class="">
+                    <form class="" action="/sessions" method="post">
+                      <label for="password">Password:</label>
+                      <input type="text" name="sessions[password]" value="">
+                  </div>
+                </li>
+                <li>
+                  <div class="">
+                    <input type="submit" name="" value="Login!">
+                  </div>
+                </li>
+              </form>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
