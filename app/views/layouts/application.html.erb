@@ -31,68 +31,11 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
         </ul>
-
-<!-- Registration Form -->
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <form class="" action="/users" method="post">
-                <li>
-                  <div class="">
-                      <label for="username">Username:</label>
-                      <input type="text" name="user[username]" value="">
-                  </div>
-                </li>
-                <li>
-                  <div class="">
-                    <label for="username">Username:</label>
-                    <input type="text" name="user[username]" value="">
-                  </div>
-                </li>
-                <li>
-                  <div class="">
-                    <label for="password">Password:</label>
-                    <input type="text" name="user[password]" value="">
-                  </div>
-                </li>
-                <li>
-                  <div class="">
-                    <input type="submit" name="" value="Register!">
-                  </div>
-                </li>
-              </form>
-            </ul>
-          </li>
-        </ul>
-<!-- Login Drop Down -->
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <form class="" action="/sessions" method="post">
-                <li>
-                  <div class="">
-                      <label for="username">Username:</label>
-                      <input type="text" name="sessions[username]" value="">
-                  </div>
-                </li>
-                <li>
-                  <div class="">
-                    <form class="" action="/sessions" method="post">
-                      <label for="password">Password:</label>
-                      <input type="text" name="sessions[password]" value="">
-                  </div>
-                </li>
-                <li>
-                  <div class="">
-                    <input type="submit" name="" value="Login!">
-                  </div>
-                </li>
-              </form>
-            </ul>
-          </li>
-        </ul>
+        <% if !logged_in? %>
+          <%= render partial: "layouts/login_register" %>
+        <% else %>
+          <%= render partial: "layouts/logged_in" %>
+        <% end %>
       </div>
     </nav>
 
