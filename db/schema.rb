@@ -10,17 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216022926) do
+ActiveRecord::Schema.define(version: 20161216160538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "games", force: :cascade do |t|
+    t.float    "wpm"
+    t.float    "accuracy"
+    t.integer  "score",      null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_games_on_user_id", using: :btree
+  end
+
+  create_table "games_words", id: false, force: :cascade do |t|
+    t.integer  "game_id"
+    t.integer  "word_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_games_words_on_game_id", using: :btree
+    t.index ["word_id"], name: "index_games_words_on_word_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.string   "email"
+    t.string   "username",        null: false
+    t.string   "password_digest", null: false
+    t.string   "email",           null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
+  create_table "words", force: :cascade do |t|
+    t.string   "text",       null: false
+    t.integer  "points",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "games", "users"
+  add_foreign_key "games_words", "games"
+  add_foreign_key "games_words", "words"
 end
