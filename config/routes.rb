@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root "home#index"
 
+  get '/game-words' => 'games#words'
+
   get '/login', to: 'sessions#new'
   post '/sessions', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
