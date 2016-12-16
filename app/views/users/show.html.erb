@@ -1,4 +1,8 @@
-<div class="container profile-page">
+<div class="gravatar">
+    <%= gravatar_for @user, size: 150 %>
+</div>
+
+<div class="profile-page">
   <h1><%=current_user.username%>'s Stats:</h1>
   <ul>
     <li>Highest Score:</li>
