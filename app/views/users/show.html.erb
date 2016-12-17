@@ -1,17 +1,41 @@
-<div class="container">
+<div class="container profile">
     <div class="col-sm-12">
 	    <div class="col-sm-3 margin-img">
-		    <img id="img-profile" class="img-thumbnail img-center img-rounded"<%= gravatar_for @user, size: 100 %>
-	    </div>
-	    <div class="col-sm-7 well margin-well">
-	   		<h1><u></i><%=current_user.username.capitalize%>'s Stats:</u></h1>
-        <ul>
-          <li>Highest Score:</li>
-          <li>WPM:</li>
-          <li>Accuracy:</li>
-        </ul>
-        <% if  current_user == @user%>
-            <%= link_to 'Edit your profile', edit_user_path(@user),class: "btn btn-primary btn-sm"  %>
-        <%end%>
-		</div>
-	</div>
+		    <img id="img-profile" class="img-thumbnail img-center img-rounded"<%= gravatar_for @user, size: 100 %><br>
+        </div>
+      <div class="text">
+  	    <div class="col-sm-7 well margin-well">
+          <% if  current_user == @user%>
+              <%= link_to 'Edit your profile', edit_user_path(@user),class: "btn btn-primary btn-sm"  %>
+          <%end%>
+  	   		<h1><kbd><%=@user.username%>'s Stats:</kbd></h1>
+          <ul><br>
+
+            <li>Highest Score:</li>
+            <li>WPM:</li>
+            <li>Accuracy:</li>
+          </ul>
+  		 </div>
+     </div>
+  </div>
+
+    <div id="past-score">
+      <div class="col-sm-7 well margin-well">
+        <h3><kbd><%=@user.username%>'s Previous Scores:</kbd></h3>
+     </div>
+   </div>
+
+     <div id="global-score">
+         <div class="col-sm-7 well margin-well">
+          <h3><kbd>Global Scores:</kbd></h3>
+          <table class="table table-hover">
+            <%@users.each do |user|%>
+            <ul>
+              <li><%=user.username%></li>
+            </ul>
+            <%end%>
+          </table>
+         </div>
+    </div>
+  </div>
+</div>
