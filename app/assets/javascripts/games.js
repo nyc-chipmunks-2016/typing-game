@@ -166,7 +166,7 @@ $(document).ready(function() {
       drawGameOver();
       drawRestart();
       restart();
-    } else if (activeWords.length === 0) {
+    } else if (activeWords.length === 0 && words.length === 0) {
       drawWin();
       drawNextLevel();
       drawRestart();
