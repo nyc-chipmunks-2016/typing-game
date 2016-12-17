@@ -177,3 +177,12 @@ a:hover {
   height:100px;
   margin: 0px auto;
 }
+#inputText{
+  font-size: 45px;
+  text-align: center;
+  width: 500px;
+  height:50px;
+  margin: 0px auto;
+  left:30%;
+  outline: 0 none;
+}

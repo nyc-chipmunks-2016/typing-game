@@ -74,14 +74,14 @@ $(document).ready(function() {
 
   function drawLives() {
     ctx.font = "20px Arial";
-    ctx.fillStyle = "#0095DD";
-    ctx.fillText("Lives: " + lives, 430, 597);
+    ctx.fillStyle = "black";
+    ctx.fillText("Lives: " + lives, 415, 570);
   }
 
   function drawScore() {
     ctx.font = "20px Arial";
-    ctx.fillStyle = "#0095DD";
-    ctx.fillText("Score: " + score, 3, 597);
+    ctx.fillStyle = "black";
+    ctx.fillText("Score: " + score, 20, 570);
   }
 
   function drawLava() {
