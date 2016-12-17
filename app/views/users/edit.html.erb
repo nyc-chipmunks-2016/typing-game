@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <h1>Update your profile</h1>
+
       <%= form_for(@user) do |f| %>
 
         <%= f.label :name %>
@@ -16,11 +17,6 @@
 
         <%= f.submit "Save changes", class: "btn btn-primary" %>
       <% end %><br>
-
-      <div class="gravatar_edit">
-        <%= gravatar_for @user %>
-        <a href="http://gravatar.com/emails" target="_blank">change</a>
-      </div>
     </div>
   </div>
 </div>
