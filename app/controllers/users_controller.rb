@@ -14,6 +14,8 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       @errors = @user.errors.full_messages
+      # render :js => "alertError();"
+      # should call a js function
     end
   end
 
