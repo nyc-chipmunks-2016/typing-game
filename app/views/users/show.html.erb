@@ -1,41 +1,39 @@
 <div class="container profile">
-    <div class="col-sm-12">
-	    <div class="col-sm-3 margin-img">
-		    <img id="img-profile" class="img-thumbnail img-center img-rounded"<%= gravatar_for @user, size: 100 %><br>
-        </div>
-      <div class="text">
-  	    <div class="col-sm-7 well margin-well">
-          <% if  current_user == @user%>
-              <%= link_to 'Edit your profile', edit_user_path(@user),class: "btn btn-primary btn-sm"  %>
-          <%end%>
-  	   		<h1><kbd><%=@user.username%>'s Stats:</kbd></h1>
-          <ul><br>
-
-            <li>Highest Score:</li>
-            <li>WPM:</li>
-            <li>Accuracy:</li>
-          </ul>
-  		 </div>
-     </div>
+  <div class="col-sm-12">
+    <div class="col-sm-3 margin-img">
+	    <img id="img-profile" class="img-thumbnail img-center img-rounded"<%= gravatar_for @user, size: 100 %><br>
+    </div>
+    <div class="text">
+	    <div class="col-sm-7 well margin-well">
+        <% if  current_user == @user%>
+          <%= link_to 'Edit your profile', edit_user_path(@user),class: "btn btn-primary btn-sm"  %>
+        <%end%>
+	   		<h1><kbd><%=@user.username%>'s Stats:</kbd></h1>
+        <ul><br>
+          <li>Highest Score:</li>
+          <li>WPM:</li>
+          <li>Accuracy:</li>
+        </ul>
+  		</div>
+    </div>
   </div>
 
-    <div id="past-score">
-      <div class="col-sm-7 well margin-well">
-        <h3><kbd><%=@user.username%>'s Previous Scores:</kbd></h3>
-     </div>
-   </div>
+  <div id="past-score">
+    <div class="col-sm-7 well margin-well">
+      <h3><kbd><%=@user.username%>'s Previous Scores:</kbd></h3>
+    </div>
+  </div>
 
-     <div id="global-score">
-         <div class="col-sm-7 well margin-well">
-          <h3><kbd>Global Scores:</kbd></h3>
-          <table class="table table-hover">
+  <div id="global-score">
+    <div class="col-sm-7 well margin-well">
+      <h3><kbd>Global Scores:</kbd></h3>
+        <table class="table table-hover">
+          <ul>
             <%@users.each do |user|%>
-            <ul>
               <li><%=user.username%></li>
-            </ul>
             <%end%>
-          </table>
-         </div>
+          </ul>
+        </table>
     </div>
   </div>
 </div>
