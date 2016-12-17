@@ -1,63 +1,75 @@
 <!-- Registration Form -->
 <ul class="nav navbar-nav navbar-right">
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
-    <ul class="dropdown-menu">
-      <form class="" action="/users" method="post">
-        <li>
-          <div class="">
-              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-              <label for="username">Email:</label>
-              <input type="text" name="user[email]" value="" required>
-          </div>
-        </li>
-        <li>
-          <div class="">
-            <label for="username">Username:</label>
-            <input type="text" name="user[username]" value="" required>
-          </div>
-        </li>
-        <li>
-          <div class="">
-            <label for="password">Password:</label>
-            <input type="password" name="user[password]" value="" required>
-          </div>
-        </li>
-        <li>
-          <div class="">
-            <input class="btn-primary" type="submit" name="" value="Register!">
-          </div>
-        </li>
-      </form>
-    </ul>
+  <li>
+    <button class="link" data-toggle="modal" data-target="#myModal">
+      <span class="link-font">Register</span>
+    </button>
   </li>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <div class="tab-pane" id="Registration">
+              <form class="form-horizontal" action="/users" method="post">
+                <div class="form-group">
+                  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                  <label for="email" class="col-sm-2 control-label">Email:</label>
+                  <input type="email" name="user[email]" value=""  placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="col-sm-2 control-label">Username:</label>
+                  <input type="text" name="user[username]" value="" placeholder="Username" maxlength="20" required>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="col-sm-2 control-label">Password:</label>
+                  <input type="password" name="user[password]" value="" placeholder="Password"  required>
+                </div>
+                <div class="col-sm-10">
+                  <input class="btn btn-primary btn-sm" type="submit" name="" value="Register!">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </ul>
 <!-- Login Drop Down -->
 <ul class="nav navbar-nav navbar-right">
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
-    <ul class="dropdown-menu">
-      <form class="" action="/sessions" method="post">
-        <li>
-          <div class="loginfields">
-              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-              <label for="username">Username:</label>
-              <input class="login_text_field" type="text" name="session[username]" value="">
-          </div>
-        </li>
-        <li>
-          <div class="loginfields">
-            <form class="" action="/sessions" method="post">
-              <label for="password">Password:</label>
-              <input class="login_text_field" type="password" name="session[password]" value="">
-          </div>
-        </li>
-        <li>
-          <div class="loginfields">
-            <input class="btn-primary" type="submit" name="" value="Login!">
-          </div>
-        </li>
-      </form>
-    </ul>
+  <li>
+    <button class="link" data-toggle="modal" data-target="#myModal">
+      <span class="link-font">Login</span>
+    </button>
   </li>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <div class="tab-pane active" id="Login">
+              <form class="form-horizontal" action="/sessions" method="post">
+                <div class="form-group">
+                  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                  <div class="col-sm-10">
+                    <label for="username" class="col-sm-2 control-label">Username:</label>
+                    <input class="login_text_field" type="text" name="session[username]" value="">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">Password:</label>
+                    <div class="col-sm-10">
+                      <input class="login_text_field" type="password" name="session[password]" value="">
+                    </div>
+                </div>
+                <div class="col-sm-10">
+                  <input class="btn btn-primary btn-sm" type="submit" name="" value="Login!">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ul>
