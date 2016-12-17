@@ -8,7 +8,7 @@
         </div>
       <div class="text">
   	    <div class="col-sm-7 well margin-well">
-  	   		<h1><u></i><%=current_user.username.capitalize%>'s Stats:</u></h1>
+  	   		<h1><kbd><%=current_user.username.capitalize%>'s Stats:</kbd></h1>
           <ul><br>
             <li>Highest Score:</li>
             <li>WPM:</li>
@@ -20,13 +20,20 @@
 
     <div id="past-score">
       <div class="col-sm-7 well margin-well">
-        <h3><u></i><%=current_user.username.capitalize%>'s Previous Scores:</u></h3>
+        <h3><kbd><%=current_user.username.capitalize%>'s Previous Scores:</kbd></h3>
      </div>
    </div>
 
      <div id="global-score">
          <div class="col-sm-7 well margin-well">
-           <h3><u></i>Global Scores:</u></h3>
+          <h3><kbd>Global Scores:</kbd></h3>
+          <table class="table table-hover">
+            <%@users.each do |user|%>
+            <ul>
+              <li><%=user.username%></li>
+            </ul>
+            <%end%>
+          </table>
          </div>
     </div>
   </div>
