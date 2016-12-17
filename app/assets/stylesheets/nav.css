@@ -13,6 +13,7 @@
      font: inherit;
      margin-right: 25px;
      padding: 14px;
+     text-decoration: none;
 }
 
 #logout_li {
@@ -21,4 +22,9 @@
 
 #logout_link {
   padding-top: 14px;
+}
+
+.new_game{
+  background-color: #18CBFF;
+  opacity: 1%;
 }
