@@ -1,22 +1,14 @@
 <div class="container">
     <div class="col-sm-12">
 	    <div class="col-sm-3 margin-img">
-		    <img id="img-profile" class="img-thumbnail img-center img-rounded"<%= gravatar_for @user, size: 150 %>
+		    <img id="img-profile" class="img-thumbnail img-center img-rounded"<%= gravatar_for @user, size: 100 %>
 	    </div>
 	    <div class="col-sm-7 well margin-well">
-	   		<h1><u><i class="glyphicon glyphicon-user"></i><%=current_user.username%>'s Stats:</u></h1>
+	   		<h1><u></i><%=current_user.username.capitalize%>'s Stats:</u></h1>
         <ul>
           <li>Highest Score:</li>
           <li>WPM:</li>
           <li>Accuracy:</li>
         </ul>
 		</div>
-  <% if logged_in? %>
-    <% if current_user.id == @user.id %>
-      <form class="" action="/users/<%="#{@user.id}"%>/edit" method="get">
-        <input class="button" type="submit" value="Edit your profile!">
-      </form>
-    <% end %>
-  <% end %>
 	</div>
-</div>
