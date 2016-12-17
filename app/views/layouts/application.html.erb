@@ -13,7 +13,6 @@
   </head>
 
   <body>
-
     <nav class="navbar">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -23,22 +22,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Brand</a>
+          <a class="navbar-brand" href="/">LOGO</a>
         </div>
-
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-        </ul>
-        <% if !logged_in? %>
-          <%= render partial: "layouts/login_register" %>
-        <% else %>
-          <%= render partial: "layouts/logged_in" %>
-        <% end %>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+            <% if logged_in? %>
+              <li class="new_game"><a href="/games/new">New Game</a></li>
+            <% end %>
+          </ul>
+          <% if !logged_in? %>
+            <%= render partial: "layouts/login_register" %>
+          <% else %>
+            <%= render partial: "layouts/logged_in" %>
+          <% end %>
+        </div>
       </div>
     </nav>
-
     <%= yield %>
   </body>
 </html>

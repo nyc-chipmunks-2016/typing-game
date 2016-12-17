@@ -7,9 +7,24 @@
 }
 
 #logout {
-     background:none!important;
-     border:none;
-     padding:0!important;
-     font: inherit;
-     margin-right: 25px;
+  background:none!important;
+  border:none;
+  padding:0!important;
+  font: inherit;
+  margin-right: 25px;
+  padding: 14px;
+  text-decoration: none;
+}
+
+#logout_li {
+  height: 50px;
+}
+
+#logout_link {
+  padding-top: 14px;
+}
+
+.new_game{
+  background-color: #18CBFF;
+  opacity: 1%;
 }
