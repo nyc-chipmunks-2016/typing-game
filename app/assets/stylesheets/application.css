@@ -76,22 +76,7 @@ a:hover {
   margin-top: 25px;
   padding: 20px;
 }
-div#OR {
-  height: 30px;
-  width: 10px;
-  border: 1px solid #C2C2C2;
-  border-radius: 30%;
-  font-weight: bold;
-  line-height: 28px;
-  text-align: center;
-  font-size: 12px;
-  float: right;
-  position: absolute;
-  right: -16px;
-  top: 40%;
-  z-index: 1;
-  background: #DFDFDF;
-}
+
 .link{
   background:none!important;
   border:none;
@@ -104,4 +89,19 @@ div#OR {
 
 .link-font {
   font-size: 20px;
+}
+#myModal{
+  font-size: 14px;
+  width: 400px;
+  left: 35%;
+  top:10%;
+}
+#myModalLogin{
+  font-size: 14px;
+  width: 400px;
+  left: 35%;
+  top:10%;
+}
+.form-control{
+  width: 215px;
 }
