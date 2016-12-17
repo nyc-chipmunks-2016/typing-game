@@ -12,4 +12,13 @@
      padding:0!important;
      font: inherit;
      margin-right: 25px;
+     padding: 14px;
+}
+
+#logout_li {
+  height: 50px;
+}
+
+#logout_link {
+  padding-top: 14px;
 }
