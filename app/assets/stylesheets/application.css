@@ -322,7 +322,7 @@ label:hover:before {
 
 /*user profile**/
 .container {
-   width: 1000px;
+  width: 1000px;
 }
 .img-center{
   display: block;
@@ -342,7 +342,7 @@ label:hover:before {
 
 }
 .text-center{
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .text {
@@ -354,7 +354,7 @@ label:hover:before {
 }
 
 #profile-color {
-    background-color: grey;
+ background-color: grey;
 }
 
 #past-score {
