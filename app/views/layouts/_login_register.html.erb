@@ -8,13 +8,13 @@
           <div class="">
               <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
               <label for="username">Email:</label>
-              <input type="text" name="user[email]" value="" required>
+              <input type="email" name="user[email]" value="" required>
           </div>
         </li>
         <li>
           <div class="">
             <label for="username">Username:</label>
-            <input type="text" name="user[username]" value="" required>
+            <input type="text" name="user[username]" value="" maxlength="20" required>
           </div>
         </li>
         <li>
