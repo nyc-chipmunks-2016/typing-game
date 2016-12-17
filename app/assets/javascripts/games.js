@@ -4,14 +4,16 @@
 $(document).ready(function() {
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
+  var input = document.getElementById("inputText");
+  var inputValue = $("#inputText").attr("value");
+
   var score = 0;
   var speed = 1;
   var words = [];
+  var wordArchive = [];
   var activeWords = [];
   var correctWords = [];
   var lives = 5;
-  var input = document.getElementById("inputText");
-  var inputValue = $("#inputText").attr("value");
   var startTime = 0;
   var endTime = 0;
   var keystrokes = 0;
@@ -31,6 +33,15 @@ $(document).ready(function() {
       method: "get"
     }).done(function(response) {
       words = response;
+      wordArchive = response;
+    });
+  }
+
+  function saveGame() {
+    $.ajax({
+      url: "/games",
+      method: "post",
+      data: {score: score, wpm: wpm, accuracy: accuracy, words: wordArchive}
     });
   }
 
@@ -197,12 +208,14 @@ $(document).ready(function() {
     if (lives === 0) {
       wpm = normalizeWords() / gameTime();
       accuracy = totalLetters() / keystrokes * 100;
+      saveGame();
       drawGameOver();
       drawRestart();
       restart();
     } else if (activeWords.length === 0 && words.length === 0) {
       wpm = normalizeWords() / gameTime();
       accuracy = totalLetters() / keystrokes * 100;
+      saveGame();
       drawWin();
       drawNextLevel();
       drawRestart();
