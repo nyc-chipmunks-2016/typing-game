@@ -2,9 +2,9 @@
   <li><a href="/users/<%= current_user.id %>"><%= current_user.username %></a></li>
   <li id="logout_li">
     <a id="logout_link">
-      <form action="/logout" method="post">
-        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-        <input type="hidden" name="_method" value="delete">
+      <form action="/logout" method="post" class="login-form-1">
+        <input class="form-control" name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <input class="form-control" type="hidden" name="_method" value="delete">
         <input id="logout" class="btn btn-link" type="submit" value="Log out">
       </form>
     </a>
