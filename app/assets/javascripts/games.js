@@ -86,7 +86,17 @@ $(document).ready(function() {
 
   function drawLava() {
     ctx.beginPath();
-    ctx.rect(0, canvas.height - 20, canvas.width, canvas.height);
+    var img= new Image();
+    var scale = 0.8;
+    var frames = 3;
+    var currentFrame = 0;
+    img.src = '/lava.png';
+    var width = 400;
+    var height = 800;
+    img.height = 650;
+    img.width = 1050 ;
+    ctx.drawImage(img, 10, 10, 1850, 650);
+    img.scale;
     ctx.fillStyle = "#ff0000";
     ctx.fill();
     ctx.closePath();
