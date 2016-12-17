@@ -23,9 +23,11 @@ class UsersController < ApplicationController
 
    def update
       @user = User.find(params[:id])
-       if @user.update(user_params)
+      @user.update_attributes(user_params)
+       if @user.save
            redirect_to root_path
        else
+         @errors = @user.errors.full_messages
            render 'edit'
        end
    end
