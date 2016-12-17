@@ -1,9 +1,14 @@
 <div class="container">
-
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <h1>Update your profile</h1>
-
+      <%if @errors%>
+      <%@errors.each do|error|%>
+          <ul>
+            <li><%=error%></li>
+          </ul>
+        <%end%>
+      <%end%>
       <%= form_for(@user) do |f| %>
 
         <%= f.label :name %>
