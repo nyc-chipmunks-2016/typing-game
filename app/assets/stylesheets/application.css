@@ -91,6 +91,7 @@ a:hover {
   font-size: 20px;
 }
 #myModal{
+  color:grey;
   font-size: 14px;
   width: 400px;
   left: 35%;
@@ -98,6 +99,7 @@ a:hover {
 }
 #myModalLogin{
   font-size: 14px;
+  color:grey;
   width: 400px;
   left: 35%;
   top:10%;
