@@ -330,7 +330,7 @@ label:hover:before {
 	text-align: center;
 }
 #img-profile{
-	padding: 19px;
+  padding: 19px;
 }
 .container #img-profile{
 	margin-top: 20px auto;
@@ -338,7 +338,7 @@ label:hover:before {
   padding-bottom: 41px;
 }
 .margin-img{
-	margin-right: 10px;
+  margin-right: 10px;
 
 }
 .text-center{
