@@ -1,15 +1,16 @@
 <div class="container">
     <div class="col-sm-12">
 	    <div class="col-sm-3 margin-img">
-		    <img id="img-profile" class="img-thumbnail img-center img-rounded"<%= gravatar_for @user, size: 100 %>
-        <% if  current_user == @user%>
-            <%= link_to 'Edit your profile', edit_user_path(@user),class: "btn btn-primary btn-sm"  %>
-        <%end%>
+		    <img id="img-profile" class="img-thumbnail img-center img-rounded"<%= gravatar_for @user, size: 100 %><br>
         </div>
       <div class="text">
   	    <div class="col-sm-7 well margin-well">
+          <% if  current_user == @user%>
+              <%= link_to 'Edit your profile', edit_user_path(@user),class: "btn btn-primary btn-sm"  %>
+          <%end%>
   	   		<h1><kbd><%=current_user.username.capitalize%>'s Stats:</kbd></h1>
           <ul><br>
+
             <li>Highest Score:</li>
             <li>WPM:</li>
             <li>Accuracy:</li>
