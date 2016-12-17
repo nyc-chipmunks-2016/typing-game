@@ -8,9 +8,22 @@ $(document).ready(function() {
   var speed = 1;
   var words = [];
   var activeWords = [];
+  var correctWords = [];
   var lives = 5;
   var input = document.getElementById("inputText");
   var inputValue = $("#inputText").attr("value");
+  var startTime = 0;
+  var endTime = 0;
+  var keystrokes = 0;
+  var wpm = 0;
+  var accuracy = 0;
+
+  input.addEventListener("keyup", function(event) {
+    var code = (event.keyCode || event.which);
+    if (code != 8 && code != 32) {
+      keystrokes += 1;
+    }
+  });
 
   function getWords() {
     return $.ajax({
@@ -46,19 +59,6 @@ $(document).ready(function() {
     ctx.font = "30px Arial";
     ctx.fillStyle = "#0095DD";
     ctx.fillText("START", 200, 315);
-  }
-
-  function start() {
-    canvas.addEventListener('click', function(event) {
-      var x = event.pageX - canvas.offsetLeft;
-      var y = event.pageY - canvas.offsetTop;
-      if (y > 275 && y < 335 && x > 175 && x < 325) {
-        input.focus();
-        addWord();
-        setInterval(addWord, 1000);
-        draw();
-      }
-    });
   }
 
   function drawLives() {
@@ -146,27 +146,63 @@ $(document).ready(function() {
     });
   }
 
+  function gameTime() {
+    endTime = new Date().getTime();
+    return (endTime - startTime)/60000;
+  }
+
+  function totalLetters() {
+    var totalLength = 0;
+    for (var i in correctWords) {
+      totalLength += correctWords[i].text.length;
+    }
+    return totalLength;
+  }
+
+  function normalizeWords() {
+    return totalLetters() / 5;
+  }
+
   function checkSpelling() {
     inputValue = $("#inputText").val();
     for (var i in activeWords) {
-      if (activeWords[i].text === inputValue) {
+      if (activeWords[i].text === inputValue.trim()) {
         score += activeWords[i].points;
-        activeWords.splice(i, 1);
+        correctWord = activeWords.splice(i, 1);
+        correctWords.push(correctWord[0]);
         $("#inputText").val("");
       }
     }
   }
 
-  function draw() {
+  function start() {
+    canvas.addEventListener('click', function(event) {
+      var x = event.pageX - canvas.offsetLeft;
+      var y = event.pageY - canvas.offsetTop;
+      if (y > 275 && y < 335 && x > 175 && x < 325) {
+        input.focus();
+        addWord();
+        startTime = new Date().getTime();
+        setInterval(addWord, 1000);
+        drawGame();
+      }
+    });
+  }
+
+  function drawGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawLava();
     drawLives();
     drawScore();
     if (lives === 0) {
+      wpm = normalizeWords() / gameTime();
+      accuracy = totalLetters() / keystrokes * 100;
       drawGameOver();
       drawRestart();
       restart();
-    } else if (activeWords.length === 0) {
+    } else if (activeWords.length === 0 && words.length === 0) {
+      wpm = normalizeWords() / gameTime();
+      accuracy = totalLetters() / keystrokes * 100;
       drawWin();
       drawNextLevel();
       drawRestart();
@@ -180,7 +216,7 @@ $(document).ready(function() {
         activeWords[i].y += speed;
       }
       collisionTest();
-      requestAnimationFrame(draw);
+      requestAnimationFrame(drawGame);
     }
   }
 
