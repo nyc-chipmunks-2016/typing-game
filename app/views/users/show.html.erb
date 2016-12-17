@@ -8,7 +8,7 @@
           <% if  current_user == @user%>
               <%= link_to 'Edit your profile', edit_user_path(@user),class: "btn btn-primary btn-sm"  %>
           <%end%>
-  	   		<h1><kbd><%=current_user.username.capitalize%>'s Stats:</kbd></h1>
+  	   		<h1><kbd><%=@user.username%>'s Stats:</kbd></h1>
           <ul><br>
 
             <li>Highest Score:</li>
@@ -21,7 +21,7 @@
 
     <div id="past-score">
       <div class="col-sm-7 well margin-well">
-        <h3><kbd><%=current_user.username.capitalize%>'s Previous Scores:</kbd></h3>
+        <h3><kbd><%=@user.username%>'s Previous Scores:</kbd></h3>
      </div>
    </div>
 
