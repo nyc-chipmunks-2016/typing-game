@@ -1,7 +1,11 @@
 class GamesController < ApplicationController
   def new
-    @game = Game.new(score: 0)
-    @game.words = Word.all
+  end
+
+  def create
+    @game = Game.new(wpm: params["wpm"], score: params["score"], accuracy: params["accuracy"])
+    @game.user = current_user
+    @game.save
   end
 
   # this logic only works when a game is being populated with every word in the database
