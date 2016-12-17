@@ -2,22 +2,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .img-center{
   display: block;
 	margin: 0px auto;
 	text-align: center;
 }
 #img-profile{
-	padding: 10px;
+	padding: 20px;
 }
 .container #img-profile{
-	margin-top: 16px;
+	margin-top: 20px;
   background-color: grey;
 }
 .margin-img{
-	margin-right: 20px;
+	margin-right: 10px;
 }
 .text-center{
 	margin-top: 10px;
+}
+
+.text {
+    margin-top: 21px;
+}
+
+#profile-color {
+
+    background-color: grey;
+}
+
+#past-score {
+  margin-top: 35%;
+  padding-right: 50%;
+}
+#global-score {
+  margin-top: 35%;
+  padding-left: 45%;
+  padding-right: 5%;
 }
