@@ -8,11 +8,22 @@ $(document).ready(function() {
   var speed = 1;
   var words = [];
   var activeWords = [];
+  var correctWords = [];
   var lives = 5;
   var input = document.getElementById("inputText");
   var inputValue = $("#inputText").attr("value");
   var startTime = 0;
   var endTime = 0;
+  var keystrokes = 0;
+  var wpm = 0;
+  var accuracy = 0;
+
+  input.addEventListener("keyup", function(event) {
+    var code = (event.keyCode || event.which);
+    if (code != 8 && code != 32) {
+      keystrokes += 1;
+    }
+  });
 
   function getWords() {
     return $.ajax({
@@ -140,12 +151,25 @@ $(document).ready(function() {
     return (endTime - startTime)/60000;
   }
 
+  function totalLetters() {
+    var totalLength = 0;
+    for (var i in correctWords) {
+      totalLength += correctWords[i].text.length;
+    }
+    return totalLength;
+  }
+
+  function normalizeWords() {
+    return totalLetters() / 5;
+  }
+
   function checkSpelling() {
     inputValue = $("#inputText").val();
     for (var i in activeWords) {
-      if (activeWords[i].text === inputValue) {
+      if (activeWords[i].text === inputValue.trim()) {
         score += activeWords[i].points;
-        activeWords.splice(i, 1);
+        correctWord = activeWords.splice(i, 1);
+        correctWords.push(correctWord[0]);
         $("#inputText").val("");
       }
     }
@@ -171,12 +195,14 @@ $(document).ready(function() {
     drawLives();
     drawScore();
     if (lives === 0) {
-      gameTime();
+      wpm = normalizeWords() / gameTime();
+      accuracy = totalLetters() / keystrokes * 100;
       drawGameOver();
       drawRestart();
       restart();
     } else if (activeWords.length === 0 && words.length === 0) {
-      gameTime();
+      wpm = normalizeWords() / gameTime();
+      accuracy = totalLetters() / keystrokes * 100;
       drawWin();
       drawNextLevel();
       drawRestart();
