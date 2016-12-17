@@ -12,3 +12,8 @@
         </ul>
 		</div>
 	</div>
+  <div class="col-md-4 col-md-offset-4 center">
+       <% if  current_user == @user%>
+      <%= link_to 'Edit your profile', edit_user_path(@user),class: "btn btn-primary btn-lg"  %>
+      <%end%>
+    </div>
