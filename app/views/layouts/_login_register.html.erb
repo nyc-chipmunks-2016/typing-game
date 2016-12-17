@@ -9,8 +9,8 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           <div class="tab-pane" id="Registration">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <form class="form-horizontal" action="/users" method="post">
               <div class="form-group">
                 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -27,6 +27,7 @@
               </div>
               <div class="col-sm-10">
                 <input class="btn btn-primary btn-sm" type="submit" name="" value="Register!">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
               </div>
             </form>
           </div>
@@ -65,6 +66,7 @@
                 <br/>
                 <div class="col-sm-10">
                   <input class="btn btn-primary btn-sm" type="submit" name="" value="Login!">
+                  <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
                 </div>
               </form>
             </div>
