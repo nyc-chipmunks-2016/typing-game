@@ -330,12 +330,12 @@ label:hover:before {
 	text-align: center;
 }
 #img-profile{
-	padding: 19px auto;
+	padding: 19px;
 }
 .container #img-profile{
 	margin-top: 20px auto;
   background-color: lightgrey;
-  padding-bottom: 28px;
+  padding-bottom: 41px;
 }
 .margin-img{
 	margin-right: 10px;
@@ -348,7 +348,7 @@ label:hover:before {
 .text {
   display: block;
   margin-top: 21px auto;
-  padding-right: 40% auto;
+  margin-right: 40px;
   padding-left: 2% auto;
   padding-bottom: 10% auto;
 }
@@ -360,10 +360,12 @@ label:hover:before {
 #past-score {
   margin-top: 20%;
   padding-left: 30px;
+  margin-right: -37%;
 
 }
 
 #global-score {
   margin-top: 35%;
   padding-left: 30px;
+  margin-right: -37%;
 }
