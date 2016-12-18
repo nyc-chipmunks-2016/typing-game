@@ -1,39 +1,70 @@
 <div class="container profile">
   <div class="col-sm-12">
     <div class="col-sm-3 margin-img">
-	    <img id="img-profile" class="img-thumbnail img-center img-rounded"<%= gravatar_for @user, size: 100 %><br>
+      <img id="img-profile" class="img-thumbnail img-center img-rounded" <%= gravatar_for @user, size: 100 %></img>
     </div>
     <div class="text">
-	    <div class="col-sm-7 well margin-well">
-        <% if  current_user == @user%>
-          <%= link_to 'Edit your profile', edit_user_path(@user),class: "btn btn-primary btn-sm"  %>
+      <div class="col-sm-7 well margin-well">
+        <% if current_user == @user %>
+          <%= link_to 'Edit your profile', edit_user_path(@user), class: "btn btn-primary btn-sm" %>
         <%end%>
-	   		<h1><kbd><%=@user.username%>'s Stats:</kbd></h1>
-        <ul><br>
-          <li>Highest Score:</li>
-          <li>WPM:</li>
-          <li>Accuracy:</li>
+        <h1><kbd><%= @user.username %>'s Stats:</kbd></h1>
+        <ul>
+          <% if @user.games.empty? %>
+            <li>High Score:</li>
+            <li>Words Per Minute:</li>
+            <li>Accuracy:</li>
+          <% else %>
+            <li>High Score: <%= @user.high_score %></li>
+            <li>Words Per Minute: <%= @user.average_wpm %></li>
+            <li>Accuracy: <%= @user.average_accuracy %></li>
+          <% end %>
         </ul>
-  		</div>
+      </div>
     </div>
   </div>
 
   <div id="past-score">
     <div class="col-sm-7 well margin-well">
-      <h3><kbd><%=@user.username%>'s Previous Scores:</kbd></h3>
+      <h3><kbd><%= @user.username %>'s Previous Scores:</kbd></h3>
+      <table class="table table-hover">
+        <tr>
+          <th>Score</th>
+          <th>Words Per Minute</th>
+          <th>Accuracy</th>
+        </tr>
+        <% if !@user.games.empty? %>
+          <% @user.most_recent_games.each do |game| %>
+            <tr>
+              <td><%= game.score %></td>
+              <td><%= game.wpm %></td>
+              <td><%= game.accuracy %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
     </div>
   </div>
 
   <div id="global-score">
     <div class="col-sm-7 well margin-well">
-      <h3><kbd>Global Scores:</kbd></h3>
-        <table class="table table-hover">
-          <ul>
-            <%@users.each do |user|%>
-              <li><%=user.username%></li>
-            <%end%>
-          </ul>
-        </table>
+      <h3><kbd>Global High Scores:</kbd></h3>
+      <table class="table table-hover">
+        <tr>
+          <th>Player</th>
+          <th>Score</th>
+          <th>Words Per Minute</th>
+          <th>Accuracy</th>
+        </tr>
+        <% @games.each do |game| %>
+          <tr>
+            <td><%= game.user.username %></td>
+            <td><%= game.score %></td>
+            <td><%= game.wpm %></td>
+            <td><%= game.accuracy %></td>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>
