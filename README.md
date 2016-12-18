@@ -1,4 +1,5 @@
 # L-Type (Lava/Laser Type)
+[App Website](https://lava-typer.herokuapp.com)
 
 ## Team
 - [Allain Dollete](https://github.com/jdollete)
