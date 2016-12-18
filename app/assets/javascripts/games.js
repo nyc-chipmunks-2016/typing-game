@@ -49,7 +49,7 @@ $(document).ready(function() {
 
   function collisionTest() {
     for (var i in activeWords) {
-      if (activeWords[i].y > canvas.height - 20) {
+      if (activeWords[i].y > canvas.height - 110) {
         activeWords.splice(i, 1);
         lives -= 1;
       }
@@ -86,22 +86,6 @@ $(document).ready(function() {
     ctx.fillText("Score: " + score, 20, 570);
   }
 
-  function drawLava() {
-    ctx.beginPath();
-    var img= new Image();
-    var scale = 0.8;
-    var frames = 3;
-    var currentFrame = 0;
-    img.src = '/lava.png';
-    var width = 400;
-    var height = 800;
-    img.height = 650;
-    img.width = 1050 ;
-    ctx.drawImage(img, 10, 10, 1850, 650);
-    ctx.fillStyle = "#ff0000";
-    ctx.fill();
-    ctx.closePath();
-  }
 
   function drawWord() {
     ctx.font = "20px Arial";
@@ -211,7 +195,6 @@ $(document).ready(function() {
 
   function drawGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawLava();
     drawLives();
     drawScore();
     if (lives === 0) {
