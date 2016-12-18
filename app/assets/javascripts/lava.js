@@ -60,10 +60,8 @@ $(document).ready(function() {
 
   function lavaVertical() {
     if (-5 <= y && y <= -1) {
-      console.log(y + ", " + dy);
       y += dy;
     } else {
-      console.log("here");
       dy = -dy;
       y += dy;
     }
