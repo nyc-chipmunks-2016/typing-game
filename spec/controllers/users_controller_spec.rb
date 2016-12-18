@@ -1,21 +1,15 @@
 require "rails_helper"
 
 RSpec.describe UsersController, :type => :controller do
-let(:valid_session) do
-	{ user_id: 1 }
-end
+	let(:valid_session) {{ user_id: 1 }}
 
-let(:valid_attributes) do
-	{ email: "arsy209@gmail.com", username: "arsy21",password: "123456"}
-end
+	let(:valid_attributes) {{ email: "arsy209@gmail.com", username: "arsy21",password: "123456"}}
 
-let(:invalid_attributes) do
-	{ username: nil }
-end
+	let(:invalid_attributes) {{ username: nil }}
 
-it " Should allow a  uer to be created with valid attributes" do
-  newuser = User.create! valid_attributes
-end
+	it " Should allow a  user to be created with valid attributes" do
+	  newuser = User.create! valid_attributes
+	end
 
 describe "POST #create" do
   it " should create a new user" do
