@@ -172,12 +172,6 @@ $(document).ready(function() {
   }
 
   function totalLetters() {
-    // var totalLength = 0;
-    // for (var i in correctWords) {
-    //   totalLength += correctWords[i].text.length;
-    // }
-    // return totalLength;
-
     return correctWords.reduce(function(total, word) {
       return total + word.text.length;
     }, 0);

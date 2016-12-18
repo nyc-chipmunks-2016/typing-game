@@ -1,14 +1,14 @@
 <div class="container profile">
   <div class="col-sm-12">
     <div class="col-sm-3 margin-img">
-	    <img id="img-profile" class="img-thumbnail img-center img-rounded" <%= gravatar_for @user, size: 100 %> </img>
+      <img id="img-profile" class="img-thumbnail img-center img-rounded" <%= gravatar_for @user, size: 100 %></img>
     </div>
     <div class="text">
-	    <div class="col-sm-7 well margin-well">
+      <div class="col-sm-7 well margin-well">
         <% if current_user == @user %>
           <%= link_to 'Edit your profile', edit_user_path(@user), class: "btn btn-primary btn-sm" %>
         <%end%>
-	   		<h1><kbd><%= @user.username %>'s Stats:</kbd></h1>
+        <h1><kbd><%= @user.username %>'s Stats:</kbd></h1>
         <ul>
           <% if @user.games.empty? %>
             <li>High Score:</li>
@@ -20,7 +20,7 @@
             <li>Accuracy: <%= @user.average_accuracy %></li>
           <% end %>
         </ul>
-  		</div>
+      </div>
     </div>
   </div>
 
@@ -49,22 +49,22 @@
   <div id="global-score">
     <div class="col-sm-7 well margin-well">
       <h3><kbd>Global High Scores:</kbd></h3>
-        <table class="table table-hover">
+      <table class="table table-hover">
+        <tr>
+          <th>Player</th>
+          <th>Score</th>
+          <th>Words Per Minute</th>
+          <th>Accuracy</th>
+        </tr>
+        <% @games.each do |game| %>
           <tr>
-            <th>Player</th>
-            <th>Score</th>
-            <th>Words Per Minute</th>
-            <th>Accuracy</th>
+            <td><%= game.user.username %></td>
+            <td><%= game.score %></td>
+            <td><%= game.wpm %></td>
+            <td><%= game.accuracy %></td>
           </tr>
-          <% @games.each do |game| %>
-            <tr>
-              <td><%= game.user.username %></td>
-              <td><%= game.score %></td>
-              <td><%= game.wpm %></td>
-              <td><%= game.accuracy %></td>
-            </tr>
-          <% end %>
-        </table>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>
