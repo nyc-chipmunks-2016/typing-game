@@ -10,46 +10,49 @@ $(document).ready(function() {
   y = 10,
   dx = 0.75,
   imgW,
-  mgH,
+  imgH,
   x = 0,
   clearX,
   clearY,
   ctx;
+  
   lavaImage.onload = function() {
     imgW = lavaImage.width;
     imgH = lavaImage.height;
     if (imgW > CanvasXSize) {
-      x = CanvasXSize-imgW;
+      x = CanvasXSize - imgW;
     }
     if (imgW > CanvasXSize) {
-     clearX = imgW;
+      clearX = imgW;
     } else { clearX = CanvasXSize;
     }
     if (imgH > CanvasYSize) {
-     clearY = imgH;
+      clearY = imgH;
     } else { clearY = CanvasYSize;
     }
     ctx = document.getElementById('canvasLava').getContext('2d');
     return setInterval(draw, speed);
   };
+  
   function draw() {
-    ctx.clearRect(0,0,clearX,clearY);
+    ctx.clearRect(0, 0, clearX, clearY);
     if (imgW <= CanvasXSize) {
       if (x > (CanvasXSize)) {
         x = 0;
       }
-      if (x > (CanvasXSize-imgW)) {
-        ctx.drawImage(lavaImage,x-CanvasXSize+1,y,imgW,imgH); }
+      if (x > (CanvasXSize - imgW)) {
+        ctx.drawImage(lavaImage, x - CanvasXSize + 1, y, imgW, imgH);
+      }
     }
     else {
       if (x > (CanvasXSize)) {
-         x = CanvasXSize-imgW;
+         x = CanvasXSize - imgW;
       }
-      if (x > (CanvasXSize-imgW)) {
-        ctx.drawImage(lavaImage,x-imgW+1,y,imgW,imgH);
+      if (x > (CanvasXSize - imgW)) {
+        ctx.drawImage(lavaImage, x - imgW + 1, y, imgW, imgH);
       }
     }
-    ctx.drawImage(lavaImage,x,y,imgW,imgH);
+    ctx.drawImage(lavaImage, x, y, imgW, imgH);
     x += dx;
   }
 });
