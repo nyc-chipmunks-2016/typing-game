@@ -127,8 +127,8 @@ a:hover {
 
 .img-center{
   display: block;
-	margin: 0px auto;
-	text-align: center;
+  margin: 0px auto;
+  text-align: center;
 }
 
 #img-profile{
@@ -136,7 +136,7 @@ a:hover {
 }
 
 .container #img-profile{
-	margin-top: 20px auto;
+  margin-top: 20px auto;
   background-color: lightgrey;
   padding-bottom: 41px;
 }
@@ -191,15 +191,18 @@ a:hover {
   left:30%;
   outline: 0 none;
 }
-canvas {
-	position: absolute;
-	top: 180px;
-	left: 400px;
-	background: transparent;
-			}
+
+canvas{
+  position: absolute;
+  top: 180px;
+  left: 400px;
+  background: transparent;
+}
+
 #myCanvas{
   z-index: 0;
 }
+
 #canvasLava{
   z-index: -1;
 }
