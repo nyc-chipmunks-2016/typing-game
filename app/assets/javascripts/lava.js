@@ -7,7 +7,7 @@ $(document).ready(function() {
   var CanvasXSize = 500,
   CanvasYSize = 600,
   speed = 60,
-  y = 10,
+  y = 0,
   dx = 0.75,
   imgW,
   imgH,
@@ -15,7 +15,7 @@ $(document).ready(function() {
   clearX,
   clearY,
   ctx;
-  
+
   lavaImage.onload = function() {
     imgW = lavaImage.width;
     imgH = lavaImage.height;
@@ -33,7 +33,7 @@ $(document).ready(function() {
     ctx = document.getElementById('canvasLava').getContext('2d');
     return setInterval(draw, speed);
   };
-  
+
   function draw() {
     ctx.clearRect(0, 0, clearX, clearY);
     if (imgW <= CanvasXSize) {
