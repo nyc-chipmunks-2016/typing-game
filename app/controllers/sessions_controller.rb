@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
       redirect_to user_path(user)
     else
       @errors = ["The username and password you entered do not match."]
-
     end
   end
 

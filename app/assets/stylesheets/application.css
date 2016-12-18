@@ -6,13 +6,14 @@ body, html {
 
 .parallax2 {
   /**background-image: url('https://t3.ftcdn.net/jpg/01/16/32/82/240_F_116328207_zsoPI9CH1W1CiLIZFRPxx7HgVgOQX8DM.jpg');
-  height: 100%;*/*/
+  height: 100%;*/
   background-attachment: fixed;
   background-position: center;
   background-repeat: repeat;
   background-size: cover;
   background-color: #00C2A2;
 }
+
 .parallax {
   background-image: url('https://0.s3.envato.com/files/121873343/preview.jpg');
   height: 100%;
@@ -22,9 +23,11 @@ body, html {
   background-size: cover;
   background-color: #348FDF;
 }
+
 .mint{
   background-color: #00C2A2;
 }
+
 .blue{
   background-color: #348FDF;
 }
@@ -34,6 +37,7 @@ body, html {
   color: #fff;
   height: 100vh;
 }
+
 /*Parallax background*/
 #section-1 .parallax-layer-back {
   background: url("http://mdbootstrap.com/images/regular/nature/img%20(54).jpg")no-repeat center center;
@@ -42,6 +46,7 @@ body, html {
   -o-background-size: cover;
   background-size: cover;
 }
+
 /*Section with dummy content*/
 #section-2 {
   z-index: 2;
@@ -49,11 +54,13 @@ body, html {
   background: #fff;
   width: 100%;
 }
+
 .log{
   font-size: 80px;
   margin: 80px;
   padding-top: 30px;
 }
+
 .content{
   font-size: 30px;
   margin: 80px;
@@ -64,6 +71,7 @@ a {
   color: #aaaaaa;
   transition: all ease-in-out 200ms;
 }
+
 a:hover {
   color: #333333;
   text-decoration: none;
@@ -72,6 +80,7 @@ a:hover {
 .nav-tabs {
   margin-bottom: 15px;
 }
+
 .sign-with {
   margin-top: 25px;
   padding: 20px;
@@ -90,6 +99,7 @@ a:hover {
 .link-font {
   font-size: 20px;
 }
+
 #myModal{
   color:grey;
   font-size: 14px;
@@ -97,6 +107,7 @@ a:hover {
   left: 35%;
   top:10%;
 }
+
 #myModalLogin{
   font-size: 14px;
   color:grey;
@@ -104,6 +115,7 @@ a:hover {
   left: 35%;
   top:10%;
 }
+
 .form-control{
   width: 215px;
 }
@@ -112,23 +124,27 @@ a:hover {
 .container {
   width: 1000px;
 }
+
 .img-center{
   display: block;
 	margin: 0px auto;
 	text-align: center;
 }
+
 #img-profile{
   padding: 19px;
 }
+
 .container #img-profile{
 	margin-top: 20px auto;
   background-color: lightgrey;
   padding-bottom: 41px;
 }
+
 .margin-img{
   margin-right: 10px;
-
 }
+
 .text-center{
   margin-top: 10px;
 }
@@ -149,7 +165,6 @@ a:hover {
   margin-top: 20%;
   padding-left: 30px;
   margin-right: -37%;
-
 }
 
 #global-score {
