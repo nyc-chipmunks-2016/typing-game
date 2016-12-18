@@ -1,20 +1,20 @@
 $(document).ready(function() {
 
   var lavaImage = new Image();
-  lavaImage.src = '/lava.png';
+  lavaImage.src = '/lava3.png';
   lavaImage.height = 650;
   lavaImage.width = 1000;
-  var CanvasXSize = 500;
-  var CanvasYSize = 600;
-  var speed = 60;
-  var y = 10;
-  var dx = 0.75;
-  var imgW;
-  var imgH;
-  var x = 0;
-  var clearX;
-  var clearY;
-  var ctx;
+  var CanvasXSize = 500,
+  CanvasYSize = 600,
+  speed = 60,
+  y = 10,
+  dx = 0.75,
+  imgW,
+  mgH,
+  x = 0,
+  clearX,
+  clearY,
+  ctx;
   lavaImage.onload = function() {
     imgW = lavaImage.width;
     imgH = lavaImage.height;
@@ -52,5 +52,4 @@ $(document).ready(function() {
     ctx.drawImage(lavaImage,x,y,imgW,imgH);
     x += dx;
   }
-
 });
