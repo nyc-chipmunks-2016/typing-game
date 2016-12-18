@@ -38,11 +38,13 @@ $(document).ready(function() {
   }
 
   function saveGame() {
-    $.ajax({
-      url: "/games",
-      method: "post",
-      data: {score: score, wpm: wpm, accuracy: accuracy, words: wordArchive}
-    });
+    if (keystrokes !== 0) {
+      $.ajax({
+        url: "/games",
+        method: "post",
+        data: {score: score, wpm: wpm, accuracy: accuracy, words: wordArchive}
+      });
+    }
   }
 
   function collisionTest() {
