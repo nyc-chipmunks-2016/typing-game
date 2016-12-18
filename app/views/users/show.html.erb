@@ -16,8 +16,8 @@
             <li>Accuracy:</li>
           <% else %>
             <li>High Score: <%= @user.high_score %></li>
-            <li>Words Per Minute: <%= @user.average_wpm %></li>
-            <li>Accuracy: <%= @user.average_accuracy %></li>
+            <li>Average Words Per Minute: <%= @user.average_wpm.round(2) %></li>
+            <li>Average Accuracy: <%= @user.average_accuracy.round(2) %>%</li>
           <% end %>
         </ul>
       </div>
@@ -37,8 +37,8 @@
           <% @user.most_recent_games.each do |game| %>
             <tr>
               <td><%= game.score %></td>
-              <td><%= game.wpm %></td>
-              <td><%= game.accuracy %></td>
+              <td><%= game.wpm.round(2) %></td>
+              <td><%= game.accuracy.round(2) %>%</td>
             </tr>
           <% end %>
         <% end %>
@@ -60,8 +60,8 @@
           <tr>
             <td><%= game.user.username %></td>
             <td><%= game.score %></td>
-            <td><%= game.wpm %></td>
-            <td><%= game.accuracy %></td>
+            <td><%= game.wpm.round(2) %></td>
+            <td><%= game.accuracy.round(2) %>%</td>
           </tr>
         <% end %>
       </table>
