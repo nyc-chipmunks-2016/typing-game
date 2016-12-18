@@ -6,8 +6,8 @@ $(document).ready(function() {
   lavaImage.width = 1000;
   var CanvasXSize = 500,
   CanvasYSize = 600,
-  speed = 60,
-  y = 10,
+  y = -1,
+  dy = -1,
   dx = 0.75,
   imgW,
   imgH,
@@ -15,7 +15,7 @@ $(document).ready(function() {
   clearX,
   clearY,
   ctx;
-  
+
   lavaImage.onload = function() {
     imgW = lavaImage.width;
     imgH = lavaImage.height;
@@ -31,9 +31,10 @@ $(document).ready(function() {
     } else { clearY = CanvasYSize;
     }
     ctx = document.getElementById('canvasLava').getContext('2d');
-    return setInterval(draw, speed);
+    setInterval(lavaVertical, 100);
+    draw();
   };
-  
+
   function draw() {
     ctx.clearRect(0, 0, clearX, clearY);
     if (imgW <= CanvasXSize) {
@@ -54,5 +55,16 @@ $(document).ready(function() {
     }
     ctx.drawImage(lavaImage, x, y, imgW, imgH);
     x += dx;
+    requestAnimationFrame(draw);
   }
+
+  function lavaVertical() {
+    if (-5 <= y && y <= -1) {
+      y += dy;
+    } else {
+      dy = -dy;
+      y += dy;
+    }
+  }
+
 });
