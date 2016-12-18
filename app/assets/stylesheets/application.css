@@ -2,12 +2,14 @@ body, html {
   height: 100%;
   padding: 10px;
   font-family: 'Varela Round';
+
 }
 #play-button {
   margin: auto;
   display: block;
   background-color: transparent;
   font-size: 55px;
+
 }
 
 
@@ -21,7 +23,7 @@ body, html {
 }
 
 .parallax {
-  background-image: url('http://bestanimations.com/Nature/volcano-lava-exploding-orange-animated-gif.gif');
+  background-image: url('http://www.gifmania.co.uk/Landscapes-Animated-Gifs/Animated-Natural-Elements/Lava/Lava-Bubbles-87910.gif');
   height: 100%;
   background-attachment: fixed;
   background-position: center;
