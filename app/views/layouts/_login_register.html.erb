@@ -11,7 +11,7 @@
       <div class="modal-header">
           <div class="tab-pane" id="Registration">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <form class="form-horizontal" action="/users" method="post">
+            <form id="register_form" class="form-horizontal" action="/users" method="post">
               <div class="form-group">
                 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
                 <label for="email" class="col-sm-2 control-label">Email:</label>
@@ -25,9 +25,13 @@
                 <label for="password" class="col-sm-2 control-label">Password:</label>
                 <input class="form-control" type="password" name="user[password]" value="" placeholder="Password"  required>
               </div>
+              <div class="error_div">
+                <ul class="error_register"></ul>
+              </div>
+              <br>
               <div class="col-sm-10">
                 <input class="btn btn-primary btn-sm" type="submit" name="" value="Register!">
-                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+                <button id="registration_cancel" type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
               </div>
             </form>
           </div>

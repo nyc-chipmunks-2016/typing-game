@@ -1,0 +1,29 @@
+<form id="register_form" class="form-horizontal" action="/users" method="post">
+  <div class="form-group">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <label for="email" class="col-sm-2 control-label">Email:</label>
+    <input class="form-control" type="email" name="user[email]" value=""  placeholder="Email" required>
+  </div>
+  <div class="form-group">
+    <label for="username" class="col-sm-2 control-label">Username:</label>
+    <input class="form-control" type="text" name="user[username]" value="" placeholder="Username" maxlength="20" required>
+  </div>
+  <div class="form-group">
+    <label for="password" class="col-sm-2 control-label">Password:</label>
+    <input class="form-control" type="password" name="user[password]" value="" placeholder="Password"  required>
+  </div>
+  <div class="error_div">
+    <% if @errors %>
+      <ul>
+        <% @errors.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <br>
+  <div class="col-sm-10">
+    <input class="btn btn-primary btn-sm" type="submit" name="" value="Register!">
+    <button id="registration_cancel" type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+  </div>
+</form>

@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
     if request.xhr?
       if user
         session[:user_id] = user.id
-        user_path(user)
         render status: 200, json: {:user_link => user_path(user)}
       else
         render status: 400, json: {:errors => ["The username and password you entered do not match."]}
@@ -18,7 +17,7 @@ class SessionsController < ApplicationController
         redirect_to user_path(user)
       else
         @errors = ["The username and password you entered do not match."]
-        redirect_to "/login"
+        render "/login"
       end
     end
   end

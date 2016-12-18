@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  $("form#login_form").on("submit", function(event) {
+  $("form#register_form").on("submit", function(event) {
     event.preventDefault();
     var $form = $(this);
     var method = $form.attr("method");
@@ -14,15 +14,16 @@ $( document ).ready(function() {
     .done(function(response) {
       window.location.href = response.user_link;
     })
-    .fail(function() {
-      if($("ul.error_login li").size() === 0) {
-        $("ul.error_login").append($("<li />").html("The username and password you entered do not match."));
+    .fail(function(response) {
+      var errors = response.responseJSON.errors;
+      for (var i in errors) {
+        $("ul.error_register").append($("<li />").html(errors[i]));
       }
     });
   });
 
-  $("button#login_cancel").on("click", function(){
-    $("ul.error_login li").remove();
+  $("button#registration_cancel").on("click", function(){
+    $("ul.error_register li").remove();
   });
 
 });
