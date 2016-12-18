@@ -96,7 +96,6 @@ $(document).ready(function() {
     img.height = 650;
     img.width = 1050 ;
     ctx.drawImage(img, 10, 10, 1850, 650);
-    img.scale;
     ctx.fillStyle = "#ff0000";
     ctx.fill();
     ctx.closePath();
@@ -173,11 +172,15 @@ $(document).ready(function() {
   }
 
   function totalLetters() {
-    var totalLength = 0;
-    for (var i in correctWords) {
-      totalLength += correctWords[i].text.length;
-    }
-    return totalLength;
+    // var totalLength = 0;
+    // for (var i in correctWords) {
+    //   totalLength += correctWords[i].text.length;
+    // }
+    // return totalLength;
+
+    return correctWords.reduce(function(total, word) {
+      return total + word.text.length;
+    }, 0);
   }
 
   function normalizeWords() {
@@ -217,14 +220,14 @@ $(document).ready(function() {
     drawScore();
     if (lives === 0) {
       wpm = normalizeWords() / gameTime();
-      accuracy = totalLetters() / keystrokes * 100;
+      accuracy = (totalLetters() / keystrokes) * 100;
       saveGame();
       drawGameOver();
       drawRestart();
       restart();
     } else if (activeWords.length === 0 && words.length === 0) {
       wpm = normalizeWords() / gameTime();
-      accuracy = totalLetters() / keystrokes * 100;
+      accuracy = (totalLetters() / keystrokes) * 100;
       saveGame();
       drawWin();
       drawNextLevel();

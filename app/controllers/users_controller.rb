@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @users = User.all
+    @games = Game.order_by_high_scores
     @user = User.find(params[:id])
   end
 
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:username, :email, :password)
-    end
+  def user_params
+    params.require(:user).permit(:username, :email, :password)
+  end
 end
