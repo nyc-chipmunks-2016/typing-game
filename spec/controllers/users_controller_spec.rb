@@ -29,7 +29,7 @@ describe "POST #create" do
 
   context "When valid information is not put in" do
     it "does not create the user and returns nil" do
-         post :create, { user: invalid_attributes }, valid_session
+         post :create, params: { user: invalid_attributes}
          expect(User.find_by_username(valid_attributes[:username])).to be_nil
     end
   end
