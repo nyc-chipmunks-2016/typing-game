@@ -5,13 +5,12 @@ body, html {
 }
 
 .parallax2 {
-  /**background-image: url('https://t3.ftcdn.net/jpg/01/16/32/82/240_F_116328207_zsoPI9CH1W1CiLIZFRPxx7HgVgOQX8DM.jpg');
-  height: 100%;*/
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: repeat;
-  background-size: cover;
-  background-color: #00C2A2;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    background-color: #00C2A2;
+
 }
 
 .parallax {
