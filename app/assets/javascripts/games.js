@@ -38,7 +38,7 @@ $(document).ready(function() {
   }
 
   function saveGame() {
-    if (keystrokes !== 0) {
+    if (wpm > 0) {
       $.ajax({
         url: "/games",
         method: "post",
