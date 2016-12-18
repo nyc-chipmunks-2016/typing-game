@@ -1,5 +1,5 @@
-<ul class="nav navbar-nav navbar-right">
-  <li><a href="/users/<%= current_user.id %>"><%= current_user.username %></a></li>
+<ul class="nav navbar-nav navbar-right logout">
+  <li class="link-font" ><a  href="/users/<%= current_user.id %>"><%= current_user.username %></a></li>
   <li id="logout_li">
     <a id="logout_link">
       <form action="/logout" method="post" class="login-form-1">
