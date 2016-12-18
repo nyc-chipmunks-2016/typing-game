@@ -1,0 +1,6 @@
+$("ul.error_login").html("")
+<% if @errors.any? %>
+  <% @errors.each do |error| %>
+    $("ul.error_login").append($("<li />").html("Fail"))
+  <% end %>
+<% end %>
