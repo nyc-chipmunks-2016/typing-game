@@ -18,12 +18,12 @@ RSpec.describe UsersController, :type => :controller do
 
 describe "POST #create" do
   it " should create a new user" do
-      post :create, {user: valid_attributes}
+      process :create, params: {user: valid_attributes}
       expect(assigns(:user)).to eq(User.last)
   end
 
   it "returns http success" do
-      post :create, {user: valid_attributes}
+      post :create, params: {user: valid_attributes}
       expect(response).to have_http_status(302)
   end
 
@@ -32,15 +32,15 @@ describe "POST #create" do
          post :create, { user: invalid_attributes }, valid_session
          expect(User.find_by_username(valid_attributes[:username])).to be_nil
     end
-end
-
-describe "GET #show" do
-  it "returns http success" do
-      user = User.create!(valid_attributes)
-      get :show, id: user.id
-      expect(response).to have_http_status(:success)
-      end
-      after { puts "Completed"}
-    end
   end
+
+  describe "GET #show" do
+    it "returns http success" do
+        user = User.create!(valid_attributes)
+        get :show, params: { id: user.id}
+        expect(response).to have_http_status(:success)
+        end
+        after { puts "Completed"}
+      end
+    end
 end
