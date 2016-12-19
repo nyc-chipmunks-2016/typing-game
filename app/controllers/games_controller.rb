@@ -10,6 +10,6 @@ class GamesController < ApplicationController
   end
 
   def words
-    render json: Word.where(level: params["level"])
+    render json: Word.where(level: params["level"]).order("random()")
   end
 end

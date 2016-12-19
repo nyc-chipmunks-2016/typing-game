@@ -20,6 +20,7 @@ $(document).ready(function() {
   var lives = 5;
   var startTime = 0;
   var endTime = 0;
+  var totalTime = 0;
   var keystrokes = 1;
   var wpm = 0;
   var accuracy = 0;
@@ -51,7 +52,7 @@ $(document).ready(function() {
       $.ajax({
         url: "/games",
         method: "post",
-        data: {score: score, wpm: wpm, accuracy: accuracy, time: gameTime(), level: level.value}
+        data: {score: score, wpm: wpm, accuracy: accuracy, time: totalTime, level: level.value}
       });
     }
   }
@@ -145,7 +146,9 @@ $(document).ready(function() {
       var x = event.pageX - canvas.offsetLeft;
       var y = event.pageY - canvas.offsetTop;
       if (y > 250 && y < 290 && x > 200 && x < 300) {
-        localStorage.setItem("level", parseInt(level.value) + 1);
+        if (parseInt(level.value) < 6) {
+          localStorage.setItem("level", parseInt(level.value) + 1);
+        }
         document.location.reload();
       }
     });
@@ -207,14 +210,16 @@ $(document).ready(function() {
     drawLives();
     drawScore();
     if (lives === 0) {
-      wpm = normalizeWords() / gameTime();
+      totalTime = gameTime();
+      wpm = normalizeWords() / totalTime;
       accuracy = (totalLetters() / keystrokes) * 100;
       saveGame();
       drawGameOver();
       drawRestart();
       restart();
     } else if (activeWords.length === 0 && words.length === 0) {
-      wpm = normalizeWords() / gameTime();
+      totalTime = gameTime();
+      wpm = normalizeWords() / totalTime;
       accuracy = (totalLetters() / keystrokes) * 100;
       saveGame();
       drawWin();
