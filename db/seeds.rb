@@ -12,33 +12,21 @@ words = %w(owl yak lion dog bear cat bird horse zebra hippo monkey gorilla fish 
 
 words.each do |word|
   if word.length <= 4
-    new_word = Word.new(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 1)
-    new_word.category = new_category
-    new_word.save
+    new_category.words.create(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 1)
   end
   if word.length <= 5
-    new_word = Word.new(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 2)
-    new_word.category = new_category
-    new_word.save
+    new_category.words.create(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 2)
   end
   if word.length >= 4 && word.length <= 6
-    new_word = Word.new(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 3)
-    new_word.category = new_category
-    new_word.save
+    new_category.words.create(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 3)
   end
   if word.length >= 4 && word.length <= 7
-    new_word = Word.new(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 4)
-    new_word.category = new_category
-    new_word.save
+    new_category.words.create(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 4)
   end
   if word.length >= 5 && word.length <= 8
-    new_word = Word.new(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 5)
-    new_word.category = new_category
-    new_word.save
+    new_category.words.create(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 5)
   end
   if word.length >= 6
-    new_word = Word.new(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 6)
-    new_word.category = new_category
-    new_word.save
+    new_category.words.create(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 6)
   end
 end
