@@ -8,10 +8,16 @@ body, html {
   margin: auto;
   display: block;
   background-color: transparent;
-  font-size: 55px;
+  font-size: 65px;
+  color: white;
+
 
 }
 
+#game-video{
+  margin-left: 30%;
+  display: block;
+}
 
 .parallax2 {
     background-attachment: fixed;
@@ -23,7 +29,7 @@ body, html {
 }
 
 .parallax {
-  background-image: url('https://media.giphy.com/media/Jd84OILUQw3wQ/source.gif');
+  background-image: url('http://www.mrietze.com/images/kongo07/ani-a512.gif');
   height: 100%;
   background-attachment: fixed;
   background-position: center;
