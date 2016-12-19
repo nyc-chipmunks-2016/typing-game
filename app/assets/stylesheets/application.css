@@ -2,7 +2,7 @@ body, html {
   height: 100%;
   padding: 10px;
   font-family: 'Roboto Slab';
-  background-color: #3A3C40;
+  background-color: #201D1C;
 }
 
 .edit-profile {
@@ -87,22 +87,19 @@ body, html {
 }
 
 #play-button {
-  margin: 240px auto 0;
+  margin: 140px auto 0;
   display: block;
-  background-color: transparent;
+  background: rgba(255, 0, 0, .2);
   font-size: 65px;
-  color: white;
+  color: #FCE9C7;
   border-style: solid;
   border-width: 4px;
-  border-color: white;
+  border-color: #FCE9C7;
 }
 
 #game-video{
   margin-left: 25%;
   display: block;
-}
-
-.parallax2 {
 }
 
 .parallax {
@@ -129,13 +126,13 @@ body, html {
   background-size: cover;
 }
 
-/*Section with dummy content*/
 #section-2 {
   z-index: 2;
   position: relative;
   background: #fff;
   width: 100%;
 }
+
 #section-3 {
   z-index: 1;
   height: 40vh;
@@ -247,7 +244,7 @@ a:hover {
 }
 
 #profile-color {
-  background-color: grey;
+  background-color: #FCE9C7;
 }
 
 #past-score {
@@ -312,25 +309,15 @@ canvas{
     position:relative;
 }
 
-
 /*  Styles for this example */
 .container-rules{
   width:100%;
-}
 
-.dummy-content{
-    padding: 150px 0;
-    background: radial-gradient(white, #EEF6F9);
-    color: #3FA564;
-
-    font-size: 24px;
-    height: 100vh;
-    text-align: center;
 }
 
 .features-list{
     padding: 50px 0;
-    background-color: #fff;
+    background-color:#201D1C;
     color: white;
     font-size: 18px;
     min-height: 60vh;
@@ -343,7 +330,7 @@ canvas{
   display: inline-block;
   width: 20%;
   margin: 5px;
-  border: 1px solid #ccc;
+  border: 2px solid #AB2A1A;
   padding: 5px;
     /*box-shadow: 1px 1px 1px #ccc, 0 0 30px #eee inset;*/
 }
@@ -351,11 +338,11 @@ canvas{
 .features-list div i{
     font-size: 50px;
     margin-bottom: 10px;
-    color: #FF6347;
+    color: #7D1F13;
 
 }
 .footer{
-  background-color: white;
+  background-color: #AB2A1A;
 }
 .about-us{
 
