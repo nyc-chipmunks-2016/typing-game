@@ -1,6 +1,10 @@
-body {
-  background-color: #ebebeb;
+body, html {
+  height: 100%;
+  padding: 10px;
+  font-family: 'helvetica';
+  background-color: black;
 }
+
 .about-game {
   margin-bottom: 133px;
 
@@ -67,15 +71,6 @@ body {
   background-position: 0 -15px
 }
 
-
-
-body, html {
-  height: 100%;
-  padding: 10px;
-  font-family: 'Varela Round';
-  background-color: black;
-
-}
 #play-button {
   margin: auto;
   display: block;
