@@ -9,6 +9,6 @@ class GamesController < ApplicationController
   end
 
   def words
-    render json: Word.all
+    render json: Word.where(level: params["level"])
   end
 end

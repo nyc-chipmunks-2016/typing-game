@@ -6,6 +6,8 @@ $(document).ready(function() {
   var ctx = canvas.getContext("2d");
   var input = document.getElementById("inputText");
   var inputValue = $("#inputText").attr("value");
+  var level = document.getElementById("level");
+  var levelValue = level.value;
 
   var score = 0;
   var speed = 1;
@@ -19,6 +21,12 @@ $(document).ready(function() {
   var keystrokes = 0;
   var wpm = 0;
   var accuracy = 0;
+  var playing = false;
+
+  level.addEventListener("change", function(event) {
+    levelValue = level.value;
+    play();
+  });
 
   input.addEventListener("keyup", function(event) {
     var code = (event.keyCode || event.which);
@@ -30,8 +38,10 @@ $(document).ready(function() {
   function getWords() {
     return $.ajax({
       url: "/game-words",
-      method: "get"
+      method: "get",
+      data: {level: levelValue}
     }).done(function(response) {
+      console.log(response);
       words = response;
       wordArchive = response;
     });
@@ -135,9 +145,9 @@ $(document).ready(function() {
     canvas.addEventListener('click', function(event) {
       var x = event.pageX - canvas.offsetLeft;
       var y = event.pageY - canvas.offsetTop;
-      if (y > 250 && y < 290 && x > 200 && x < 300) {
+      if (y > 250 && y < 290 && x > 200 && x < 300 && playing === true) {
         // Will later add logic to move to next level
-        document.location.reload();
+        play();
       }
     });
   }
@@ -146,8 +156,8 @@ $(document).ready(function() {
     canvas.addEventListener('click', function(event) {
       var x = event.pageX - canvas.offsetLeft;
       var y = event.pageY - canvas.offsetTop;
-      if (y > 325 && y < 365 && x > 200 && x < 300) {
-        document.location.reload();
+      if (y > 325 && y < 365 && x > 200 && x < 300 && playing === true) {
+        play();
       }
     });
   }
@@ -183,7 +193,9 @@ $(document).ready(function() {
     canvas.addEventListener('click', function(event) {
       var x = event.pageX - canvas.offsetLeft;
       var y = event.pageY - canvas.offsetTop;
-      if (y > 275 && y < 335 && x > 175 && x < 325) {
+      if (y > 275 && y < 335 && x > 175 && x < 325 && playing === false) {
+        playing = true;
+        console.log(words);
         input.focus();
         addWord();
         startTime = new Date().getTime();
@@ -225,8 +237,14 @@ $(document).ready(function() {
     }
   }
 
-  $.when(getWords()).done(function() {
-    drawStartButton();
-    start();
-  });
+  function play() {
+    playing = false;
+    $.when(getWords()).done(function() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawStartButton();
+      start();
+    });
+  }
+
+  play();
 });
