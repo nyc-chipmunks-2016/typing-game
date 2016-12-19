@@ -7,7 +7,6 @@ body, html {
 
 .about-game {
   margin-bottom: 133px;
-
 }
 .iconcontainer {
   margin-top: 20px;
@@ -80,8 +79,6 @@ body, html {
   border-style: solid;
   border-width: 4px;
   border-color: white;
-
-
 }
 
 #game-video{
@@ -95,7 +92,6 @@ body, html {
     background-repeat: repeat;
     background-size: cover;
     background-color: #00C2A2;
-
 }
 
 .parallax {
@@ -124,7 +120,6 @@ body, html {
 
 /*Parallax background*/
 #section-1 .parallax-layer-back {
-  /*background: url("http://mdbootstrap.com/images/regular/nature/img%20(54).jpg")no-repeat center center;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -274,7 +269,6 @@ a:hover {
   margin: 0px auto;
   left:30%;
   outline: 0 none;
-  /*box-shadow: 0 0 20px grey;*/
   border-style: solid;
 }
 
@@ -284,14 +278,11 @@ canvas{
   left: 400px;
   left:30%;
   margin: 0px auto;
-  /*background: transparent;*/
-
 }
 
 #myCanvas{
   z-index: 0;
   border-style: solid;
-  /*box-shadow: 0 0 20px grey;*/
 }
 
 #canvasLava{
