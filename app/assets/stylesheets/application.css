@@ -293,6 +293,9 @@ canvas{
   left: 400px;
   left:30%;
   margin: 0px auto;
+  background: transparent;
+  margin: 0px auto;
+  left:30%;
 }
 
 #myCanvas{
