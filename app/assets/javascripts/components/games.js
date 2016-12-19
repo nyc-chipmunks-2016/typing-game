@@ -6,19 +6,29 @@ $(document).ready(function() {
   var ctx = canvas.getContext("2d");
   var input = document.getElementById("inputText");
   var inputValue = $("#inputText").attr("value");
-
+  var level = document.getElementById("level");
+  var logout = document.getElementById("logout");
   var score = 0;
   var speed = 1;
   var words = [];
-  var wordArchive = [];
   var activeWords = [];
   var correctWords = [];
   var lives = 5;
   var startTime = 0;
   var endTime = 0;
+  var totalTime = 0;
   var keystrokes = 0;
   var wpm = 0;
   var accuracy = 0;
+
+  if (localStorage.getItem("level")) {
+    level.value = localStorage.getItem("level");
+  }
+
+  level.onchange = function() {
+    localStorage.setItem("level", level.value);
+    document.location.reload();
+  };
 
   input.addEventListener("keyup", function(event) {
     var code = (event.keyCode || event.which);
@@ -27,22 +37,34 @@ $(document).ready(function() {
     }
   });
 
+  if (logout) {
+    logout.addEventListener("click", function(event) {
+      localStorage.clear();
+    });
+  }
+
   function getWords() {
     return $.ajax({
       url: "/game-words",
-      method: "get"
+      method: "get",
+      data: {level: level.value}
     }).done(function(response) {
       words = response;
-      wordArchive = response;
     });
   }
 
   function saveGame() {
+    totalTime = gameTime();
+    wpm = normalizeWords() / totalTime;
+    accuracy = (totalLetters() / keystrokes) * 100;
+    if (accuracy > 100) {
+      accuracy = 100;
+    }
     if (wpm > 0) {
       $.ajax({
         url: "/games",
         method: "post",
-        data: {score: score, wpm: wpm, accuracy: accuracy, words: wordArchive}
+        data: {score: score, wpm: wpm, accuracy: accuracy, time: totalTime, level: level.value}
       });
     }
   }
@@ -136,7 +158,9 @@ $(document).ready(function() {
       var x = event.pageX - canvas.offsetLeft;
       var y = event.pageY - canvas.offsetTop;
       if (y > 250 && y < 290 && x > 200 && x < 300) {
-        // Will later add logic to move to next level
+        if (parseInt(level.value) < 6) {
+          localStorage.setItem("level", parseInt(level.value) + 1);
+        }
         document.location.reload();
       }
     });
@@ -198,15 +222,11 @@ $(document).ready(function() {
     drawLives();
     drawScore();
     if (lives === 0) {
-      wpm = normalizeWords() / gameTime();
-      accuracy = (totalLetters() / keystrokes) * 100;
       saveGame();
       drawGameOver();
       drawRestart();
       restart();
     } else if (activeWords.length === 0 && words.length === 0) {
-      wpm = normalizeWords() / gameTime();
-      accuracy = (totalLetters() / keystrokes) * 100;
       saveGame();
       drawWin();
       drawNextLevel();
