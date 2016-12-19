@@ -79,7 +79,9 @@ body, html {
 }
 
 #play-button {
-  margin: auto;
+  /*margin-top: 250px;
+  margin-left:360px;*/
+  margin: 240px auto 0;
   display: block;
   background-color: transparent;
   font-size: 65px;
