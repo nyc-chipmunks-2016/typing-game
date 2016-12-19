@@ -20,7 +20,7 @@ $(document).ready(function() {
   var lives = 5;
   var startTime = 0;
   var endTime = 0;
-  var keystrokes = 0;
+  var keystrokes = 1;
   var wpm = 0;
   var accuracy = 0;
 
@@ -51,7 +51,7 @@ $(document).ready(function() {
       $.ajax({
         url: "/games",
         method: "post",
-        data: {score: score, wpm: wpm, accuracy: accuracy}
+        data: {score: score, wpm: wpm, accuracy: accuracy, time: gameTime(), level: level.value}
       });
     }
   }
@@ -145,7 +145,7 @@ $(document).ready(function() {
       var x = event.pageX - canvas.offsetLeft;
       var y = event.pageY - canvas.offsetTop;
       if (y > 250 && y < 290 && x > 200 && x < 300) {
-        // Will later add logic to move to next level
+        localStorage.setItem("level", parseInt(level.value) + 1);
         document.location.reload();
       }
     });
