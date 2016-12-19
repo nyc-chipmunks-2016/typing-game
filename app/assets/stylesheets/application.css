@@ -4,6 +4,7 @@ body, html {
   font-family: 'Roboto Slab';
   background-color: #3A3C40;
 }
+
 .edit-profile {
   background-color: lightgrey;
   position: absolute;
@@ -102,11 +103,6 @@ body, html {
 }
 
 .parallax2 {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: repeat;
-  background-size: cover;
-  background-color: #00C2A2;
 }
 
 .parallax {
@@ -116,14 +112,6 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #348FDF;
-}
-
-.mint{
-  background-color: #00C2A2;
-}
-
-.blue{
   background-color: #348FDF;
 }
 
@@ -146,6 +134,13 @@ body, html {
   z-index: 2;
   position: relative;
   background: #fff;
+  width: 100%;
+}
+#section-3 {
+  z-index: 1;
+  height: 40vh;
+  position: relative;
+  background: #3A3C40;
   width: 100%;
 }
 
@@ -312,13 +307,16 @@ canvas{
 
 #skrollr-body {
     height:100%;
+    height:100%;
     overflow:visible;
     position:relative;
 }
 
 
 /*  Styles for this example */
-
+.container-rules{
+  width:100%;
+}
 
 .dummy-content{
     padding: 150px 0;
@@ -335,14 +333,8 @@ canvas{
     background-color: #fff;
     color: white;
     font-size: 18px;
-    min-height: 100vh;
+    min-height: 60vh;
     text-align: center;
-}
-
-.features-list h2{
-    font-size: 42px;
-    margin-bottom: 5px;
-    font-weight: normal;
 }
 
 .features-list div{
@@ -352,13 +344,58 @@ canvas{
   width: 20%;
   margin: 5px;
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 5px;
     /*box-shadow: 1px 1px 1px #ccc, 0 0 30px #eee inset;*/
 }
 
 .features-list div i{
     font-size: 50px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     color: #FF6347;
+
+}
+.footer{
+  background-color: white;
+}
+.about-us{
+
+}
+
+.about-us h2{
+    font-size: 42px;
+    margin-bottom: 80px;
+    font-weight: normal;
+}
+
+.about-us div{
+    text-align: center;
+    width: 25%;
+    margin: 40px 30px;
+    display: inline-block;
+}
+
+
+.about-us div img{
+    border-radius: 50%;
+    width: 30%;
+}
+
+.about-us a.attribution{
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: inherit;
+    width: 280px;
+    margin: 50px auto 10px;
+    opacity: 0.5;
+}
+
+
+@media (max-width: 800px){
+
+    .about-us div{
+        width: 45%;
+        margin: 20px 0;
+    }
 
 }
