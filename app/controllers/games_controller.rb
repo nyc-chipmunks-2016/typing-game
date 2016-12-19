@@ -3,7 +3,6 @@ class GamesController < ApplicationController
   end
 
   def create
-    p params
     @game = Game.new(wpm: params["wpm"], score: params["score"], accuracy: params["accuracy"], time: params["time"], level: params["level"])
     @game.user = current_user
     @game.save
