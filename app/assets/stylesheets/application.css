@@ -2,11 +2,18 @@ body, html {
   height: 100%;
   padding: 10px;
   font-family: 'helvetica';
-  background-color: black;
+  background-color: #3A3C40;
+}
+.edit-profile {
+  background-color: lightgrey;
+  position: absolute;
+  margin-left: 100px;
+  display: block;
+  left: 200px;
 }
 
 .about-game {
-  margin-bottom: 133px;
+  margin-bottom: 177px;
 }
 
 .iconcontainer {
@@ -79,7 +86,7 @@ body, html {
 }
 
 #play-button {
-  margin: auto;
+  margin: 240px auto 0;
   display: block;
   background-color: transparent;
   font-size: 65px;
@@ -225,7 +232,7 @@ a:hover {
 .container #img-profile{
   margin-top: 20px auto;
   background-color: lightgrey;
-  padding-bottom: 41px;
+  margin-bottom: 15px auto;
 }
 
 .margin-img{
@@ -240,8 +247,8 @@ a:hover {
   display: block;
   margin-top: 21px auto;
   margin-right: 40px;
-  padding-left: 2% auto;
-  padding-bottom: 10% auto;
+  margin-left: 2% auto;
+  margin-bottom: 10% auto;
 }
 
 #profile-color {
@@ -272,7 +279,7 @@ a:hover {
   position: absolute;
   top: 780px;
   left: 400px;
-  width: 500px;
+  width: 501px;
   height:50px;
   margin: 0px auto;
   left:30%;
@@ -289,10 +296,9 @@ canvas{
 }
 
 #myCanvas{
-  z-index: 0;
-  border-style: solid;
+  z-index: 2;
 }
 
 #canvasLava{
-  z-index: -1;
+  z-index: 0;
 }
