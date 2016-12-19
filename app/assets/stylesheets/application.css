@@ -87,7 +87,7 @@ body, html {
 }
 
 #play-button {
-  margin: 140px auto 0;
+  margin: 115px auto 0;
   display: block;
   background: rgba(255, 0, 0, .2);
   font-size: 65px;
@@ -137,7 +137,7 @@ body, html {
   z-index: 1;
   height: 40vh;
   position: relative;
-  background: #3A3C40;
+  background: #201D1C;
   width: 100%;
 }
 
@@ -318,7 +318,7 @@ canvas{
 .features-list{
     padding: 50px 0;
     background-color:#201D1C;
-    color: white;
+    color: #FCE9C7;
     font-size: 18px;
     min-height: 60vh;
     text-align: center;
@@ -338,11 +338,12 @@ canvas{
 .features-list div i{
     font-size: 50px;
     margin-bottom: 10px;
-    color: #7D1F13;
+    color: #EB3A23;
 
 }
 .footer{
-  background-color: #AB2A1A;
+  background-color: #35547D;
+  color:#FCE9C7;
 }
 .about-us{
 
