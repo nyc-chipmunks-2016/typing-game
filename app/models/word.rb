@@ -1,3 +1,5 @@
 class Word < ActiveRecord::Base
-  has_and_belongs_to_many :games
+  belongs_to :category
+
+  validates_presence_of :text, :points, :x, :y, :level
 end
