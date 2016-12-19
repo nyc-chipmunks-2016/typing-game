@@ -4,7 +4,18 @@ body, html {
   font-family: 'helvetica';
   background-color: #3A3C40;
 }
-
+.edit-profile {
+  background-color: lightgrey;
+  position: absolute;
+  margin-left: 100px;
+  /*margin-right: 750px;*/
+  /*width: 100%;*/
+  /*margin-right: 70px;*/
+  /*width: 50%;*/
+  display: block;
+  left: 200px;
+  /*left:30%;*/
+}
 .about-game {
   margin-bottom: 177px;
 }
