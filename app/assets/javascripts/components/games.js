@@ -8,7 +8,6 @@ $(document).ready(function() {
   var inputValue = $("#inputText").attr("value");
   var level = document.getElementById("level");
   var logout = document.getElementById("logout");
-
   var score = 0;
   var speed = 1;
   var words = [];
@@ -55,6 +54,12 @@ $(document).ready(function() {
   }
 
   function saveGame() {
+    totalTime = gameTime();
+    wpm = normalizeWords() / totalTime;
+    accuracy = (totalLetters() / keystrokes) * 100;
+    if (accuracy > 100) {
+      accuracy = 100;
+    }
     if (wpm > 0) {
       $.ajax({
         url: "/games",
@@ -217,17 +222,11 @@ $(document).ready(function() {
     drawLives();
     drawScore();
     if (lives === 0) {
-      totalTime = gameTime();
-      wpm = normalizeWords() / totalTime;
-      accuracy = (totalLetters() / keystrokes) * 100;
       saveGame();
       drawGameOver();
       drawRestart();
       restart();
     } else if (activeWords.length === 0 && words.length === 0) {
-      totalTime = gameTime();
-      wpm = normalizeWords() / totalTime;
-      accuracy = (totalLetters() / keystrokes + 1) * 100;
       saveGame();
       drawWin();
       drawNextLevel();
@@ -247,7 +246,6 @@ $(document).ready(function() {
   }
 
   $.when(getWords()).done(function() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawStartButton();
     start();
   });
