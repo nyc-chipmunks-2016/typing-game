@@ -2,11 +2,11 @@ body, html {
   height: 100%;
   padding: 10px;
   font-family: 'helvetica';
-  background-color: black;
+  /*background-color: black;*/
 }
 
 .about-game {
-  margin-bottom: 133px;
+  margin-bottom: 177px;
 }
 
 .iconcontainer {
@@ -79,8 +79,6 @@ body, html {
 }
 
 #play-button {
-  /*margin-top: 250px;
-  margin-left:360px;*/
   margin: 240px auto 0;
   display: block;
   background-color: transparent;
@@ -274,7 +272,7 @@ a:hover {
   position: absolute;
   top: 780px;
   left: 400px;
-  width: 500px;
+  width: 501px;
   height:50px;
   margin: 0px auto;
   left:30%;
@@ -292,7 +290,6 @@ canvas{
 
 #myCanvas{
   z-index: 0;
-  border-style: solid;
 }
 
 #canvasLava{
