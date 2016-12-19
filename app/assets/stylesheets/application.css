@@ -225,7 +225,7 @@ a:hover {
 .container #img-profile{
   margin-top: 20px auto;
   background-color: lightgrey;
-  padding-bottom: 41px;
+  margin-bottom: 15px auto;
 }
 
 .margin-img{
@@ -240,8 +240,8 @@ a:hover {
   display: block;
   margin-top: 21px auto;
   margin-right: 40px;
-  padding-left: 2% auto;
-  padding-bottom: 10% auto;
+  margin-left: 2% auto;
+  margin-bottom: 10% auto;
 }
 
 #profile-color {
