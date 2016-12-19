@@ -5,6 +5,8 @@ class CreateWords < ActiveRecord::Migration[5.0]
       t.integer  :points, null: false
       t.integer  :x, null: false
       t.integer  :y, null: false
+      t.integer  :level, null: false
+      t.references :category
 
       t.timestamps(null: false)
     end
