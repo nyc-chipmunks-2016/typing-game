@@ -10,11 +10,21 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_path
+    if request.xhr?
+      if @user.save
+        session[:user_id] = @user.id
+        render status: 200, json: {:user_link => user_path(@user)}
+      else
+        render status: 400, json: {:errors => @user.errors.full_messages}
+      end
     else
-      @errors = @user.errors.full_messages
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to root_path
+      else
+        @errors = @user.errors.full_messages
+        render new_user_path
+      end
     end
   end
 
