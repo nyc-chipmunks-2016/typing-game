@@ -1,12 +1,14 @@
 var Game = function() {
   this.lives = 5;
   this.score = 0;
-  this.speed = 1;
+  // change speed back to 1
+  this.speed = 3;
   this.words = [];
   this.activeWords = [];
   this.correctWords = [];
   this.startTime = 0;
   this.keystrokes = 0;
+  this.textVisible = false;
 };
 
 Game.prototype.getWords = function() {
@@ -41,7 +43,8 @@ Game.prototype.startGame = function() {
       this.input.focus();
       this.addWord();
       this.startTime = new Date().getTime();
-      setInterval(this.addWord.bind(this), 1000);
+      // change this back to 1000
+      setInterval(this.addWord.bind(this), 100);
       this.drawGame();
     }
   }.bind(this));
@@ -128,12 +131,26 @@ Game.prototype.drawWin = function() {
 };
 
 Game.prototype.drawGameOver = function() {
-  this.ctx.font = "30px Arial";
+  var that = this;
+  this.ctx.font = "30px 'Press Start 2P'";
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
-  this.ctx.fillText("GAME OVER", 160, 300);
-
+  // change this back to 160, 300
+  // this.ctx.fillText("GAME OVER", 115, 300);
+  this.interval = setInterval(function() { that.doBlink(); }, 800);
   this.saveGame();
+};
+
+Game.prototype.doBlink = function() {
+  if(this.textVisible) {
+    this.ctx.clearRect(0,0, 500, 300);
+    this.textVisible = false;
+  }
+  else {
+    this.ctx.font = "30px 'Press Start 2P'";
+    this.ctx.fillText("GAME OVER", 115, 299);
+    this.textVisible = true;
+  }
 };
 
 Game.prototype.drawRestart = function() {
