@@ -36,6 +36,7 @@ Game.prototype.startGame = function() {
   this.canvas.addEventListener('click', function(event) {
     var x = event.pageX - this.canvas.offsetLeft;
     var y = event.pageY - this.canvas.offsetTop;
+
     if (y > 275 && y < 335 && x > 175 && x < 325) {
       this.input.focus();
       this.addWord();
@@ -54,20 +55,15 @@ Game.prototype.drawGame = function() {
   if (this.lives === 0) {
     this.drawGameOver();
     this.drawRestart();
-
   } else if (this.activeWords.length === 0 && this.words.length === 0) {
     this.drawWin();
-    this.drawNextLevel();
+    this.drawContinue();
     this.drawRestart();
-
   } else {
-    this.checkSpelling();
     this.drawWord();
     this.collisionTest();
 
-    for (var i in this.activeWords) {
-      this.activeWords[i].y += this.speed;
-    }
+    for (var i in this.activeWords) this.activeWords[i].y += this.speed;
 
     requestAnimationFrame(this.drawGame.bind(this));
   }
@@ -83,13 +79,13 @@ Game.prototype.collisionTest = function() {
 };
 
 Game.prototype.checkSpelling = function() {
-  this.inputValue = $("#inputText").val();
+  var inputValue = $("#inputText").val();
   for (var i in this.activeWords) {
-    if (this.activeWords[i].text === this.inputValue.trim()) {
+    if (this.activeWords[i].text === inputValue.trim()) {
       this.score += this.activeWords[i].points;
       var correctWord = this.activeWords.splice(i, 1)[0];
       this.correctWords.push(correctWord);
-      $("#inputText").val("");
+      return $("#inputText").val("");
     }
   }
 };
@@ -117,8 +113,9 @@ Game.prototype.drawScore = function() {
 Game.prototype.drawWord = function() {
   this.ctx.font = "20px Arial";
   this.ctx.fillStyle = "#0095DD";
-  for (var i in this.activeWords) {
-    this.ctx.fillText(this.activeWords[i].text, this.activeWords[i].x, this.activeWords[i].y);
+  var words = this.activeWords;
+  for (var i in words) {
+    this.ctx.fillText(words[i].text, words[i].x, words[i].y);
   }
 };
 
@@ -153,6 +150,7 @@ Game.prototype.drawRestart = function() {
   this.canvas.addEventListener('click', function(event) {
     var x = event.pageX - this.canvas.offsetLeft;
     var y = event.pageY - this.canvas.offsetTop;
+
     if (y > 325 && y < 365 && x > 200 && x < 300) {
       // create new game instead of reloading everything
       document.location.reload();
@@ -160,7 +158,7 @@ Game.prototype.drawRestart = function() {
   }.bind(this));
 };
 
-Game.prototype.drawNextLevel = function() {
+Game.prototype.drawContinue = function() {
   this.ctx.beginPath();
   this.ctx.rect(200, 250, 100, 40);
   this.ctx.strokeStyle = "#0095DD";
@@ -198,9 +196,7 @@ Game.prototype.saveGame = function() {
   var score = this.score;
   var level = this.level.value;
 
-  if (accuracy > 100) {
-    accuracy = 100;
-  }
+  if (accuracy > 100) accuracy = 100;
 
   if (wpm > 0) {
     $.ajax({
