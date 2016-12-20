@@ -10,6 +10,7 @@ var Game = function() {
   this.textVisible = true;
   this.saved = false;
   this.setInterval = false;
+  this.continue = false;
 };
 
 Game.prototype.playSplash = function() {
@@ -257,16 +258,19 @@ Game.prototype.drawContinue = function() {
 };
 
 Game.prototype.nextLevel = function() {
-  this.canvas.addEventListener('click', function(event) {
-    var x = event.pageX - this.canvas.offsetLeft;
-    var y = event.pageY - this.canvas.offsetTop;
-    if (y > 250 && y < 290 && x > 200 && x < 300) {
-      if (parseInt(localStorage.level) < 6) {
-        localStorage.setItem("level", parseInt(localStorage.level) + 1);
+  if (this.continue === false) {
+    this.canvas.addEventListener('click', function(event) {
+      var x = event.pageX - this.canvas.offsetLeft;
+      var y = event.pageY - this.canvas.offsetTop;
+      if (y > 250 && y < 290 && x > 200 && x < 300) {
+        if (parseInt(localStorage.level) < 6) {
+          localStorage.setItem("level", parseInt(localStorage.level) + 1);
+        }
+        document.location.reload();
       }
-      document.location.reload();
-    }
-  }.bind(this));
+    }.bind(this));
+    this.continue = true;
+  }
 };
 
 Game.prototype.saveGame = function() {
