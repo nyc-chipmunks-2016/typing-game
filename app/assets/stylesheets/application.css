@@ -495,9 +495,18 @@ canvas{
 }
 
 @media (max-width: 900px){
-
     .body-text p{
         width: 100%;
     }
+}
+
+.game-background{
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image:url("/gamebg.png");
+  width: 100%;
 
 }
