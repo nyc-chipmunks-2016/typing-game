@@ -22,8 +22,10 @@ class User < ActiveRecord::Base
   end
 
   def average_accuracy
-    recent_accuracy = most_recent_games.map { |game| game.accuracy }
-    (recent_accuracy.reduce(:+) / recent_accuracy.length)
+    weighted_accuracy = most_recent_games.map { |game| game.accuracy * game.keystrokes }
+    total_accuracy = weighted_accuracy.reduce(:+)
+    total_keystrokes = most_recent_games.reduce(0) { |total, game| total + game.keystrokes }
+    total_accuracy / total_keystrokes
   end
 
   def most_recent_games
