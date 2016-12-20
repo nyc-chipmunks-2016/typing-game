@@ -7,8 +7,9 @@ var Game = function() {
   this.correctWords = [];
   this.startTime = 0;
   this.keystrokes = 0;
-  this.textVisible = false;
+  this.textVisible = true;
   this.saved = false;
+  this.setInterval = false;
 };
 
 Game.prototype.playSplash = function() {
@@ -196,7 +197,14 @@ Game.prototype.drawGameOver = function() {
   var that = this;
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
-  this.interval = setInterval(function() { that.doBlink(); }, 800);
+  if (this.textVisible) {
+    this.ctx.font = "30px 'Press Start 2P'";
+    this.ctx.fillText("GAME OVER", 115, 299);
+  }
+  if (this.setInterval === false) {
+    setInterval(function() { that.doBlink(); }, 800);
+    this.setInterval = true;
+  }
 
   // Need to pick a better gameover sound
   // this.playOver();
@@ -207,12 +215,9 @@ Game.prototype.drawGameOver = function() {
 
 Game.prototype.doBlink = function() {
   if(this.textVisible) {
-    this.ctx.clearRect(0,0, 500, 300);
     this.textVisible = false;
   }
   else {
-    this.ctx.font = "30px 'Press Start 2P'";
-    this.ctx.fillText("GAME OVER", 115, 299);
     this.textVisible = true;
   }
 };
