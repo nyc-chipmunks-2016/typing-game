@@ -8,6 +8,7 @@ var Game = function() {
   this.startTime = 0;
   this.keystrokes = 0;
   this.textVisible = false;
+  this.saved = false;
 };
 
 Game.prototype.playSplash = function() {
@@ -186,7 +187,7 @@ Game.prototype.drawWin = function() {
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
   this.ctx.fillText("LEVEL COMPLETE", 120, 200);
-  if (!document.getElementById("login-button")) {
+  if (!document.getElementById("login-button") && this.saved === false) {
     this.saveGame();
   }
 };
@@ -199,7 +200,7 @@ Game.prototype.drawGameOver = function() {
 
   // Need to pick a better gameover sound
   // this.playOver();
-  if (!document.getElementById("login-button")) {
+  if (!document.getElementById("login-button") && this.saved === false) {
     this.saveGame();
   }
 };
@@ -282,4 +283,5 @@ Game.prototype.saveGame = function() {
       data: {game: {score: score, wpm: wpm, accuracy: accuracy, time: totalTime, level: level, keystrokes: this.keystrokes}}
     });
   }
+  this.saved = true;
 };
