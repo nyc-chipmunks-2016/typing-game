@@ -86,9 +86,8 @@ Game.prototype.drawGame = function() {
     this.collisionTest();
 
     for (var i in this.activeWords) this.activeWords[i].y += this.speed;
-
-    requestAnimationFrame(this.drawGame.bind(this));
   }
+  requestAnimationFrame(this.drawGame.bind(this));
 };
 
 Game.prototype.collisionTest = function() {
@@ -187,7 +186,9 @@ Game.prototype.drawWin = function() {
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
   this.ctx.fillText("LEVEL COMPLETE", 120, 200);
-  this.saveGame();
+  if (!document.getElementById("login-button")) {
+    this.saveGame();
+  }
 };
 
 Game.prototype.drawGameOver = function() {
@@ -198,7 +199,9 @@ Game.prototype.drawGameOver = function() {
 
   // Need to pick a better gameover sound
   // this.playOver();
-  this.saveGame();
+  if (!document.getElementById("login-button")) {
+    this.saveGame();
+  }
 };
 
 Game.prototype.doBlink = function() {
