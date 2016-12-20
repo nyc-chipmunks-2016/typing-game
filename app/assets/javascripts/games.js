@@ -1,10 +1,10 @@
 $(document).ready(function() {
+  var logout = document.getElementById("logout");
+  var level = document.getElementById("level");
   var new_game = new Game();
   new_game.canvas = document.getElementById("myCanvas");
   new_game.ctx = new_game.canvas.getContext("2d");
   new_game.input = document.getElementById("inputText");
-  new_game.level = document.getElementById("level");
-  var logout = document.getElementById("logout");
 
   $.when(new_game.getWords()).done(function() {
     new_game.drawStart();
@@ -21,11 +21,11 @@ $(document).ready(function() {
   });
 
   if (localStorage.getItem("level")) {
-    new_game.level.value = localStorage.getItem("level");
+    level.value = localStorage.getItem("level");
   }
 
-  new_game.level.onchange = function() {
-    localStorage.setItem("level", new_game.level.value);
+  level.onchange = function() {
+    localStorage.setItem("level", level.value);
     document.location.reload();
   };
 
