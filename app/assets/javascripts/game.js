@@ -130,7 +130,6 @@ Game.prototype.drawWin = function() {
 
 Game.prototype.drawGameOver = function() {
   var that = this;
-  this.ctx.font = "30px 'Press Start 2P'";
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
   this.interval = setInterval(function() { that.doBlink(); }, 800);
