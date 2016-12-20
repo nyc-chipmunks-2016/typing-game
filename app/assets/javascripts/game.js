@@ -1,8 +1,7 @@
 var Game = function() {
   this.lives = 5;
   this.score = 0;
-  // change speed back to 1
-  this.speed = 3;
+  this.speed = 1;
   this.words = [];
   this.activeWords = [];
   this.correctWords = [];
@@ -43,8 +42,7 @@ Game.prototype.startGame = function() {
       this.input.focus();
       this.addWord();
       this.startTime = new Date().getTime();
-      // change this back to 1000
-      setInterval(this.addWord.bind(this), 100);
+      setInterval(this.addWord.bind(this), 1000);
       this.drawGame();
     }
   }.bind(this));
@@ -135,8 +133,6 @@ Game.prototype.drawGameOver = function() {
   this.ctx.font = "30px 'Press Start 2P'";
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
-  // change this back to 160, 300
-  // this.ctx.fillText("GAME OVER", 115, 300);
   this.interval = setInterval(function() { that.doBlink(); }, 800);
   this.saveGame();
 };
