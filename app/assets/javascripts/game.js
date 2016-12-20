@@ -195,8 +195,6 @@ Game.prototype.saveGame = function() {
   var score = this.score;
   var level = this.level.value;
 
-  if (accuracy > 100) accuracy = 100;
-
   if (wpm > 0) {
     $.ajax({
       url: "/games",
