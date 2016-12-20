@@ -270,6 +270,7 @@ margin-bottom: 15px;
 
 #inputText{
   font-size: 45px;
+  font-family: "Arial";
   text-align: center;
   position: absolute;
   top: 780px;
@@ -379,7 +380,9 @@ canvas{
   }
 }
 
-.well {height:200px;}
+.well {
+  height: auto;
+}
 
 /* demo */
 @media (min-width:768px) {
