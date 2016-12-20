@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update_attributes(user_params)
     if @user.save
-      redirect_to root_path
+      redirect_to user_path(@user)
     else
       @errors = @user.errors.full_messages
       render 'edit'
@@ -45,6 +45,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :email, :password)
+      params.require(:user).permit(:username, :email, :password, :avatar)
     end
 end

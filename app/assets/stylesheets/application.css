@@ -216,17 +216,20 @@ a:hover {
 
 .img-center{
   display: block;
-  margin: 0px auto;
+  margin-top: 0px;
   text-align: center;
+  background-color: white;
+  margin-right: 5px;
+
 }
 
 #img-profile{
-  padding: 19px;
+margin-top: 20px auto;
+margin-bottom: 15px;
 }
 
 .container #img-profile{
   margin-top: 20px auto;
-  background-color: lightgrey;
   margin-bottom: 15px auto;
 }
 
@@ -244,10 +247,6 @@ a:hover {
   margin-right: 40px;
   margin-left: 2% auto;
   margin-bottom: 10% auto;
-}
-
-#profile-color {
-  background-color: #FCE9C7;
 }
 
 #past-score {
@@ -302,7 +301,7 @@ canvas{
   z-index: 0;
 }
 .skrollr-desktop body {
-    height:100% !important;
+  height:100% !important;
 }
 
 
@@ -313,12 +312,12 @@ canvas{
 }
 
 .features-list{
-    padding: 50px 0;
-    background-color:#201D1C;
-    color: #FCE9C7;
-    font-size: 18px;
-    min-height: 60vh;
-    text-align: center;
+  padding: 50px 0;
+  background-color:#201D1C;
+  color: #FCE9C7;
+  font-size: 18px;
+  min-height: 60vh;
+  text-align: center;
 }
 
 .features-list div{
@@ -350,65 +349,63 @@ canvas{
 }
 
 .about-us h2{
-    font-size: 42px;
-    margin-bottom: 80px;
-    font-weight: normal;
+  font-size: 42px;
+  margin-bottom: 80px;
+  font-weight: normal;
 }
 
 .about-us div{
-    text-align: center;
-    width: 25%;
-    margin: 40px 30px;
-    display: inline-block;
+  text-align: center;
+  width: 25%;
+  margin: 40px 30px;
+  display: inline-block;
 }
 
 
 .about-us div img{
-    border-radius: 50%;
-    width: 30%;
+  border-radius: 50%;
+  width: 30%;
 }
 
 .about-us a.attribution{
-    display: block;
-    font-size: 13px;
-    text-decoration: none;
-    color: inherit;
-    width: 280px;
-    margin: 50px auto 10px;
-    opacity: 0.5;
+  display: block;
+  font-size: 13px;
+  text-decoration: none;
+  color: inherit;
+  width: 280px;
+  margin: 50px auto 10px;
+  opacity: 0.5;
 }
 
 
 @media (max-width: 800px){
-
-    .about-us div{
-        width: 45%;
-        margin: 20px 0;
-    }
-
+  .about-us div{
+    width: 45%;
+    margin: 20px 0;
+  }
 }
 .well {height:200px;}
 
 /* demo */
 
 @media (min-width:768px) {
-    .inline-block-row {
-        word-spacing: -1em;
-        letter-spacing: -1em;
-        overflow:hidden;
-    }
-    .inline-block-row .col-sm-4 {
-        word-spacing: normal;
-        vertical-align: top;
-        letter-spacing: normal;
-        display: inline-block;
-        float:none;
-    }
+  .inline-block-row {
+    word-spacing: -1em;
+    letter-spacing: -1em;
+    overflow:hidden;
+  }
+  .inline-block-row .col-sm-4 {
+    word-spacing: normal;
+    vertical-align: top;
+    letter-spacing: normal;
+    display: inline-block;
+    float:none;
+  }
 }
 @media (min-width:992px) {
-    .inline-block-row .col-md-3 {
-        float:none;
-    }
+  .inline-block-row .col-md-3 {
+    float:none;
+  }
 }
 .level {
   font-size: 25px;
