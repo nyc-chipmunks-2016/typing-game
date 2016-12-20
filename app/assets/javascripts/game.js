@@ -106,7 +106,7 @@ Game.prototype.checkSpelling = function() {
   for (var i in this.activeWords) {
     if (this.activeWords[i].text === inputValue.trim()) {
       this.playPlop();
-      this.score += this.activeWords[i].points;
+      this.score += (this.activeWords[i].points * localStorage.level);
       var correctWord = this.activeWords.splice(i, 1)[0];
       this.correctWords.push(correctWord);
       return $("#inputText").val("");

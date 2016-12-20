@@ -1,11 +1,11 @@
 <div class="container profile">
   <div class="col-sm-12">
     <div id="img-profile" class="col-sm-3 margin-img img-rounded">
-        <%= image_tag @user.avatar.url(:small)%>
+      <%= image_tag @user.avatar.url(:small)%>
     </div>
     <div class="text">
       <div class="col-sm-7 well margin-well">
-          <%= link_to 'New Game', new_game_path, class:"btn btn-primary btn-danger" %>
+        <%= link_to 'New Game', new_game_path, class:"btn btn-primary btn-danger" %>
         <% if current_user == @user %>
           <%= link_to 'Edit your profile', edit_user_path(@user), class: "btn btn-primary" %>
         <%end%>
@@ -29,6 +29,7 @@
       <h3><kbd><%= @user.username %>'s Previous Scores:</kbd></h3>
       <table class="table table-hover">
         <tr>
+          <th>Level</th>
           <th>Score</th>
           <th>Words Per Minute</th>
           <th>Accuracy</th>
@@ -36,6 +37,7 @@
         <% if !@user.games.empty? %>
           <% @user.most_recent_games.each do |game| %>
             <tr>
+              <td><%= game.level %></td>
               <td><%= game.score %></td>
               <td><%= game.wpm.round(2) %></td>
               <td><%= game.accuracy.round(2) %>%</td>
@@ -51,6 +53,7 @@
       <table class="table table-hover">
         <tr>
           <th>Player</th>
+          <th>Level</th>
           <th>Score</th>
           <th>Words Per Minute</th>
           <th>Accuracy</th>
@@ -58,6 +61,7 @@
         <% @games.each do |game| %>
           <tr>
             <td><%= game.user.username %></td>
+            <td><%= game.level %></td>
             <td><%= game.score %></td>
             <td><%= game.wpm.round(2) %></td>
             <td><%= game.accuracy.round(2) %>%</td>
