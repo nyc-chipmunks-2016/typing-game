@@ -410,3 +410,17 @@ canvas{
         float:none;
     }
 }
+.level {
+  font-size: 25px;
+  margin-left: 40px;
+}
+.level p{
+  color:white;
+}
+#logout{
+  color: grey; text-decoration: none;
+  font-size: 20px;
+}
+#logout_link{
+  padding-top: 2.5px;
+}
