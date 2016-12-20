@@ -88,26 +88,38 @@ body, html {
 }
 
 #play-button {
-  margin: 115px auto 0;
+  margin: 200px auto 0;
   display: block;
   background: rgba(255, 0, 0, .2);
-  font-size: 65px;
+  font-size: 100px;
   color: #FCE9C7;
   border-style: solid;
   border-width: 4px;
   border-color: #FCE9C7;
 }
+#play-button:hover {
+  font-size: 105px;
+  color: white;
+  border-color: white;
+  background: rgba(255, 0, 0, .3);
+}
 
 #game-video {
-  margin-left: 32%;
-  display: block;
+  /*margin-left: 32%;*/
+  display: inline-block;
 }
-
+.gif {
+  left:50%;
+  height:100px;
+}
 #gif {
-  width:50%;
+  /*width:100%;*/
 }
-
+.image-container {
+  left:60%;
+}
 .parallax {
+  margin-top: 50px;
   background-image: url('http://www.mrietze.com/images/kongo07/ani-a512.gif');
   height: 100%;
   background-attachment: fixed;
@@ -121,7 +133,7 @@ body, html {
 #section-1 {
   z-index: 1;
   color: #fff;
-  height: 100vh;
+  height: 90vh;
 }
 
 /*Parallax background*/
@@ -316,7 +328,7 @@ canvas{
   background-color:#201D1C;
   color: #FCE9C7;
   font-size: 18px;
-  min-height: 60vh;
+  min-height: 40vh;
   text-align: center;
 }
 
@@ -325,9 +337,10 @@ canvas{
   opacity: 50%;
   display: inline-block;
   width: 20%;
-  margin: 5px;
+  height:210px;
+  margin: 50px;
   border: 2px solid #AB2A1A;
-  padding: 5px;
+  padding: 10px;
 }
 
 .features-list div i{
@@ -422,4 +435,34 @@ canvas{
 
 #logout_link{
   padding-top: 2.5px;
+}
+
+.body-text{
+    padding: 20px 0;
+    color: #25373C;
+    font-size: 25px;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.body-text h2{
+    font-size: 42px;
+    font-weight: normal;
+    /*margin-bottom: 80px;*/
+}
+
+.body-text p{
+    width: 25%;
+    display: inline-block;
+    text-align: left;
+    padding: 30px;
+    color: white;
+}
+
+@media (max-width: 900px){
+
+    .body-text p{
+        width: 100%;
+    }
+
 }
