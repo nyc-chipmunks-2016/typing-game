@@ -13,7 +13,7 @@ Game.prototype.getWords = function() {
   return $.ajax({
     url: "/game-words",
     method: "get",
-    data: {level: this.level.value}
+    data: {level: localStorage.level}
   }).done(function(response) {
     this.words = response;
   }.bind(this));
@@ -175,8 +175,8 @@ Game.prototype.nextLevel = function() {
     var x = event.pageX - this.canvas.offsetLeft;
     var y = event.pageY - this.canvas.offsetTop;
     if (y > 250 && y < 290 && x > 200 && x < 300) {
-      if (parseInt(level.value) < 6) {
-        localStorage.setItem("level", parseInt(this.level.value) + 1);
+      if (parseInt(localStorage.level) < 6) {
+        localStorage.setItem("level", parseInt(localStorage.level) + 1);
       }
       document.location.reload();
     }
@@ -193,7 +193,7 @@ Game.prototype.saveGame = function() {
   var wpm = normalizeWords / totalTime;
   var accuracy = (totalLetters / this.keystrokes) * 100;
   var score = this.score;
-  var level = this.level.value;
+  var level = localStorage.level;
 
   if (wpm > 0) {
     $.ajax({
