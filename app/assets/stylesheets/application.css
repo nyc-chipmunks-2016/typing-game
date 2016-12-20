@@ -5,47 +5,52 @@ body, html {
   background-color: #201D1C;
   width:100%;
 }
+
 footer {
-   color: #666;
-   background: #222;
-   padding: 17px 0 18px 0;
-   border-top: 1px solid #000;
+  color: #666;
+  background: #222;
+  padding: 17px 0 18px 0;
+  border-top: 1px solid #000;
 }
+
 footer a {
-   color: #999;
+  color: #999;
 }
+
 footer a:hover {
-   color: #efefef;
+  color: #efefef;
 }
+
 .wrapper {
-   min-height: 100%;
-   height: auto !important;
-   height: 100%;
-   margin: 0 auto -63px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -63px;
 }
+
 .push {
-   height: 63px;
+  height: 63px;
 }
 /* not required for sticky footer; just pushes hero down a bit */
 .wrapper > .container {
-   padding-top: 60px;
+  padding-top: 60px;
 }
 
 /* responsive footer fix by Aalaap Ghag */
 @media (max-width: 767px) {
-   body {
-       padding-right: 0px;
-       padding-left: 0px;
-   }
+  body {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
 
-   footer, .wrapper {
-       padding-left: 20px;
-       padding-right: 20px;
-   }
+  footer, .wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .container {
-   max-width: 940px;
+  max-width: 940px;
 }
 /* end responsive footer fix */
 
@@ -140,6 +145,7 @@ footer a:hover {
   border-width: 4px;
   border-color: #FCE9C7;
 }
+
 #play-button:hover {
   font-size: 105px;
   color: white;
@@ -151,16 +157,20 @@ footer a:hover {
   /*margin-left: 32%;*/
   display: inline-block;
 }
+
 .gif {
   left:50%;
   height:100px;
 }
+
 #gif {
   /*width:100%;*/
 }
+
 .image-container {
   left:60%;
 }
+
 .parallax {
   margin-top: 50px;
   background-image: url('http://www.mrietze.com/images/kongo07/ani-a512.gif');
@@ -202,12 +212,12 @@ footer a:hover {
   width: 100%;
 }
 
-.log{
+.log {
   font-size: 80px;
   padding-top: 65px;
 }
 
-.content{
+.content {
   font-size: 30px;
   margin: 80px;
 }
@@ -232,7 +242,7 @@ a:hover {
   padding: 20px;
 }
 
-.link{
+.link {
   background:none!important;
   border:none;
   padding:0!important;
@@ -246,7 +256,7 @@ a:hover {
   font-size: 20px;
 }
 
-#myModal{
+#myModal {
   color:grey;
   font-size: 14px;
   width: 400px;
@@ -254,7 +264,7 @@ a:hover {
   top:10%;
 }
 
-#myModalLogin{
+#myModalLogin {
   font-size: 14px;
   color:grey;
   width: 400px;
@@ -262,7 +272,7 @@ a:hover {
   top:10%;
 }
 
-.form-control{
+.form-control {
   width: 215px;
 }
 
@@ -271,7 +281,7 @@ a:hover {
   width: 1000px;
 }
 
-.img-center{
+.img-center {
   display: block;
   margin-top: 0px;
   text-align: center;
@@ -279,21 +289,21 @@ a:hover {
   margin-right: 5px;
 }
 
-#img-profile{
-margin-top: 20px auto;
-margin-bottom: 15px;
+#img-profile {
+  margin-top: 20px auto;
+  margin-bottom: 15px;
 }
 
-.container #img-profile{
+.container #img-profile {
   margin-top: 20px auto;
   margin-bottom: 15px auto;
 }
 
-.margin-img{
+.margin-img {
   margin-right: 10px;
 }
 
-.text-center{
+.text-center {
   margin-top: 10px;
 }
 
@@ -317,7 +327,7 @@ margin-bottom: 15px;
   margin-right: -37%;
 }
 
-.canvas{
+.canvas {
   width: 500px;
   height:100px;
   margin: 0px auto;
@@ -339,7 +349,7 @@ margin-bottom: 15px;
   color: white;
 }
 
-canvas{
+canvas {
   position: absolute;
   top: 180px;
   left: 400px;
@@ -357,6 +367,7 @@ canvas{
 #canvasLava{
   z-index: 0;
 }
+
 .skrollr-desktop body {
   height:100% !important;
 }
@@ -420,7 +431,6 @@ canvas{
   opacity: 0.5;
 }
 
-
 @media (max-width: 800px){
   .about-us div{
     width: 45%;
@@ -448,6 +458,7 @@ canvas{
     float:none;
   }
 }
+
 @media (min-width:992px) {
   .inline-block-row .col-md-3 {
     float:none;
@@ -473,31 +484,31 @@ canvas{
 }
 
 .body-text{
-    padding: 20px 0;
-    color: #25373C;
-    font-size: 25px;
-    min-height: 100vh;
-    text-align: center;
+  padding: 20px 0;
+  color: #25373C;
+  font-size: 25px;
+  min-height: 100vh;
+  text-align: center;
 }
 
 .body-text h2{
-    font-size: 42px;
-    font-weight: normal;
-    /*margin-bottom: 80px;*/
+  font-size: 42px;
+  font-weight: normal;
+  /*margin-bottom: 80px;*/
 }
 
 .body-text p{
-    width: 25%;
-    display: inline-block;
-    text-align: left;
-    padding: 30px;
-    color: #FCE9C7;
+  width: 25%;
+  display: inline-block;
+  text-align: left;
+  padding: 30px;
+  color: #FCE9C7;
 }
 
 @media (max-width: 900px){
-    .body-text p{
-        width: 100%;
-    }
+  .body-text p{
+    width: 100%;
+  }
 }
 
 .game-background{
