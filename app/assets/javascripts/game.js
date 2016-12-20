@@ -109,7 +109,6 @@ Game.prototype.drawScore = function() {
   this.ctx.fillText("SCORE: " + this.score, 20, 570);
 };
 
-
 Game.prototype.drawWord = function() {
   this.ctx.font = "20px Arial";
   this.ctx.fillStyle = "#0095DD";
