@@ -102,9 +102,11 @@ body, html {
   margin-left: 32%;
   display: block;
 }
+
 #gif {
   width:50%;
 }
+
 .parallax {
   background-image: url('http://www.mrietze.com/images/kongo07/ani-a512.gif');
   height: 100%;
@@ -220,7 +222,6 @@ a:hover {
   text-align: center;
   background-color: white;
   margin-right: 5px;
-
 }
 
 #img-profile{
@@ -304,11 +305,9 @@ canvas{
   height:100% !important;
 }
 
-
 /*  Styles for this example */
 .container-rules{
   width:100%;
-
 }
 
 .features-list{
@@ -328,24 +327,20 @@ canvas{
   margin: 5px;
   border: 2px solid #AB2A1A;
   padding: 5px;
-    /*box-shadow: 1px 1px 1px #ccc, 0 0 30px #eee inset;*/
 }
 
 .features-list div i{
-    font-size: 50px;
-    margin-bottom: 10px;
-    color: #EB3A23;
-
+  font-size: 50px;
+  margin-bottom: 10px;
+  color: #EB3A23;
 }
+
 .footer{
   position: absolute;
   bottom: 0;
   background-color: #35547D;
   color:black;
   width: 100%;
-}
-.about-us{
-
 }
 
 .about-us h2{
@@ -360,7 +355,6 @@ canvas{
   margin: 40px 30px;
   display: inline-block;
 }
-
 
 .about-us div img{
   border-radius: 50%;
@@ -384,16 +378,17 @@ canvas{
     margin: 20px 0;
   }
 }
+
 .well {height:200px;}
 
 /* demo */
-
 @media (min-width:768px) {
   .inline-block-row {
     word-spacing: -1em;
     letter-spacing: -1em;
     overflow:hidden;
   }
+
   .inline-block-row .col-sm-4 {
     word-spacing: normal;
     vertical-align: top;
@@ -407,17 +402,21 @@ canvas{
     float:none;
   }
 }
+
 .level {
   font-size: 25px;
   margin-left: 40px;
 }
+
 .level p{
   color:white;
 }
+
 #logout{
   color: grey; text-decoration: none;
   font-size: 20px;
 }
+
 #logout_link{
   padding-top: 2.5px;
 }
