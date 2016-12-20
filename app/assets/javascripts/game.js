@@ -90,6 +90,8 @@ Game.prototype.drawGame = function() {
     this.drawWin();
     this.drawRestart();
   } else {
+    // Need to fix smoke animation
+    // this.drawSmoke();
     this.drawWord();
     this.collisionTest();
 
@@ -97,6 +99,8 @@ Game.prototype.drawGame = function() {
   }
   requestAnimationFrame(this.drawGame.bind(this));
 };
+
+
 
 Game.prototype.collisionTest = function() {
   for (var i in this.activeWords) {
