@@ -99,14 +99,19 @@ body, html {
 }
 
 #game-video {
-  margin-left: 32%;
-  display: block;
+  /*margin-left: 32%;*/
+  display: inline-block;
 }
-
+.gif {
+  left:50%;
+  height:100px;
+}
 #gif {
-  width:50%;
+  /*width:100%;*/
 }
-
+.image-container {
+  left:60%;
+}
 .parallax {
   background-image: url('http://www.mrietze.com/images/kongo07/ani-a512.gif');
   height: 100%;
@@ -422,4 +427,35 @@ canvas{
 
 #logout_link{
   padding-top: 2.5px;
+}
+
+.body-text{
+    padding: 20px 0;
+    color: #25373C;
+    font-size: 25px;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.body-text h2{
+    font-size: 42px;
+    font-weight: normal;
+    /*margin-bottom: 80px;*/
+}
+
+.body-text p{
+    width: 25%;
+    display: inline-block;
+    text-align: left;
+    padding: 30px;
+    color: white;
+}
+
+
+@media (max-width: 900px){
+
+    .body-text p{
+        width: 100%;
+    }
+
 }
