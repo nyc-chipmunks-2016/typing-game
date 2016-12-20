@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20161220032055) do
     t.integer  "score",      null: false
     t.float    "time",       null: false
     t.integer  "level",      null: false
+    t.integer  "keystrokes", null: false
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

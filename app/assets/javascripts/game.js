@@ -32,7 +32,6 @@ Game.prototype.getWords = function() {
   if (!localStorage.level) {
     localStorage.level = 1;
   }
-  console.log(localStorage.level);
   return $.ajax({
     url: "/game-words",
     method: "get",
@@ -156,7 +155,7 @@ Game.prototype.drawGameOver = function() {
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
   this.interval = setInterval(function() { that.doBlink(); }, 800);
-  
+
   // Need to pick a better gameover sound
   // this.playOver();
   this.saveGame();
@@ -237,7 +236,7 @@ Game.prototype.saveGame = function() {
     $.ajax({
       url: "/games",
       method: "post",
-      data: {game: {score: score, wpm: wpm, accuracy: accuracy, time: totalTime, level: level}}
+      data: {game: {score: score, wpm: wpm, accuracy: accuracy, time: totalTime, level: level, keystrokes: this.keystrokes}}
     });
   }
 };
