@@ -3,12 +3,18 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(wpm: params["wpm"], score: params["score"], accuracy: params["accuracy"], time: params["time"], level: params["level"])
+    @game = Game.new(game_params)
     @game.user = current_user
     @game.save
   end
 
   def words
     render json: Word.where(level: params["level"]).order("random()")
+  end
+
+  private
+
+  def game_params
+    params.require(:game).permit(:wpm, :score, :accuracy, :time, :level)
   end
 end
