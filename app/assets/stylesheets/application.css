@@ -102,9 +102,11 @@ body, html {
   margin-left: 32%;
   display: block;
 }
+
 #gif {
   width:50%;
 }
+
 .parallax {
   background-image: url('http://www.mrietze.com/images/kongo07/ani-a512.gif');
   height: 100%;
@@ -216,17 +218,19 @@ a:hover {
 
 .img-center{
   display: block;
-  margin: 0px auto;
+  margin-top: 0px;
   text-align: center;
+  background-color: white;
+  margin-right: 5px;
 }
 
 #img-profile{
-  padding: 19px;
+margin-top: 20px auto;
+margin-bottom: 15px;
 }
 
 .container #img-profile{
   margin-top: 20px auto;
-  background-color: lightgrey;
   margin-bottom: 15px auto;
 }
 
@@ -244,10 +248,6 @@ a:hover {
   margin-right: 40px;
   margin-left: 2% auto;
   margin-bottom: 10% auto;
-}
-
-#profile-color {
-  background-color: #FCE9C7;
 }
 
 #past-score {
@@ -302,23 +302,21 @@ canvas{
   z-index: 0;
 }
 .skrollr-desktop body {
-    height:100% !important;
+  height:100% !important;
 }
-
 
 /*  Styles for this example */
 .container-rules{
   width:100%;
-
 }
 
 .features-list{
-    padding: 50px 0;
-    background-color:#201D1C;
-    color: #FCE9C7;
-    font-size: 18px;
-    min-height: 60vh;
-    text-align: center;
+  padding: 50px 0;
+  background-color:#201D1C;
+  color: #FCE9C7;
+  font-size: 18px;
+  min-height: 60vh;
+  text-align: center;
 }
 
 .features-list div{
@@ -329,15 +327,14 @@ canvas{
   margin: 5px;
   border: 2px solid #AB2A1A;
   padding: 5px;
-    /*box-shadow: 1px 1px 1px #ccc, 0 0 30px #eee inset;*/
 }
 
 .features-list div i{
-    font-size: 50px;
-    margin-bottom: 10px;
-    color: #EB3A23;
-
+  font-size: 50px;
+  margin-bottom: 10px;
+  color: #EB3A23;
 }
+
 .footer{
   position: absolute;
   bottom: 0;
@@ -345,82 +342,81 @@ canvas{
   color:black;
   width: 100%;
 }
-.about-us{
-
-}
 
 .about-us h2{
-    font-size: 42px;
-    margin-bottom: 80px;
-    font-weight: normal;
+  font-size: 42px;
+  margin-bottom: 80px;
+  font-weight: normal;
 }
 
 .about-us div{
-    text-align: center;
-    width: 25%;
-    margin: 40px 30px;
-    display: inline-block;
+  text-align: center;
+  width: 25%;
+  margin: 40px 30px;
+  display: inline-block;
 }
 
-
 .about-us div img{
-    border-radius: 50%;
-    width: 30%;
+  border-radius: 50%;
+  width: 30%;
 }
 
 .about-us a.attribution{
-    display: block;
-    font-size: 13px;
-    text-decoration: none;
-    color: inherit;
-    width: 280px;
-    margin: 50px auto 10px;
-    opacity: 0.5;
+  display: block;
+  font-size: 13px;
+  text-decoration: none;
+  color: inherit;
+  width: 280px;
+  margin: 50px auto 10px;
+  opacity: 0.5;
 }
 
 
 @media (max-width: 800px){
-
-    .about-us div{
-        width: 45%;
-        margin: 20px 0;
-    }
-
+  .about-us div{
+    width: 45%;
+    margin: 20px 0;
+  }
 }
+
 .well {height:200px;}
 
 /* demo */
-
 @media (min-width:768px) {
-    .inline-block-row {
-        word-spacing: -1em;
-        letter-spacing: -1em;
-        overflow:hidden;
-    }
-    .inline-block-row .col-sm-4 {
-        word-spacing: normal;
-        vertical-align: top;
-        letter-spacing: normal;
-        display: inline-block;
-        float:none;
-    }
+  .inline-block-row {
+    word-spacing: -1em;
+    letter-spacing: -1em;
+    overflow:hidden;
+  }
+
+  .inline-block-row .col-sm-4 {
+    word-spacing: normal;
+    vertical-align: top;
+    letter-spacing: normal;
+    display: inline-block;
+    float:none;
+  }
 }
 @media (min-width:992px) {
-    .inline-block-row .col-md-3 {
-        float:none;
-    }
+  .inline-block-row .col-md-3 {
+    float:none;
+  }
 }
+
 .level {
   font-size: 25px;
   margin-left: 40px;
 }
+
 .level p{
   color:white;
 }
+
 #logout{
   color: grey; text-decoration: none;
   font-size: 20px;
 }
+
 #logout_link{
   padding-top: 2.5px;
 }
