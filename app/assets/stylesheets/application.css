@@ -1,9 +1,11 @@
 body, html {
   height: 100%;
   padding: 10px;
-  font-family: 'helvetica';
-  background-color: #3A3C40;
+  font-family: 'Roboto Slab';
+  background-color: #201D1C;
+  width:100%;
 }
+
 .edit-profile {
   background-color: lightgrey;
   position: absolute;
@@ -86,29 +88,23 @@ body, html {
 }
 
 #play-button {
-  margin: 240px auto 0;
+  margin: 115px auto 0;
   display: block;
-  background-color: transparent;
+  background: rgba(255, 0, 0, .2);
   font-size: 65px;
-  color: white;
+  color: #FCE9C7;
   border-style: solid;
   border-width: 4px;
-  border-color: white;
+  border-color: #FCE9C7;
 }
 
-#game-video{
-  margin-left: 25%;
+#game-video {
+  margin-left: 32%;
   display: block;
 }
-
-.parallax2 {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: repeat;
-  background-size: cover;
-  background-color: #00C2A2;
+#gif {
+  width:50%;
 }
-
 .parallax {
   background-image: url('http://www.mrietze.com/images/kongo07/ani-a512.gif');
   height: 100%;
@@ -117,14 +113,7 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #348FDF;
-}
-
-.mint{
-  background-color: #00C2A2;
-}
-
-.blue{
-  background-color: #348FDF;
+  width: 100%;
 }
 
 #section-1 {
@@ -141,7 +130,6 @@ body, html {
   background-size: cover;
 }
 
-/*Section with dummy content*/
 #section-2 {
   z-index: 2;
   position: relative;
@@ -149,10 +137,17 @@ body, html {
   width: 100%;
 }
 
+#section-3 {
+  z-index: 1;
+  height: 40vh;
+  position: relative;
+  background: #201D1C;
+  width: 100%;
+}
+
 .log{
   font-size: 80px;
-  margin: 80px;
-  padding-top: 30px;
+  padding-top: 65px;
 }
 
 .content{
@@ -252,7 +247,7 @@ a:hover {
 }
 
 #profile-color {
-  background-color: grey;
+  background-color: #FCE9C7;
 }
 
 #past-score {
@@ -293,12 +288,139 @@ canvas{
   left: 400px;
   left:30%;
   margin: 0px auto;
+  background: transparent;
+  margin: 0px auto;
+  left:30%;
 }
 
 #myCanvas{
   z-index: 2;
+  border-style: solid;
 }
 
 #canvasLava{
   z-index: 0;
+}
+.skrollr-desktop body {
+    height:100% !important;
+}
+
+
+/*  Styles for this example */
+.container-rules{
+  width:100%;
+
+}
+
+.features-list{
+    padding: 50px 0;
+    background-color:#201D1C;
+    color: #FCE9C7;
+    font-size: 18px;
+    min-height: 60vh;
+    text-align: center;
+}
+
+.features-list div{
+  background-color: black;
+  opacity: 50%;
+  display: inline-block;
+  width: 20%;
+  margin: 5px;
+  border: 2px solid #AB2A1A;
+  padding: 5px;
+    /*box-shadow: 1px 1px 1px #ccc, 0 0 30px #eee inset;*/
+}
+
+.features-list div i{
+    font-size: 50px;
+    margin-bottom: 10px;
+    color: #EB3A23;
+
+}
+.footer{
+  position: absolute;
+  bottom: 0;
+  background-color: #35547D;
+  color:black;
+  width: 100%;
+}
+.about-us{
+
+}
+
+.about-us h2{
+    font-size: 42px;
+    margin-bottom: 80px;
+    font-weight: normal;
+}
+
+.about-us div{
+    text-align: center;
+    width: 25%;
+    margin: 40px 30px;
+    display: inline-block;
+}
+
+
+.about-us div img{
+    border-radius: 50%;
+    width: 30%;
+}
+
+.about-us a.attribution{
+    display: block;
+    font-size: 13px;
+    text-decoration: none;
+    color: inherit;
+    width: 280px;
+    margin: 50px auto 10px;
+    opacity: 0.5;
+}
+
+
+@media (max-width: 800px){
+
+    .about-us div{
+        width: 45%;
+        margin: 20px 0;
+    }
+
+}
+.well {height:200px;}
+
+/* demo */
+
+@media (min-width:768px) {
+    .inline-block-row {
+        word-spacing: -1em;
+        letter-spacing: -1em;
+        overflow:hidden;
+    }
+    .inline-block-row .col-sm-4 {
+        word-spacing: normal;
+        vertical-align: top;
+        letter-spacing: normal;
+        display: inline-block;
+        float:none;
+    }
+}
+@media (min-width:992px) {
+    .inline-block-row .col-md-3 {
+        float:none;
+    }
+}
+.level {
+  font-size: 25px;
+  margin-left: 40px;
+}
+.level p{
+  color:white;
+}
+#logout{
+  color: grey; text-decoration: none;
+  font-size: 20px;
+}
+#logout_link{
+  padding-top: 2.5px;
 }
