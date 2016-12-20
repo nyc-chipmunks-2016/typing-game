@@ -5,53 +5,49 @@ body, html {
   background-color: #201D1C;
   width:100%;
 }
+footer {
+   color: #666;
+   background: #222;
+   padding: 17px 0 18px 0;
+   border-top: 1px solid #000;
+}
+footer a {
+   color: #999;
+}
+footer a:hover {
+   color: #efefef;
+}
+.wrapper {
+   min-height: 100%;
+   height: auto !important;
+   height: 100%;
+   margin: 0 auto -63px;
+}
+.push {
+   height: 63px;
+}
+/* not required for sticky footer; just pushes hero down a bit */
+.wrapper > .container {
+   padding-top: 60px;
+}
 
-html, body {
-           height: 100%;
-       }
-       footer {
-           color: #666;
-           background: #222;
-           padding: 17px 0 18px 0;
-           border-top: 1px solid #000;
-       }
-       footer a {
-           color: #999;
-       }
-       footer a:hover {
-           color: #efefef;
-       }
-       .wrapper {
-           min-height: 100%;
-           height: auto !important;
-           height: 100%;
-           margin: 0 auto -63px;
-       }
-       .push {
-           height: 63px;
-       }
-       /* not required for sticky footer; just pushes hero down a bit */
-       .wrapper > .container {
-           padding-top: 60px;
-       }
+/* responsive footer fix by Aalaap Ghag */
+@media (max-width: 767px) {
+   body {
+       padding-right: 0px;
+       padding-left: 0px;
+   }
 
-       /* responsive footer fix by Aalaap Ghag */
-       @media (max-width: 767px) {
-           body {
-               padding-right: 0px;
-               padding-left: 0px;
-           }
+   footer, .wrapper {
+       padding-left: 20px;
+       padding-right: 20px;
+   }
+}
 
-           footer, .wrapper {
-               padding-left: 20px;
-               padding-right: 20px;
-           }
-       }
-
-       .container {
-           max-width: 940px;
-       }
-       /* end responsive footer fix */
+.container {
+   max-width: 940px;
+}
+/* end responsive footer fix */
 
 .edit-profile {
   background-color: lightgrey;
