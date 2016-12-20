@@ -7,6 +7,7 @@ var Game = function() {
   this.correctWords = [];
   this.startTime = 0;
   this.keystrokes = 0;
+  this.textVisible = false;
 };
 
 Game.prototype.getWords = function() {
@@ -128,12 +129,24 @@ Game.prototype.drawWin = function() {
 };
 
 Game.prototype.drawGameOver = function() {
-  this.ctx.font = "30px Arial";
+  var that = this;
+  this.ctx.font = "30px 'Press Start 2P'";
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
-  this.ctx.fillText("GAME OVER", 160, 300);
-
+  this.interval = setInterval(function() { that.doBlink(); }, 800);
   this.saveGame();
+};
+
+Game.prototype.doBlink = function() {
+  if(this.textVisible) {
+    this.ctx.clearRect(0,0, 500, 300);
+    this.textVisible = false;
+  }
+  else {
+    this.ctx.font = "30px 'Press Start 2P'";
+    this.ctx.fillText("GAME OVER", 115, 299);
+    this.textVisible = true;
+  }
 };
 
 Game.prototype.drawRestart = function() {
