@@ -153,7 +153,6 @@ Game.prototype.drawGameOver = function() {
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
   this.interval = setInterval(function() { that.doBlink(); }, 800);
-  this.ctx.fillText("GAME OVER", 160, 300);
   // this.playOver();
   this.saveGame();
 };
