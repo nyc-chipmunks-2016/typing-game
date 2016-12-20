@@ -10,6 +10,24 @@ var Game = function() {
   this.textVisible = false;
 };
 
+Game.prototype.playSplash = function() {
+  var audioSplash = document.createElement("audio");
+  audioSplash.src = "/splash1.mp3";
+  audioSplash.play();
+};
+
+Game.prototype.playPlop = function() {
+  var audioPlop = document.createElement("audio");
+  audioPlop.src = "/plop.mp3";
+  audioPlop.play();
+};
+
+Game.prototype.playOver = function() {
+  var audioOver = document.createElement("audio");
+  audioOver.src = "/gameover.mp3";
+  audioOver.play();
+};
+
 Game.prototype.getWords = function() {
   return $.ajax({
     url: "/game-words",
@@ -73,6 +91,7 @@ Game.prototype.drawGame = function() {
 Game.prototype.collisionTest = function() {
   for (var i in this.activeWords) {
     if (this.activeWords[i].y > this.canvas.height - 110) {
+      this.playSplash();
       this.activeWords.splice(i, 1);
       this.lives -= 1;
     }
@@ -83,6 +102,7 @@ Game.prototype.checkSpelling = function() {
   var inputValue = $("#inputText").val();
   for (var i in this.activeWords) {
     if (this.activeWords[i].text === inputValue.trim()) {
+      this.playPlop();
       this.score += this.activeWords[i].points;
       var correctWord = this.activeWords.splice(i, 1)[0];
       this.correctWords.push(correctWord);
@@ -124,7 +144,6 @@ Game.prototype.drawWin = function() {
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
   this.ctx.fillText("LEVEL COMPLETE", 120, 200);
-
   this.saveGame();
 };
 
@@ -134,6 +153,8 @@ Game.prototype.drawGameOver = function() {
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
   this.interval = setInterval(function() { that.doBlink(); }, 800);
+  this.ctx.fillText("GAME OVER", 160, 300);
+  // this.playOver();
   this.saveGame();
 };
 
