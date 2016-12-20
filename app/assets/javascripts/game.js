@@ -107,11 +107,51 @@ Game.prototype.checkSpelling = function() {
     if (this.activeWords[i].text === inputValue.trim()) {
       this.playPlop();
       this.score += (this.activeWords[i].points * localStorage.level);
+      this.boomWord(this.activeWords[i].x, this.activeWords[i].y);
       var correctWord = this.activeWords.splice(i, 1)[0];
       this.correctWords.push(correctWord);
       return $("#inputText").val("");
     }
   }
+};
+
+Game.prototype.boomWord = function (actualX, actualY) {
+  var game = this;
+	var gravity = 0.4;
+  var particles = [];
+	var particle_count = parseInt(Math.random() * 10 + 10);
+
+	function Particle() {
+		this.x = actualX;
+		this.y = actualY;
+		this.color = "#0095DD";
+		this.vx = Math.random() * 4 - 2;
+		this.vy = Math.random() * -14 - 1;
+
+		this.draw = function() {
+			game.ctx.fillStyle = this.color;
+			game.ctx.beginPath();
+			game.ctx.rect(this.x, this.y, 3, 3);
+			game.ctx.fill();
+			game.ctx.closePath();
+		};
+	}
+
+	for (var i = 0; i < particle_count; i++) {
+		var particle = new Particle();
+		particles.push(particle);
+	}
+
+	(function renderFrame() {
+		requestAnimationFrame(renderFrame);
+
+		particles.forEach(function(particle) {
+			particle.vy += gravity;
+			particle.x += particle.vx;
+			particle.y += particle.vy;
+			particle.draw();
+		});
+	}());
 };
 
 Game.prototype.addWord = function() {
