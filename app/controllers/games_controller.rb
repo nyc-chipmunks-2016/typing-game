@@ -15,6 +15,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:wpm, :score, :accuracy, :time, :level)
+    params.require(:game).permit(:wpm, :score, :accuracy, :time, :level, :keystrokes)
   end
 end

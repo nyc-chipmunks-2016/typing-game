@@ -156,7 +156,7 @@ Game.prototype.drawGameOver = function() {
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
   this.interval = setInterval(function() { that.doBlink(); }, 800);
-  
+
   // Need to pick a better gameover sound
   // this.playOver();
   this.saveGame();
@@ -237,7 +237,7 @@ Game.prototype.saveGame = function() {
     $.ajax({
       url: "/games",
       method: "post",
-      data: {game: {score: score, wpm: wpm, accuracy: accuracy, time: totalTime, level: level}}
+      data: {game: {score: score, wpm: wpm, accuracy: accuracy, time: totalTime, level: level, keystrokes: this.keystrokes}}
     });
   }
 };
