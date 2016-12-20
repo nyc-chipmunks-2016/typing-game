@@ -330,12 +330,13 @@ margin-bottom: 15px;
   position: absolute;
   top: 780px;
   left: 400px;
-  width: 501px;
+  width: 500px;
   height:50px;
   margin: 0px auto;
   left:30%;
-  outline: 0 none;
-  border-style: solid;
+  /*outline: 0 none;*/
+  background: none;
+  color: white;
 }
 
 canvas{
@@ -351,7 +352,6 @@ canvas{
 
 #myCanvas{
   z-index: 2;
-  border-style: solid;
 }
 
 #canvasLava{
@@ -390,14 +390,6 @@ canvas{
   font-size: 50px;
   margin-bottom: 10px;
   color: #EB3A23;
-}
-
-.footer{
-  position: absolute;
-  bottom: 0;
-  background-color: #35547D;
-  color:black;
-  width: 100%;
 }
 
 .about-us h2{
