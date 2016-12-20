@@ -29,6 +29,10 @@ Game.prototype.playOver = function() {
 };
 
 Game.prototype.getWords = function() {
+  if (!localStorage.level) {
+    localStorage.level = 1;
+  }
+  console.log(localStorage.level);
   return $.ajax({
     url: "/game-words",
     method: "get",
