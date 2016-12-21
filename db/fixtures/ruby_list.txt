@@ -1,0 +1,391 @@
+def solve(board_string)
+  board = create_board(board_string)
+
+  puts "ORIGINAL PUZZLE:"
+  pretty_board(board)
+  sleep(1)
+  until solved?(board)
+    board = update_puzzle(board)
+  end
+
+  board
+end
+
+def solved?(board)
+  rows = Array.new(board)
+  columns = isolate_columns(board)
+  micro_boxes = isolate_micro_boxes(board)
+
+  rows_solved = check_group(rows)
+  columns_solved = check_group(columns)
+  micro_boxes_solved = check_group(micro_boxes)
+
+  rows_solved && columns_solved && micro_boxes_solved
+end
+
+def check_group(rows_columns_or_micro_boxes)
+  valid = true
+  rows_columns_or_micro_boxes.each do |row_column_or_micro_box|
+    numbers = row_column_or_micro_box.reject {|cell| cell == nil}
+    valid = false if numbers.reduce(1, :*) != 362880
+  end
+  valid
+end
+
+def pretty_board(board)
+  puts "\nSUDOKU BOARD:\n"
+  puts '_' * 47
+  board.each_with_index do |row, i|
+    row.each_with_index do |cell, j|
+      display_cell = " " if cell == nil
+      display_cell = cell.to_s if cell != nil
+
+      if j != 0 && j % 3 == 0
+        print "I| #{display_cell} |"
+      else
+        print "| #{display_cell} |"
+      end
+    end
+
+    puts "\n"
+    if i == 2 || i == 5
+      puts '=' * 47
+    else
+      puts '-' * 47
+    end
+  end
+
+  nil
+end
+
+def create_board(board_string)
+  board_array = board_string.split("")
+  board = Array.new(9) {Array.new}
+
+  9.times do |row_index|
+    9.times do |column_index|
+      cell = board_array[(row_index * 9) + column_index]
+      if (1..9).include?(cell.to_i)
+        board[row_index] << cell.to_i
+      else
+        board[row_index] << nil
+      end
+    end
+  end
+
+  board
+end
+
+def update_puzzle(puzzle)
+  micro_box_map =
+
+  puzzle.each_with_index do |row, row_index|
+    row.each_with_index do |column, column_index|
+      answer = solve_cell(puzzle, row_index, column_index, micro_box_map[row_index][column_index])
+      if puzzle[row_index][column_index] == nil && answer != nil
+        puzzle[row_index][column_index] = answer
+        sleep(0.5)
+        system "clear"
+        pretty_board(puzzle)
+        print "Current Cell => Row: #{row_index + 1}, Column: #{column_index + 1}, Answer: #{answer}\n"
+      end
+    end
+  end
+
+  puzzle
+end
+
+def solve_cell(puzzle, row_index, column_index, micro_index)
+  possibilities = calculate_possible_numbers(puzzle, row_index, column_index, micro_index)
+  possibilities[0] if possibilities.count == 1
+end
+
+def calculate_possible_numbers(puzzle, row_index, column_index, micro_index)
+  sudoku_numbers = (1..9).to_a
+
+  existing_horizontal = grab_row(puzzle, row_index)
+  existing_vertical = grab_column(puzzle, column_index)
+  existing_micro = grab_micro(puzzle, micro_index)
+
+  existing_numbers = existing_horizontal + existing_vertical + existing_micro
+  sudoku_numbers - existing_numbers
+end
+
+def grab_numbers(array)
+  array.select {|element| element.is_a?(Integer)}
+end
+
+def grab_row(puzzle, row_index)
+  grab_numbers(puzzle[row_index])
+end
+
+def isolate_columns(puzzle)
+  puzzle.transpose
+end
+
+def grab_column(puzzle, column_index)
+  columns = isolate_columns(puzzle)
+  grab_numbers(columns[column_index])
+end
+
+def isolate_micro_boxes(puzzle)
+  micro_boxes = []
+  super_rows = isolate_super_rows(puzzle)
+
+  3.times do |i|
+    micro_boxes << super_rows[i].map {|row| row[0..2]}.flatten
+    micro_boxes << super_rows[i].map {|row| row[3..5]}.flatten
+    micro_boxes << super_rows[i].map {|row| row[6..8]}.flatten
+  end
+
+  micro_boxes
+end
+
+def grab_micro(puzzle, micro_index)
+  micro_boxes = isolate_micro_boxes(puzzle)
+  grab_numbers(micro_boxes[micro_index])
+end
+
+def isolate_super_rows(puzzle)
+  [puzzle[0..2], puzzle[3..5], puzzle[6..8]]
+end
+
+def isolate_super_columns(puzzle)
+  columns = isolate_columns(puzzle)
+  [columns[0..2], columns[3..5], columns[6..8]]
+end
+
+def find_hidden_matches(puzzle, row_index, column_index, possibilities)
+  possible_numbers_map =
+
+  super_rows = isolate_super_rows(puzzle)
+  super_columns = isolate_super_columns(puzzle)
+end
+
+module Mascot
+  DEFAULT_SIGN = "Go Team!"
+
+  CHEER_SIGNS = { "RED HOT"         => "H-O-T!",
+                  "DO IT AGAIN"     => "Go, Fight, Win",
+                  "2 BITS"          => "Holler!",
+                  "STOMP YOUR FEET" => "STOMP!" }
+
+  def self.sign_for(cheer_name)
+    CHEER_SIGNS[cheer_name] || DEFAULT_SIGN
+  end
+end
+<%= if @sign_text %>
+<% end %>
+<%= yield %>
+post "/guesses/:id" do
+  @card = Card.find_by_id(params[:id])
+  deck = @card.deck
+  if params[:answer] == @card.answer
+    Guess.create(card: @card, round_id: 1, correct?: true)
+    redirect "decks/#{deck.id}/cards"
+  else
+    Guess.create(card: @card, round_id: 1, correct?: false)
+    redirect "decks/#{deck.id}/cards"
+  end
+end
+get '/decks' do
+  @decks = Deck.all
+  erb :'decks/index'
+end
+# show the begin test screen for a specific deck
+get '/decks/:id' do
+  @deck = Deck.find_by_id(params[:id])
+  erb :'decks/show'
+end
+
+get '/decks/:deck_id/cards' do
+  @deck = Deck.find_by_id(params[:deck_id])
+  @cards = @deck.cards.select do |card|
+    if !card.guesses.empty?
+      card.guesses.last.correct? == false
+    else
+      true
+    end
+  end
+  if @cards.empty?
+    erb :congrats
+  else
+    @cards = @cards.shuffle
+    @card = @cards.first
+    erb :'cards/show'
+  end
+end
+
+get '/decks/:deck_id/cards/:id' do
+  @deck = Deck.find_by_id(params[:deck_id])
+  @card = Card.find_by_id(params[:id])
+  erb :'cards/show'
+end
+
+get '/login' do
+  erb :'sessions/login_form'
+end
+
+post '/login' do
+  @user = User.find_by_email(params[:email])
+  if @user && @user.password == params[:password]
+    session[:user] = @user.id
+
+    redirect "/users/#{@user.id}"
+  else
+    @errors = @user.errors.full_messages
+    erb :'sessions/login_form'
+  end
+end
+
+get '/logout' do
+  logout
+
+  redirect '/'
+end
+get '/users/new' do
+  erb :'users/new'
+end
+post '/users' do
+  @user = User.new(params[:user])
+  if @user.save
+    login
+    redirect '/'
+  else
+    @errors = @user.errors.full_messages
+    erb :'users/new'
+  end
+end
+get '/users/:id' do
+  @user = User.find_by_id(params[:id])
+  @decks = Deck.all
+  if logged_in? && @user
+    erb :'/users/show'
+  else
+    redirect '/404'
+  end
+end
+class User < ActiveRecord::Base
+  include BCrypt
+
+  validates_presence_of :username, :email, :password_hash
+  validates :email, uniqueness: true
+
+  has_many :rounds
+  has_many :guesses, through: :rounds
+  has_many :decks, through: :rounds, source: :deck
+
+  def password
+    @password ||= Password.new(password_hash)
+  end
+
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.password_hash = @password
+  end
+
+  def self.authenticate(posted_email, posted_password)
+    user = User.find_by_email(params[:email])
+
+    if user && user.password == params[:password]
+      return user
+    end
+  end
+end
+class CreateUsers < ActiveRecord::Migration
+  def change
+    create_table :users do |t|
+      t.string :username, null: false
+      t.string :email, null: false
+      t.string :password_hash, null: false
+
+      t.timestamps(null: false)
+    end
+  end
+end
+
+require 'rake'
+
+require ::File.expand_path('../config/environment', __FILE__)
+
+namespace :generate do
+  desc "Create an empty model in app/models, e.g., rake generate:model NAME=User"
+  task :model do
+    unless ENV.has_key?('NAME')
+      raise "Must specificy model name, e.g., rake generate:model NAME=User"
+    end
+
+    model_name     = ENV['NAME'].camelize
+    model_filename = ENV['NAME'].underscore + '.rb'
+    model_path = APP_ROOT.join('app', 'models', model_filename)
+
+    if File.exist?(model_path)
+      raise "ERROR: Model file '#{model_path}' already exists"
+    end
+
+    puts "Creating #{model_path}"
+    File.open(model_path, 'w+') do |f|
+      f.write(<<-EOF.strip_heredoc)
+        class #{model_name} < ActiveRecord::Base
+          # Remember to create a migration!
+        end
+      EOF
+    end
+  end
+
+  desc "Create an empty migration in db/migrate, e.g., rake generate:migration NAME=create_tasks"
+  task :migration do
+    unless ENV.has_key?('NAME')
+      raise "Must specificy migration name, e.g., rake generate:migration NAME=create_tasks"
+    end
+
+    name     = ENV['NAME'].camelize
+    filename = "%s_%s.rb" % [Time.now.strftime('%Y%m%d%H%M%S'), ENV['NAME'].underscore]
+    path     = APP_ROOT.join('db', 'migrate', filename)
+
+    if File.exist?(path)
+      raise "ERROR: File '#{path}' already exists"
+    end
+
+    puts "Creating #{path}"
+    File.open(path, 'w+') do |f|
+      f.write(<<-EOF.strip_heredoc)
+        class #{name} < ActiveRecord::Migration
+          def change
+          end
+        end
+      EOF
+    end
+  end
+
+  desc "Create an empty model spec in spec, e.g., rake generate:spec NAME=user"
+  task :spec do
+    unless ENV.has_key?('NAME')
+      raise "Must specificy migration name, e.g., rake generate:spec NAME=user"
+    end
+
+    name     = ENV['NAME'].camelize
+    filename = "%s_spec.rb" % ENV['NAME'].underscore
+    path     = APP_ROOT.join('spec', filename)
+
+    if File.exist?(path)
+      raise "ERROR: File '#{path}' already exists"
+    end
+
+    puts "Creating #{path}"
+    File.open(path, 'w+') do |f|
+      f.write(<<-EOF.strip_heredoc)
+        require 'spec_helper'
+
+        describe #{name} do
+          pending "add some examples to (or delete) #{__FILE__}"
+        end
+      EOF
+    end
+  end
+
+end
+LoadError
+end
+
+task :default  => :spec

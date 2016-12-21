@@ -1,32 +1,215 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+animal_category = Category.create(name: "animals")
+default_category = Category.create(name: "default")
+ruby_category = Category.create(name: "ruby")
+javascript_category = Category.create(name: "javascript")
 
-new_category = Category.create(name: "animals")
+EASY_LETTERS = %w(a s d f g h j k l)
+MEDIUM_LETTERS = %w(q w e r t y u i o p)
+HARD_LETTERS = %w(z x c v b n m)
+CAPITALIZED_LETTERS = ("A".."Z").to_a
+NUMBERS = %w(1 2 3 4 5 6 7 8 9 0)
+SPECIAL_CHARACTERS = %w(` ! @ # $ % ^ & * ( ) - _ + = { } [ ] | \ " ' : ; / ? < > . ,)
 
-words = %w(owl yak lion dog bear cat bird horse zebra hippo monkey gorilla fish reptile frog snake lizard iguana rhino bee eagle fox gopher kangaroo spider jellyfish shrimp chickadee swan bison buffalo turtle tortoise deer armadillo quail squirrel giraffe goose vulture groundhog penguin seal roadrunner reindeer shark skunk sloth woodchuck)
+def assign_points(word)
+  points = 0
 
-words.each do |word|
-  if word.length <= 4
-    new_category.words.create(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 1)
+  word.chars.each do |character|
+    if EASY_LETTERS.include?(character)
+      points += 50
+    elsif MEDIUM_LETTERS.include?(character)
+      points += 100
+    elsif HARD_LETTERS.include?(character)
+      points += 150
+    elsif CAPITALIZED_LETTERS.include?(character)
+      points += 200
+    elsif NUMBERS.include?(character)
+      points += 250
+    elsif SPECIAL_CHARACTERS.include?(character)
+      points += 300
+    end
   end
-  if word.length <= 5
-    new_category.words.create(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 2)
+
+  points
+end
+
+ANIMAL_LIST_FILENAME = "db/fixtures/animal_list.txt"
+
+File.foreach(ANIMAL_LIST_FILENAME) do |line|
+  word = line.strip.downcase
+  length = word.length
+  letters = word.chars
+  points = assign_points(word)
+
+  if length <= 4 && (letters & HARD_LETTERS).empty?
+    animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 1)
   end
-  if word.length >= 4 && word.length <= 6
-    new_category.words.create(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 3)
+
+  if length <= 4
+    animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 2)
   end
-  if word.length >= 4 && word.length <= 7
-    new_category.words.create(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 4)
+
+  if length <= 5 && length >= 3 && (letters & HARD_LETTERS).empty?
+    animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 3)
   end
-  if word.length >= 5 && word.length <= 8
-    new_category.words.create(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 5)
+
+  if length <= 5 && length >= 3
+    animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 4)
   end
-  if word.length >= 6
-    new_category.words.create(text: word, points: word.length * 100, x: rand(25..400), y: 0, level: 6)
+
+  if length <= 6 && length >= 3 && (letters & HARD_LETTERS).empty?
+    animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 5)
+  end
+
+  if length <= 7 && length >= 4
+    animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 6)
+  end
+
+  if length <= 8 && length >= 5
+    animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 7)
+  end
+
+  if length <= 9 && length >= 6
+    animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 8)
+  end
+
+  if length >= 8
+    animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 9)
+  end
+end
+
+DEFAULT_LIST_FILENAME = "db/fixtures/common_words_list.txt"
+
+File.foreach(DEFAULT_LIST_FILENAME) do |line|
+  word = line.strip
+  length = word.length
+  letters = word.chars
+  points = assign_points(word)
+
+  if length <= 4 && (letters & HARD_LETTERS).empty? && (letters & MEDIUM_LETTERS).empty?
+    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 1)
+  end
+
+  if length <= 4 && (letters & HARD_LETTERS).empty?
+    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 2)
+  end
+
+  if length <= 5 && length >= 2 && (letters & HARD_LETTERS).empty?
+    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 3)
+  end
+
+  if length <= 5 && length >= 3 && (letters & HARD_LETTERS).empty?
+    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 4)
+  end
+
+  if length <= 6 && length >= 3 && (letters & HARD_LETTERS).empty?
+    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 5)
+  end
+
+  if length <= 7 && length >= 4
+    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 6)
+  end
+
+  if length <= 8 && length >= 4
+    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 7)
+  end
+
+  if length <= 10 && length >= 4
+    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 8)
+  end
+
+  if length > 5
+    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 9)
+  end
+end
+
+RUBY_LIST_FILENAME = "db/fixtures/ruby_list.txt"
+
+ruby_file_string = File.read(RUBY_LIST_FILENAME)
+ruby_words = ruby_file_string.gsub("\n", " ").split(/\s+/)
+ruby_words.each do |word|
+  length = word.length
+  letters = word.chars
+  points = assign_points(word)
+
+  if length <= 4 && (letters & CAPITALIZED_LETTERS).empty? && (letters & NUMBERS).empty? && (letters & SPECIAL_CHARACTERS).empty?
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 1)
+  end
+
+  if length <= 4 && (letters & CAPITALIZED_LETTERS).empty?
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 2)
+  end
+
+  if length <= 5 && (letters & CAPITALIZED_LETTERS).empty? && (letters & NUMBERS).empty?
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 3)
+  end
+
+  if length <= 5 && (letters & CAPITALIZED_LETTERS).empty? && (letters & SPECIAL_CHARACTERS).empty?
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 4)
+  end
+
+  if length <= 6
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 5)
+  end
+
+  if length <= 7
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 6)
+  end
+
+  if length <= 8
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 7)
+  end
+
+  if length <= 9
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 8)
+  end
+
+  if length >= 10
+    ruby_category.words.create(text: word, points: points, x: rand(25..250), y: 0, level: 9)
+  end
+end
+
+JAVASCRIPT_LIST_FILENAME = "db/fixtures/javascript_list.txt"
+
+javascript_file_string = File.read(JAVASCRIPT_LIST_FILENAME)
+javascript_words = javascript_file_string.gsub("\n", " ").split(/\s+/)
+javascript_words.each do |word|
+  length = word.length
+  letters = word.chars
+  points = assign_points(word)
+
+  if length <= 4 && (letters & CAPITALIZED_LETTERS).empty? && (letters & NUMBERS).empty? && (letters & SPECIAL_CHARACTERS).empty?
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 1)
+  end
+
+  if length <= 4 && (letters & CAPITALIZED_LETTERS).empty?
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 2)
+  end
+
+  if length <= 5 && (letters & CAPITALIZED_LETTERS).empty? && (letters & NUMBERS).empty?
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 3)
+  end
+
+  if length <= 5 && (letters & CAPITALIZED_LETTERS).empty? && (letters & SPECIAL_CHARACTERS).empty?
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 4)
+  end
+
+  if length <= 6
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 5)
+  end
+
+  if length <= 7
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 6)
+  end
+
+  if length <= 8
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 7)
+  end
+
+  if length <= 9
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 8)
+  end
+
+  if length >= 10
+    javascript_category.words.create(text: word, points: points, x: rand(25..250), y: 0, level: 9)
   end
 end

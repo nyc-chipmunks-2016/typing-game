@@ -1,3 +1,101 @@
+var OrangeTree = function() {
+  this.age = 0;
+  this.height = 0;
+  this.oranges = [];
+}
+
+OrangeTree.prototype.isMature = function() {
+  if (this.age >= 6) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+OrangeTree.prototype.isDead = function() {
+  if (this.age >= 100) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+OrangeTree.prototype.hasOranges = function() {
+  if (this.oranges.length > 0) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+OrangeTree.prototype.passGrowingSeason = function() {
+  if (this.isDead()) {
+    return "The tree is dead"
+  }
+  else {
+    this.oranges = [];
+    this.age += 1;
+    if (this.height < 25) {
+      this.height += 2.5;
+    }
+    if (this.isMature()) {
+      for (var i = 0; i < 10; i ++) {
+        orange = new Orange();
+        this.oranges.push(orange);
+      }
+    }
+  }
+}
+
+OrangeTree.prototype.pickAnOrange = function() {
+  return this.oranges.pop();
+}
+$(document).ready(function() {
+  $('.post-container').on('click', '.upvote-button', function(event) {
+
+    event.preventDefault();
+    var url = $(this).closest('form').attr('action');
+    var type = $(this).closest('form').attr('method');
+    var button = $(this);
+    $.ajax({
+      url: url,
+      method: type
+    }).done(function(response){
+      $(button).parent().parent().find('.points').html($(response).text())
+      $(button).css('color', 'red');
+      $(button).click(false);
+    })
+ })
+  $('.post-container').on('click', '.delete', function(event){
+    event.preventDefault();
+      var url = $(this).attr('href');
+      var type = "delete";
+      var id = url.slice(7);
+    $.ajax({
+      url:url,
+      method: type,
+    }).done(function(response){
+      $('#' + id).remove();
+    })
+  })
+  $('#posts').on('submit', function(event){
+    event.preventDefault();
+    var url = $(this).attr('action');
+    var type = $(this).attr('method');
+    var data = $(this).serialize();
+    $.ajax({
+      url:url,
+      method:type,
+      data:data
+    }).done(function(response){
+      $(response).appendTo('.post-container');
+      $('#input').val('');
+    })
+  })
+});
 var Game = function() {
   this.lives = 5;
   this.score = 0;
@@ -7,10 +105,7 @@ var Game = function() {
   this.correctWords = [];
   this.startTime = 0;
   this.keystrokes = 0;
-  this.textVisible = true;
-  this.saved = false;
-  this.setInterval = false;
-  this.continue = false;
+  this.textVisible = false;
 };
 
 Game.prototype.playSplash = function() {
@@ -32,13 +127,13 @@ Game.prototype.playOver = function() {
 };
 
 Game.prototype.getWords = function() {
-  if (!localStorage.level) localStorage.level = 1;
-  if (!localStorage.category) localStorage.category = "default";
-
+  if (!localStorage.level) {
+    localStorage.level = 1;
+  }
   return $.ajax({
     url: "/game-words",
     method: "get",
-    data: {level: localStorage.level, category: localStorage.category}
+    data: {level: localStorage.level}
   }).done(function(response) {
     this.words = response;
   }.bind(this));
@@ -89,8 +184,9 @@ Game.prototype.drawGame = function() {
     this.collisionTest();
 
     for (var i in this.activeWords) this.activeWords[i].y += this.speed;
+
+    requestAnimationFrame(this.drawGame.bind(this));
   }
-  requestAnimationFrame(this.drawGame.bind(this));
 };
 
 Game.prototype.collisionTest = function() {
@@ -108,53 +204,12 @@ Game.prototype.checkSpelling = function() {
   for (var i in this.activeWords) {
     if (this.activeWords[i].text === inputValue.trim()) {
       this.playPlop();
-      this.score += (this.activeWords[i].points * localStorage.level);
-      this.boomWord(this.activeWords[i].x, this.activeWords[i].y);
+      this.score += this.activeWords[i].points;
       var correctWord = this.activeWords.splice(i, 1)[0];
       this.correctWords.push(correctWord);
-      $("#inputText").val("");
-      break;
+      return $("#inputText").val("");
     }
   }
-};
-
-Game.prototype.boomWord = function (actualX, actualY) {
-  var game = this;
-  var gravity = 0.4;
-  var particles = [];
-  var particle_count = parseInt(Math.random() * 10 + 10);
-
-  function Particle() {
-    this.x = actualX;
-    this.y = actualY;
-    this.color = "#0095DD";
-    this.vx = Math.random() * 4 - 2;
-    this.vy = Math.random() * -14 - 1;
-
-    this.draw = function() {
-      game.ctx.fillStyle = this.color;
-      game.ctx.beginPath();
-      game.ctx.rect(this.x, this.y, 3, 3);
-      game.ctx.fill();
-      game.ctx.closePath();
-    };
-  }
-
-  for (var i = 0; i < particle_count; i++) {
-    var particle = new Particle();
-    particles.push(particle);
-  }
-
-  (function renderFrame() {
-    requestAnimationFrame(renderFrame);
-
-    particles.forEach(function(particle) {
-      particle.vy += gravity;
-      particle.x += particle.vx;
-      particle.y += particle.vy;
-      particle.draw();
-    });
-  }());
 };
 
 Game.prototype.addWord = function() {
@@ -190,36 +245,28 @@ Game.prototype.drawWin = function() {
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
   this.ctx.fillText("LEVEL COMPLETE", 120, 200);
-  if (!document.getElementById("login-button") && this.saved === false) {
-    this.saveGame();
-  }
+  this.saveGame();
 };
 
 Game.prototype.drawGameOver = function() {
   var that = this;
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
-  if (this.textVisible) {
-    this.ctx.font = "30px 'Press Start 2P'";
-    this.ctx.fillText("GAME OVER", 115, 299);
-  }
-  if (this.setInterval === false) {
-    setInterval(function() { that.doBlink(); }, 800);
-    this.setInterval = true;
-  }
+  this.interval = setInterval(function() { that.doBlink(); }, 800);
 
   // Need to pick a better gameover sound
   // this.playOver();
-  if (!document.getElementById("login-button") && this.saved === false) {
-    this.saveGame();
-  }
+  this.saveGame();
 };
 
 Game.prototype.doBlink = function() {
   if(this.textVisible) {
+    this.ctx.clearRect(0,0, 500, 300);
     this.textVisible = false;
   }
   else {
+    this.ctx.font = "30px 'Press Start 2P'";
+    this.ctx.fillText("GAME OVER", 115, 299);
     this.textVisible = true;
   }
 };
@@ -259,19 +306,16 @@ Game.prototype.drawContinue = function() {
 };
 
 Game.prototype.nextLevel = function() {
-  if (this.continue === false) {
-    this.canvas.addEventListener('click', function(event) {
-      var x = event.pageX - this.canvas.offsetLeft;
-      var y = event.pageY - this.canvas.offsetTop;
-      if (y > 250 && y < 290 && x > 200 && x < 300) {
-        if (parseInt(localStorage.level) < 9) {
-          localStorage.setItem("level", parseInt(localStorage.level) + 1);
-        }
-        document.location.reload();
+  this.canvas.addEventListener('click', function(event) {
+    var x = event.pageX - this.canvas.offsetLeft;
+    var y = event.pageY - this.canvas.offsetTop;
+    if (y > 250 && y < 290 && x > 200 && x < 300) {
+      if (parseInt(localStorage.level) < 6) {
+        localStorage.setItem("level", parseInt(localStorage.level) + 1);
       }
-    }.bind(this));
-    this.continue = true;
-  }
+      document.location.reload();
+    }
+  }.bind(this));
 };
 
 Game.prototype.saveGame = function() {
@@ -284,24 +328,60 @@ Game.prototype.saveGame = function() {
   var wpm = normalizeWords / totalTime;
   var accuracy = (totalLetters / this.keystrokes) * 100;
   var score = this.score;
-  var keystrokes = this.keystrokes;
   var level = localStorage.level;
 
   if (wpm > 0) {
     $.ajax({
       url: "/games",
       method: "post",
-      data: {
-        game: {
-          score: score,
-          wpm: wpm,
-          accuracy: accuracy,
-          time: totalTime,
-          level: level,
-          keystrokes: keystrokes
-        }
-      }
+      data: {game: {score: score, wpm: wpm, accuracy: accuracy, time: totalTime, level: level, keystrokes: this.keystrokes}}
     });
   }
-  this.saved = true;
 };
+
+class Compose extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''}
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    $.ajax({
+      url: "/tweets",
+      method: "post",
+      data: {
+        "tweet":{
+          "content": this.state.value,
+        },
+        "hashtags":[
+          "foo",
+          "bar",
+          "baz"
+        ]
+      }
+    }).done(() => {
+      this.props.onTweet()
+      this.state.value = ""
+    })
+  }
+
+  render() {
+    return (
+      <section id="tweet-box">
+        <p id="tweet-box-title">Compose New Tweet</p>
+        <form onSubmit={this.handleSubmit} id="tweet-form">
+          <textarea value={this.state.value} onChange={this.handleChange} id="new-tweet" cols="30" rows="5" maxLength="140" name="tweet"></textarea>
+          <input type="submit" value="Tweet"></input>
+        </form>
+      </section>
+    );
+  }
+}
