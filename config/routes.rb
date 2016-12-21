@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # remove routes that are not actually utilized
+  # except: or only:, etc.
   resources :users
   resources :games, except: [:edit, :index, :show, :update]
 

@@ -76,7 +76,7 @@ Game.prototype.drawGame = function() {
   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   this.drawLives();
   this.drawScore();
-
+  // extract into smaller functions for readability?
   if (this.lives === 0) {
     this.drawGameOver();
     this.drawRestart();
@@ -123,14 +123,14 @@ Game.prototype.boomWord = function (actualX, actualY) {
   var gravity = 0.4;
   var particles = [];
   var particle_count = parseInt(Math.random() * 10 + 10);
-
+  // decouple this constructor function, pass the game to it
   function Particle() {
     this.x = actualX;
     this.y = actualY;
     this.color = "#0095DD";
     this.vx = Math.random() * 4 - 2;
     this.vy = Math.random() * -14 - 1;
-
+    // this.draw = function() {
     this.draw = function() {
       game.ctx.fillStyle = this.color;
       game.ctx.beginPath();
