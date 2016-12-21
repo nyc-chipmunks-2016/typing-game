@@ -1,7 +1,8 @@
 $(document).ready(function() {
-  var logout = document.getElementById("logout");
-  var level = document.getElementById("level");
-  var new_game = new Game();
+  var logout = document.getElementById("logout"),
+      level = document.getElementById("level"),
+      category = document.getElementById("category"),
+      new_game = new Game();
   new_game.canvas = document.getElementById("myCanvas");
   new_game.ctx = new_game.canvas.getContext("2d");
   new_game.input = document.getElementById("inputText");
@@ -26,6 +27,15 @@ $(document).ready(function() {
 
   level.onchange = function() {
     localStorage.setItem("level", level.value);
+    document.location.reload();
+  };
+
+  if (localStorage.getItem("category")) {
+    category.value = localStorage.getItem("category");
+  }
+
+  category.onchange = function() {
+    localStorage.setItem("category", category.value);
     document.location.reload();
   };
 

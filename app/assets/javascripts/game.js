@@ -32,13 +32,13 @@ Game.prototype.playOver = function() {
 };
 
 Game.prototype.getWords = function() {
-  if (!localStorage.level) {
-    localStorage.level = 1;
-  }
+  if (!localStorage.level) localStorage.level = 1;
+  if (!localStorage.category) localStorage.category = "default";
+
   return $.ajax({
     url: "/game-words",
     method: "get",
-    data: {level: localStorage.level}
+    data: {level: localStorage.level, category: localStorage.category}
   }).done(function(response) {
     this.words = response;
   }.bind(this));
@@ -112,7 +112,8 @@ Game.prototype.checkSpelling = function() {
       this.boomWord(this.activeWords[i].x, this.activeWords[i].y);
       var correctWord = this.activeWords.splice(i, 1)[0];
       this.correctWords.push(correctWord);
-      return $("#inputText").val("");
+      $("#inputText").val("");
+      break;
     }
   }
 };
@@ -277,19 +278,29 @@ Game.prototype.saveGame = function() {
   var endTime = new Date().getTime();
   var totalTime = (endTime - this.startTime) / 60000;
   var totalLetters = this.correctWords.reduce(function(total, word) {
-    return total + word.text.length;
-  }, 0);
+                       return total + word.text.length;
+                     }, 0);
   var normalizeWords = totalLetters / 5;
   var wpm = normalizeWords / totalTime;
   var accuracy = (totalLetters / this.keystrokes) * 100;
   var score = this.score;
+  var keystrokes = this.keystrokes;
   var level = localStorage.level;
 
   if (wpm > 0) {
     $.ajax({
       url: "/games",
       method: "post",
-      data: {game: {score: score, wpm: wpm, accuracy: accuracy, time: totalTime, level: level, keystrokes: this.keystrokes}}
+      data: {
+        game: {
+          score: score,
+          wpm: wpm,
+          accuracy: accuracy,
+          time: totalTime,
+          level: level,
+          keystrokes: keystrokes
+        }
+      }
     });
   }
   this.saved = true;

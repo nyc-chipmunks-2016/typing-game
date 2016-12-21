@@ -9,7 +9,11 @@ class GamesController < ApplicationController
   end
 
   def words
-    render json: Word.where(level: params["level"]).order("random()")
+    render json: Category.find_by(name: params[:category])
+                         .words
+                         .where(level: params[:level])
+                         .order("random()")
+                         .limit(60)
   end
 
   private
