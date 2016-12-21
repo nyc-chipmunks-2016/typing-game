@@ -18,23 +18,40 @@ File.foreach(ANIMAL_LIST_FILENAME) do |line|
   letters = word.chars
   points = assign_points(word)
 
-  if length <= 4
+  if length <= 4 && (letters & hard_letters).empty? && (letters & medium_letters).empty?
     animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 1)
   end
-  if length <= 5
+
+  if length <= 4 && (letters & hard_letters).empty?
     animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 2)
   end
-  if length >= 4 && length <= 6
+
+  if length <= 5 && length >= 3 && (letters & hard_letters).empty?
     animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 3)
   end
-  if length >= 4 && length <= 7
+
+  if length <= 5 && length >= 3
     animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 4)
   end
-  if length >= 5 && length <= 8
+
+  if length <= 6 && length >= 3 && (letters & hard_letters).empty?
     animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 5)
   end
-  if length >= 6
+
+  if length <= 7 && length >= 4
     animal_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 6)
+  end
+
+  if length <= 8 && length >= 5
+    animal_category.words.create(text: word, points: points, x: rand(25..350), y: 0, level: 7)
+  end
+
+  if length <= 9 && length >= 6
+    animal_category.words.create(text: word, points: points, x: rand(25..300), y: 0, level: 8)
+  end
+
+  if length >= 8
+    animal_category.words.create(text: word, points: points, x: rand(25..200), y: 0, level: 9)
   end
 end
 
@@ -70,11 +87,11 @@ File.foreach(DEFAULT_LIST_FILENAME) do |line|
     default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 6)
   end
 
-  if length <= 8 && length >= 5 && (letters & capitalized_letters).empty?
+  if length <= 8 && length >= 5
     default_category.words.create(text: word, points: points, x: rand(25..350), y: 0, level: 7)
   end
 
-  if length <= 10 && length >= 6 && (letters & capitalized_letters).empty?
+  if length <= 10 && length >= 6
     default_category.words.create(text: word, points: points, x: rand(25..300), y: 0, level: 8)
   end
 
@@ -92,40 +109,40 @@ ruby_words.each do |word|
   letters = word.chars
   points = assign_points(word)
 
-  if length <= 4 && (letters & capitalized_letters).empty? && (letters & numbers).empty?
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 1)
+  if length <= 4 && (letters & capitalized_letters).empty? && (letters & numbers).empty? && (letters & special_characters).empty?
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 1)
   end
 
   if length <= 4 && (letters & capitalized_letters).empty?
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 2)
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 2)
   end
 
-  if length <= 5
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 3)
+  if length <= 5 && (letters & capitalized_letters).empty? && (letters & numbers).empty?
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 3)
   end
 
-  if length <= 5
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 4)
+  if length <= 5 && (letters & capitalized_letters).empty? && (letters & special_characters).empty?
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 4)
   end
 
-  if length <= 6 && (letters & capitalized_letters).empty?
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 5)
+  if length <= 6
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 5)
   end
 
   if length <= 7
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 6)
+    ruby_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 6)
   end
 
   if length <= 8
-    default_category.words.create(text: word, points: points, x: rand(25..350), y: 0, level: 7)
+    ruby_category.words.create(text: word, points: points, x: rand(25..350), y: 0, level: 7)
   end
 
-  if length <= 10
-    default_category.words.create(text: word, points: points, x: rand(25..300), y: 0, level: 8)
+  if length <= 9
+    ruby_category.words.create(text: word, points: points, x: rand(25..300), y: 0, level: 8)
   end
 
-  if length > 10
-    default_category.words.create(text: word, points: points, x: rand(25..200), y: 0, level: 9)
+  if length >= 10
+    ruby_category.words.create(text: word, points: points, x: rand(25..200), y: 0, level: 9)
   end
 end
 
@@ -138,40 +155,40 @@ javascript_words.each do |word|
   letters = word.chars
   points = assign_points(word)
 
-  if length <= 4 && (letters & capitalized_letters).empty? && (letters & hard_letters).empty? && (letters & medium_letters).empty?
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 1)
+  if length <= 4 && (letters & capitalized_letters).empty? && (letters & numbers).empty? && (letters & special_characters).empty?
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 1)
   end
 
-  if length <= 4 && (letters & capitalized_letters).empty? && (letters & hard_letters).empty?
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 2)
+  if length <= 4 && (letters & capitalized_letters).empty?
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 2)
   end
 
-  if length <= 5 && length >= 3 && (letters & capitalized_letters).empty? && (letters & hard_letters).empty?
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 3)
+  if length <= 5 && (letters & capitalized_letters).empty? && (letters & numbers).empty?
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 3)
   end
 
-  if length <= 5 && length >= 3 && (letters & capitalized_letters).empty?
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 4)
+  if length <= 5 && (letters & capitalized_letters).empty?
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 4)
   end
 
-  if length <= 6 && length >= 3 && (letters & capitalized_letters).empty? && (letters & hard_letters).empty?
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 5)
+  if length <= 6
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 5)
   end
 
-  if length <= 7 && length >= 4 && (letters & capitalized_letters).empty?
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 6)
+  if length <= 7
+    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 6)
   end
 
-  if length <= 8 && length >= 5 && (letters & capitalized_letters).empty?
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 7)
+  if length <= 8
+    javascript_category.words.create(text: word, points: points, x: rand(25..350), y: 0, level: 7)
   end
 
-  if length <= 10 && length >= 6 && (letters & capitalized_letters).empty?
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 8)
+  if length <= 9
+    javascript_category.words.create(text: word, points: points, x: rand(25..300), y: 0, level: 8)
   end
 
-  if length > 10 && (letters & capitalized_letters).empty?
-    default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 9)
+  if length >= 10
+    javascript_category.words.create(text: word, points: points, x: rand(25..200), y: 0, level: 9)
   end
 end
 
