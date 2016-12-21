@@ -1,7 +1,6 @@
 animal_category = Category.create(name: "animals")
 default_category = Category.create(name: "default")
 ruby_category = Category.create(name: "ruby")
-javascript_category = Category.create(name: "javascript")
 
 EASY_LETTERS = %w(a s d f g h j k l)
 MEDIUM_LETTERS = %w(q w e r t y u i o p)
@@ -125,7 +124,7 @@ end
 RUBY_LIST_FILENAME = "db/fixtures/ruby_list.txt"
 
 ruby_file_string = File.read(RUBY_LIST_FILENAME)
-ruby_words = ruby_file_string.gsub("\n", " ").split(/\s+/)
+ruby_words = ruby_file_string.gsub("\n", " ").split(/\s+/).uniq
 ruby_words.each do |word|
   length = word.length
   letters = word.chars
@@ -165,51 +164,5 @@ ruby_words.each do |word|
 
   if length >= 10
     ruby_category.words.create(text: word, points: points, x: rand(25..250), y: 0, level: 9)
-  end
-end
-
-JAVASCRIPT_LIST_FILENAME = "db/fixtures/javascript_list.txt"
-
-javascript_file_string = File.read(JAVASCRIPT_LIST_FILENAME)
-javascript_words = javascript_file_string.gsub("\n", " ").split(/\s+/)
-javascript_words.each do |word|
-  length = word.length
-  letters = word.chars
-  points = assign_points(word)
-
-  if length <= 4 && (letters & CAPITALIZED_LETTERS).empty? && (letters & NUMBERS).empty? && (letters & SPECIAL_CHARACTERS).empty?
-    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 1)
-  end
-
-  if length <= 4 && (letters & CAPITALIZED_LETTERS).empty?
-    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 2)
-  end
-
-  if length <= 5 && (letters & CAPITALIZED_LETTERS).empty? && (letters & NUMBERS).empty?
-    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 3)
-  end
-
-  if length <= 5 && (letters & CAPITALIZED_LETTERS).empty? && (letters & SPECIAL_CHARACTERS).empty?
-    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 4)
-  end
-
-  if length <= 6
-    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 5)
-  end
-
-  if length <= 7
-    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 6)
-  end
-
-  if length <= 8
-    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 7)
-  end
-
-  if length <= 9
-    javascript_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 8)
-  end
-
-  if length >= 10
-    javascript_category.words.create(text: word, points: points, x: rand(25..250), y: 0, level: 9)
   end
 end
