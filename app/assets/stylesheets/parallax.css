@@ -48,3 +48,15 @@
   font-size: 30px;
   margin: 80px;
 }
+
+.go-down  {
+  padding:50px;
+
+}
+.go-down img {
+  opacity: 1;
+}
+.go-down img:hover {
+  opacity: 0.5;
+  border:0.5px;
+}

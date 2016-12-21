@@ -19,7 +19,7 @@ a:hover {
 }
 /*main play button*/
 #play-button {
-  margin: 200px auto 0;
+  margin: 5px auto 0;
   display: block;
   background: rgba(255, 0, 0, .2);
   font-size: 100px;
