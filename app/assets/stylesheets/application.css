@@ -5,7 +5,9 @@ body, html {
   background-color: #201D1C;
   width:100%;
 }
-
+.profile-size {
+  margin-top: 50px;
+}
 footer {
   color: #666;
   background: #222;
