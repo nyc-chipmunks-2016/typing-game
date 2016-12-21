@@ -1,7 +1,7 @@
 var Game = function() {
   this.lives = 5;
   this.score = 0;
-  this.speed = 1;
+  this.speed = 0.8;
   this.words = [];
   this.activeWords = [];
   this.correctWords = [];
@@ -66,7 +66,7 @@ Game.prototype.startGame = function() {
       this.input.focus();
       this.addWord();
       this.startTime = new Date().getTime();
-      setInterval(this.addWord.bind(this), 1000);
+      setInterval(this.addWord.bind(this), 2000);
       this.drawGame();
     }
   }.bind(this));

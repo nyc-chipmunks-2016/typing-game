@@ -13,7 +13,7 @@ class GamesController < ApplicationController
                          .words
                          .where(level: params[:level])
                          .order("random()")
-                         .limit(60)
+                         .limit(30)
   end
 
   private
