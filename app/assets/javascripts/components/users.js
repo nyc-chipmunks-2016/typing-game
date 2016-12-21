@@ -16,6 +16,9 @@ $( document ).ready(function() {
     })
     .fail(function(response) {
       var errors = response.responseJSON.errors;
+
+      $("ul.error_register").children().remove();
+
       for (var i in errors) {
         $("ul.error_register").append($("<li />").html(errors[i]));
       }
@@ -25,5 +28,4 @@ $( document ).ready(function() {
   $("button#registration_cancel").on("click", function(){
     $("ul.error_register li").remove();
   });
-
 });
