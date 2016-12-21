@@ -1,39 +1,45 @@
 <div class="game-background">
-  <div class="canvas">
-    <canvas id="myCanvas" width="500" height="600"></canvas>
-    <canvas id="canvasLava" width="500" height="600"></canvas>
-  </div>
-  <input id="inputText" type="text" name="gametext" value="">
-  <div class="level">
-    <p>Level:</p>
-    <select id="level">
-      <option value="1"> Level 1 </option>
-      <option value="2"> Level 2 </option>
-      <option value="3"> Level 3 </option>
-      <option value="4"> Level 4 </option>
-      <option value="5"> Level 5 </option>
-      <option value="6"> Level 6 </option>
-      <option value="7"> Level 7 </option>
-      <option value="8"> Level 8 </option>
-      <option value="9"> Level 9 </option>
-    </select>
-  </div>
-  <div class="level">
-    <p>Category:</p>
-    <select id="category">
-      <option value="default"> Default </option>
-      <option value="animals"> Animals </option>
-      <option value="ruby"> Ruby </option>
-    </select>
-  </div>
-  <div class="game-rules">
-    <p>Game Instructions:</p>
-    <ul class="no-dots">
-      <li><span class="glyphicon glyphicon-fire"></span> Select Level and Catergory in the drop down menu</li>
-      <li><span class="glyphicon glyphicon-fire"></span> Click Start to begin the game</li>
-      <li><span class="glyphicon glyphicon-fire"></span> Type the text into the box below the game display</li>
-      <li><span class="glyphicon glyphicon-fire"></span> When the word is correctly entered, it will be removed from the game</li>
-      <li><span class="glyphicon glyphicon-fire"></span> Press [ENTER] to clear the input box</li>
-    </ul>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="game-rules">
+        <ul class="no-dots">
+          <li><span class="glyphicon glyphicon-fire"></span> Select Level and Catergory in the drop down menu</li>
+          <li><span class="glyphicon glyphicon-fire"></span> Click Start to begin the game</li>
+          <li><span class="glyphicon glyphicon-fire"></span> Type the text into the box below the game display</li>
+          <li><span class="glyphicon glyphicon-fire"></span> When the word is correctly entered, it will be removed from the game</li>
+          <li><span class="glyphicon glyphicon-fire"></span> Press [ENTER] to clear the input box</li>
+        </ul>
+      </div>
+      <div class="level">
+        <p>Level:</p>
+        <select id="level">
+          <option value="1"> Level 1 </option>
+          <option value="2"> Level 2 </option>
+          <option value="3"> Level 3 </option>
+          <option value="4"> Level 4 </option>
+          <option value="5"> Level 5 </option>
+          <option value="6"> Level 6 </option>
+          <option value="7"> Level 7 </option>
+          <option value="8"> Level 8 </option>
+          <option value="9"> Level 9 </option>
+        </select>
+      </div>
+      <div class="level">
+        <p>Category:</p>
+        <select id="category">
+          <option value="default"> Default </option>
+          <option value="animals"> Animals </option>
+          <option value="ruby"> Ruby </option>
+          <option value="javascript"> Javascript </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-la-8">
+      <div class="canvas">
+        <canvas id="myCanvas" width="500" height="600"></canvas>
+        <canvas id="canvasLava" width="500" height="600"></canvas>
+      </div>
+      <input id="inputText" type="text" name="gametext" value="">
+    </div>
   </div>
 </div>
