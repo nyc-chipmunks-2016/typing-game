@@ -77,7 +77,7 @@ File.foreach(ANIMAL_LIST_FILENAME) do |line|
   end
 end
 
-DEFAULT_LIST_FILENAME = "db/fixtures/word_list.txt"
+DEFAULT_LIST_FILENAME = "db/fixtures/common_words_list.txt"
 
 File.foreach(DEFAULT_LIST_FILENAME) do |line|
   word = line.strip
@@ -85,39 +85,39 @@ File.foreach(DEFAULT_LIST_FILENAME) do |line|
   letters = word.chars
   points = assign_points(word)
 
-  if length <= 4 && (letters & CAPITALIZED_LETTERS).empty? && (letters & HARD_LETTERS).empty? && (letters & MEDIUM_LETTERS).empty?
+  if length <= 4 && (letters & HARD_LETTERS).empty? && (letters & MEDIUM_LETTERS).empty?
     default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 1)
   end
 
-  if length <= 4 && (letters & CAPITALIZED_LETTERS).empty? && (letters & HARD_LETTERS).empty?
+  if length <= 4 && (letters & HARD_LETTERS).empty?
     default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 2)
   end
 
-  if length <= 5 && length >= 3 && (letters & CAPITALIZED_LETTERS).empty? && (letters & HARD_LETTERS).empty?
+  if length <= 5 && length >= 2 && (letters & HARD_LETTERS).empty?
     default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 3)
   end
 
-  if length <= 5 && length >= 3 && (letters & CAPITALIZED_LETTERS).empty?
+  if length <= 5 && length >= 3 && (letters & HARD_LETTERS).empty?
     default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 4)
   end
 
-  if length <= 6 && length >= 3 && (letters & CAPITALIZED_LETTERS).empty? && (letters & HARD_LETTERS).empty?
+  if length <= 6 && length >= 3 && (letters & HARD_LETTERS).empty?
     default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 5)
   end
 
-  if length <= 7 && length >= 4 && (letters & CAPITALIZED_LETTERS).empty?
+  if length <= 7 && length >= 4
     default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 6)
   end
 
-  if length <= 8 && length >= 5
+  if length <= 8 && length >= 4
     default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 7)
   end
 
-  if length <= 10 && length >= 6
+  if length <= 10 && length >= 4
     default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 8)
   end
 
-  if length > 10
+  if length > 5
     default_category.words.create(text: word, points: points, x: rand(25..400), y: 0, level: 9)
   end
 end
@@ -164,7 +164,7 @@ ruby_words.each do |word|
   end
 
   if length >= 10
-    ruby_category.words.create(text: word, points: points, x: rand(25..300), y: 0, level: 9)
+    ruby_category.words.create(text: word, points: points, x: rand(25..250), y: 0, level: 9)
   end
 end
 
@@ -210,6 +210,6 @@ javascript_words.each do |word|
   end
 
   if length >= 10
-    javascript_category.words.create(text: word, points: points, x: rand(25..300), y: 0, level: 9)
+    javascript_category.words.create(text: word, points: points, x: rand(25..250), y: 0, level: 9)
   end
 end
