@@ -1,0 +1,22 @@
+/*edit profile page*/
+.edit-profile {
+  background-color: lightgrey;
+  position: absolute;
+  margin-left: 100px;
+  display: block;
+  left: 200px;
+}
+
+.btn-default {
+  text-shadow: 0px 1px 0px #FFF;
+  background-image: linear-gradient(to bottom, #FFF 0px, #E0E0E0 100%);
+  background-repeat: repeat-x;
+  border-color: #CCC;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.15) inset, 0px 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.btn-default:hover,
+.btn-default:focus {
+  background-color: #e0e0e0;
+  background-position: 0 -15px
+}

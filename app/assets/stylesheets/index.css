@@ -1,0 +1,125 @@
+body, html {
+  height: 100%;
+  padding: 10px;
+  font-family: 'Roboto Slab';
+  background-color: #201D1C;
+  width:100%;
+}
+.skrollr-desktop body {
+  height:100% !important;
+}
+a {
+  color: #aaaaaa;
+  transition: all ease-in-out 200ms;
+}
+
+a:hover {
+  color: #333333;
+  text-decoration: none;
+}
+/*main play button*/
+#play-button {
+  margin: 5px auto 0;
+  display: block;
+  background: rgba(255, 0, 0, .2);
+  font-size: 100px;
+  color: #FCE9C7;
+  border-style: solid;
+  border-width: 4px;
+  border-color: #FCE9C7;
+}
+
+#play-button:hover {
+  font-size:  105px;
+  color: white;
+  border-color: white;
+  background: rgba(255, 0, 0, .3);
+}
+
+/*game gif*/
+#game-video {
+  display: inline-block;
+}
+
+.gif {
+  left:50%;
+  height:100px;
+}
+
+#gif {
+  width:80%;
+}
+/*game description*/
+
+.body-text{
+  padding: 20px 0;
+  color: #25373C;
+  font-size: 25px;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.body-text h2{
+  font-size: 42px;
+  font-weight: normal;
+}
+
+.body-text p{
+  width: 25%;
+  display: inline-block;
+  text-align: left;
+  padding: 30px;
+  color: #FCE9C7;
+}
+
+@media (max-width: 900px){
+  .body-text p{
+    width: 100%;
+  }
+}
+/*game rules containers*/
+.about-game {
+  margin-bottom: 177px;
+}
+
+.featureinfo h4 {
+  font-size: 26px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.featureinfo > p {
+  color: #000000;
+  font-size: 16px;
+  padding-top: 4px;
+  text-align: left;
+}
+.container-rules{
+  width:100%;
+}
+
+.features-list{
+  padding: 50px 0;
+  background-color:#201D1C;
+  color: #FCE9C7;
+  font-size: 18px;
+  min-height: 40vh;
+  text-align: center;
+}
+
+.features-list div{
+  background-color: black;
+  opacity: 50%;
+  display: inline-block;
+  width: 20%;
+  height:210px;
+  margin: 50px;
+  border: 2px solid #AB2A1A;
+  padding: 10px;
+}
+
+.features-list div i{
+  font-size: 50px;
+  margin-bottom: 10px;
+  color: #EB3A23;
+}

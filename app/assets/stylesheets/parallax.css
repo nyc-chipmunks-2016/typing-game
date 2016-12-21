@@ -1,0 +1,62 @@
+/*parralax layout for index page*/
+.parallax {
+  margin-top: 50px;
+  background-image: url('http://www.mrietze.com/images/kongo07/ani-a512.gif');
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #348FDF;
+  width: 100%;
+}
+
+#section-1 {
+  z-index: 1;
+  color: #fff;
+  height: 90vh;
+}
+
+#section-1 .parallax-layer-back {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#section-2 {
+  z-index: 2;
+  position: relative;
+  background: #fff;
+  width: 100%;
+}
+
+#section-3 {
+  z-index: 1;
+  height: 40vh;
+  position: relative;
+  background: #201D1C;
+  width: 100%;
+}
+
+.log {
+  font-size: 80px;
+  padding-top: 65px;
+}
+
+.content {
+  font-size: 30px;
+  margin: 80px;
+}
+
+.go-down  {
+  padding:50px;
+
+}
+.go-down img {
+  opacity: 1;
+}
+.go-down img:hover {
+  opacity: 0.5;
+  border:0.5px;
+}
