@@ -3,6 +3,7 @@ class GamesController < ApplicationController
   end
 
   def create
+    # if current_user is nil this will break
     @game = Game.new(game_params)
     @game.user = current_user
     @game.save

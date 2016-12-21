@@ -1,7 +1,8 @@
 class Game < ActiveRecord::Base
   belongs_to :user
 
-  validates_presence_of :score, :wpm, :accuracy, :time, :level, :keystrokes
+  # validate the existence of the associated user as well:
+  validates_presence_of :score, :wpm, :accuracy, :time, :level, :keystrokes # , :user
 
   def self.order_by_high_scores
     Game.group(:id, :user_id)
