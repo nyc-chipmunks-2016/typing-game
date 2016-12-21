@@ -62,7 +62,7 @@ Game.prototype.startGame = function() {
     var x = event.pageX - this.canvas.offsetLeft;
     var y = event.pageY - this.canvas.offsetTop;
 
-    if (y > 275 && y < 335 && x > 175 && x < 325) {
+    if (y > 275 && y < 335 && x > 175 && x < 325 && this.startTime === 0) {
       this.input.focus();
       this.addWord();
       this.startTime = new Date().getTime();
@@ -197,10 +197,10 @@ Game.prototype.drawWin = function() {
 
 Game.prototype.drawGameOver = function() {
   var that = this;
+  this.ctx.font = "30px 'Press Start 2P'";
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
   if (this.textVisible) {
-    this.ctx.font = "30px 'Press Start 2P'";
     this.ctx.fillText("GAME OVER", 115, 299);
   }
   if (this.setInterval === false) {
