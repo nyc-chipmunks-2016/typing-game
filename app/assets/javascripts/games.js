@@ -21,11 +21,11 @@ $(document).ready(function() {
   });
 
   if (localStorage.getItem("level")) {
-    new_game.level.value = localStorage.getItem("level");
+    level.value = localStorage.getItem("level");
   }
 
-  new_game.level.onchange = function() {
-    localStorage.setItem("level", new_game.level.value);
+  level.onchange = function() {
+    localStorage.setItem("level", level.value);
     document.location.reload();
   };
 
