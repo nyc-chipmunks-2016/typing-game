@@ -1,4 +1,10 @@
 $(document).ready(function() {
+  WebFont.load({
+    google: {
+      families: ['Press Start 2P']
+    }
+  });
+
   var logout = document.getElementById("logout"),
       level = document.getElementById("level"),
       category = document.getElementById("category"),
