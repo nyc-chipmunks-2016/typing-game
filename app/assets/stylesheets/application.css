@@ -1,7 +1,7 @@
 body, html {
   height: 100%;
   padding: 10px;
-  font-family: 'Roboto Slab';
+  font-family: 'NTR';
   background-color: #201D1C;
   width:100%;
 }
@@ -383,7 +383,7 @@ canvas {
   padding: 50px 0;
   background-color:#201D1C;
   color: #FCE9C7;
-  font-size: 18px;
+  font-size: 25px;
   min-height: 40vh;
   text-align: center;
 }
