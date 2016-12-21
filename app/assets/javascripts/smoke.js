@@ -78,23 +78,9 @@ $(document).ready(function() {
     };
 
     smokeImage.src = "http://i.imgur.com/wJxI64w.png";
-    // smokeImage.onload = setInterval( function () {
-    //   render();}, 1000);
     smokeImage.onload = function() {
       render();
     };
   };
-  // var activateSmoke = function() {
-  //   if (activeSmoke === false) {
-  //     drawSmoke();
-  //     activeSmoke = true;
-  //     console.log("Turn on");
-  //   }
-  //   else {
-  //     activeSmoke = false;
-  //     console.log("Turn off");
-  //   }
-  // };
   drawSmoke();
-  // setInterval(activateSmoke(), 10000);
 });
