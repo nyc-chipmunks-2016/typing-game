@@ -7,14 +7,21 @@ RSpec.describe User, type: :model do
       user.valid?
       expect(user.errors[:username].any?).to eq(true)
     end
-
+    it "has a unique username" do
+      user_1 = User.create(username: "arsy21", email: "arsy11@gmail.com",
+      password: "password")
+      user_2 = User.new(username: "arsy21", email: "arsy1111@gmail.com",
+      password: "password1")
+      user_2.valid?
+      expect(user_2.errors[:username].any?).to eq(true)
+    end
     it "requires presences of an email" do
       user = User.new(email: "")
       user.valid?
       expect(user.errors[:email].any?).to eq(true)
     end
 
-    it "requires a unique email address" do
+    it "has an a unique email address" do
       user_1 = User.create(username: "arsy21", email: "arsy11@gmail.com",
       password: "password")
       user_2 = User.new(username: "arsh24", email: "arsy11@gmail.com",
