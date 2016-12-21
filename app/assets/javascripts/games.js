@@ -14,13 +14,12 @@ $(document).ready(function() {
   new_game.input.addEventListener("keyup", function(event) {
     var code = (event.keyCode || event.which);
 
-    if (code === 32) {
-      new_game.checkSpelling();
-    } else if (code != 8 && code != 13) {
+    if (code != 8 && code != 13 && code != 32) {
       new_game.keystrokes += 1;
     } else if (code === 13) {
       $("#inputText").val("");
     }
+    new_game.checkSpelling();
   });
 
   if (localStorage.getItem("level")) {
