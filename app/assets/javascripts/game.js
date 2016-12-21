@@ -264,7 +264,7 @@ Game.prototype.nextLevel = function() {
       var x = event.pageX - this.canvas.offsetLeft;
       var y = event.pageY - this.canvas.offsetTop;
       if (y > 250 && y < 290 && x > 200 && x < 300) {
-        if (parseInt(localStorage.level) < 6) {
+        if (parseInt(localStorage.level) < 9) {
           localStorage.setItem("level", parseInt(localStorage.level) + 1);
         }
         document.location.reload();
@@ -278,8 +278,8 @@ Game.prototype.saveGame = function() {
   var endTime = new Date().getTime();
   var totalTime = (endTime - this.startTime) / 60000;
   var totalLetters = this.correctWords.reduce(function(total, word) {
-                       return total + word.text.length;
-                     }, 0);
+    return total + word.text.length;
+  }, 0);
   var normalizeWords = totalLetters / 5;
   var wpm = normalizeWords / totalTime;
   var accuracy = (totalLetters / this.keystrokes) * 100;
