@@ -16,8 +16,10 @@ $(document).ready(function() {
 
     if (code === 32) {
       new_game.checkSpelling();
-    } else if (code !== 8) {
+    } else if (code != 8 && code != 13) {
       new_game.keystrokes += 1;
+    } else if (code === 13) {
+      $("#inputText").val("");
     }
   });
 
