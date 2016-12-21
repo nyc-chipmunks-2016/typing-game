@@ -91,7 +91,7 @@ Game.prototype.drawGame = function() {
     this.drawRestart();
   } else {
     // Need to fix smoke animation
-    // this.drawSmoke();
+
     this.drawWord();
     this.collisionTest();
 
@@ -105,7 +105,7 @@ Game.prototype.drawGame = function() {
 Game.prototype.collisionTest = function() {
   for (var i in this.activeWords) {
     if (this.activeWords[i].y > this.canvas.height - 110) {
-      this.playSplash();
+      // this.playSplash();
       this.activeWords.splice(i, 1);
       this.lives -= 1;
     }
@@ -116,7 +116,7 @@ Game.prototype.checkSpelling = function() {
   var inputValue = $("#inputText").val();
   for (var i in this.activeWords) {
     if (this.activeWords[i].text === inputValue.trim()) {
-      this.playPlop();
+      // this.playPlop();
       this.score += (this.activeWords[i].points * localStorage.level);
       this.boomWord(this.activeWords[i].x, this.activeWords[i].y);
       var correctWord = this.activeWords.splice(i, 1)[0];
