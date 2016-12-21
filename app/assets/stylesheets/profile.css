@@ -1,0 +1,50 @@
+/*profile page*/
+.container{
+  width: 1000px;
+}
+
+.img-center {
+  display: block;
+  margin-top: 0px;
+  text-align: center;
+  background-color: white;
+  margin-right: 5px;
+}
+
+.container #img-profile {
+  margin-top: 20px auto;
+  margin-bottom: 15px auto;
+}
+
+#img-profile {
+  margin-top: 20px auto;
+  margin-bottom: 15px;
+}
+
+.margin-img {
+  margin-right: 10px;
+}
+
+.text-center {
+  margin-top: 10px;
+}
+
+.text {
+  display: block;
+  margin-top: 21px auto;
+  margin-right: 40px;
+  margin-left: 2% auto;
+  margin-bottom: 10% auto;
+}
+
+#past-score {
+  margin-top: 20%;
+  padding-left: 30px;
+  margin-right: -37%;
+}
+
+#global-score {
+  margin-top: 35%;
+  padding-left: 30px;
+  margin-right: -37%;
+}

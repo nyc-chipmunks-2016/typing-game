@@ -1,0 +1,67 @@
+/*game page */
+canvas {
+  position: absolute;
+  top: 180px;
+  left: 400px;
+  left:30%;
+  margin: 0px auto;
+  background: transparent;
+  margin: 0px auto;
+  left:30%;
+}
+
+.canvas div{
+  width: 500px;
+  height:100px;
+  margin: 0px auto;
+}
+
+#myCanvas{
+  z-index: 2;
+}
+
+#canvasLava{
+  z-index: 0;
+}
+
+#inputText{
+  font-size: 45px;
+  font-family: "Arial";
+  text-align: center;
+  position: absolute;
+  top: 780px;
+  left: 400px;
+  width: 500px;
+  height:50px;
+  margin: 0px auto;
+  left:30%;
+  background: none;
+  color: white;
+}
+
+.level {
+  font-size: 25px;
+  margin-left: 40px;
+}
+
+.level p{
+  color:white;
+}
+.game-background{
+  height: 100%;
+  height: 1100px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image:url("/gamebg.png");
+  width: 100%;
+}
+
+.game-rules{
+  display:block;
+  float:right;
+  font-size: 16px;
+  margin-right: 150px;
+  color:#FCE9C7;
+}

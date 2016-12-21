@@ -16,7 +16,73 @@
   text-decoration: none;
 }
 
-.new_game{
-  background-color: #18CBFF;
-  opacity: 1%;
+.nav-tabs {
+  margin-bottom: 15px;
+}
+
+.sign-with {
+  margin-top: 25px;
+  padding: 20px;
+}
+
+.link {
+  background:none!important;
+  border:none;
+  padding:0!important;
+  font: inherit;
+  color:grey;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.link-font {
+  font-size: 20px;
+}
+
+#logout{
+  color: grey; text-decoration: none;
+  font-size: 20px;
+}
+
+#logout_link{
+  padding-top: 2.5px;
+}
+
+#myModal {
+  color:grey;
+  font-size: 14px;
+  width: 400px;
+  left: 35%;
+  top:10%;
+}
+
+#myModalLogin {
+  font-size: 14px;
+  color:grey;
+  width: 400px;
+  left: 35%;
+  top:10%;
+}
+
+.form-control {
+  width: 215px;
+}
+
+.sign-with {
+  margin-top: 25px;
+  padding: 20px;
+}
+
+.link {
+  background:none!important;
+  border:none;
+  padding:0!important;
+  font: inherit;
+  color:grey;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.link-font {
+  font-size: 20px;
 }
