@@ -8,26 +8,31 @@ var Game = function() {
   this.startTime = 0;
   this.keystrokes = 0;
   this.textVisible = true;
-  this.saved = false;
   this.setInterval = false;
-  this.continue = false;
+  this.over = false;
 };
 
 Game.prototype.playSplash = function() {
   var audioSplash = document.createElement("audio");
-  audioSplash.src = "/splash1.mp3";
+  audioSplash.src = "/sizzle.mp3";
   audioSplash.play();
 };
 
 Game.prototype.playPlop = function() {
   var audioPlop = document.createElement("audio");
-  audioPlop.src = "/plop.mp3";
+  audioPlop.src = "/jump.wav";
   audioPlop.play();
 };
 
 Game.prototype.playOver = function() {
   var audioOver = document.createElement("audio");
-  audioOver.src = "/gameover.mp3";
+  audioOver.src = "/gameover.wav";
+  audioOver.play();
+};
+
+Game.prototype.playWin = function() {
+  var audioOver = document.createElement("audio");
+  audioOver.src = "/win.wav";
   audioOver.play();
 };
 
@@ -81,8 +86,8 @@ Game.prototype.drawGame = function() {
     this.drawGameOver();
     this.drawRestart();
   } else if (this.activeWords.length === 0 && this.words.length === 0) {
-    this.drawWin();
     this.drawContinue();
+    this.drawWin();
     this.drawRestart();
   } else {
     this.drawWord();
@@ -190,9 +195,12 @@ Game.prototype.drawWin = function() {
   this.ctx.fillStyle = "#0095DD";
   this.activeWords = [];
   this.ctx.fillText("LEVEL COMPLETE", 120, 200);
-  if (!document.getElementById("login-button") && this.saved === false) {
+
+  if (this.over === false) this.playWin();
+  if (!document.getElementById("login-button") && this.over === false) {
     this.saveGame();
   }
+  this.over = true;
 };
 
 Game.prototype.drawGameOver = function() {
@@ -208,11 +216,11 @@ Game.prototype.drawGameOver = function() {
     this.setInterval = true;
   }
 
-  // Need to pick a better gameover sound
-  // this.playOver();
-  if (!document.getElementById("login-button") && this.saved === false) {
+  if (this.over === false) this.playOver();
+  if (!document.getElementById("login-button") && this.over === false) {
     this.saveGame();
   }
+  this.over = true;
 };
 
 Game.prototype.doBlink = function() {
@@ -259,7 +267,7 @@ Game.prototype.drawContinue = function() {
 };
 
 Game.prototype.nextLevel = function() {
-  if (this.continue === false) {
+  if (this.over === false) {
     this.canvas.addEventListener('click', function(event) {
       var x = event.pageX - this.canvas.offsetLeft;
       var y = event.pageY - this.canvas.offsetTop;
@@ -270,7 +278,6 @@ Game.prototype.nextLevel = function() {
         document.location.reload();
       }
     }.bind(this));
-    this.continue = true;
   }
 };
 
@@ -303,5 +310,4 @@ Game.prototype.saveGame = function() {
       }
     });
   }
-  this.saved = true;
 };
