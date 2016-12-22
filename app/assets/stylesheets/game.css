@@ -2,12 +2,11 @@
 canvas {
   position: absolute;
   top: 180px;
-  left: 400px;
-  left:30%;
+  left: 500px;
+  left:40%;
   margin: 0px auto;
   background: transparent;
   margin: 0px auto;
-  left:30%;
 }
 
 .canvas div{
@@ -30,24 +29,27 @@ canvas {
   text-align: center;
   position: absolute;
   top: 780px;
-  left: 400px;
+  left: 500px;
   width: 500px;
   height:50px;
   margin: 0px auto;
-  left:30%;
+  left:40%;
   background: none;
   color: white;
 }
 
 .level {
   font-size: 25px;
+  margin-top: 50px;
   margin-left: 40px;
 }
 
 .level p{
-  color:white;
+  color:#FCE9C7;
 }
+
 .game-background{
+  overflow: hidden;
   margin-top: 50px;
   height: 100%;
   height: 1100px;
@@ -61,8 +63,18 @@ canvas {
 
 .game-rules{
   display:block;
-  float:right;
-  font-size: 16px;
-  margin-right: 150px;
+  /*position: absolute;*/
+  margin-top: 40px;
+  padding-bottom: 40px;
+  font-size: 1vw;
   color:#FCE9C7;
+  text-align: left;
+}
+
+.no-dots {
+  list-style-type: none;
+}
+
+ul.no-dots li {
+  padding-top: 23px;
 }
