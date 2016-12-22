@@ -23,6 +23,14 @@ canvas {
   z-index: 0;
 }
 
+#canvasSmoke {
+  z-index: 1;
+  position: sticky;
+  margin: 1px;
+  left: 83%;
+  top:15%;
+}
+
 #inputText{
   font-size: 45px;
   font-family: "Arial";
