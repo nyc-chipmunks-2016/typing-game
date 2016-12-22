@@ -5,6 +5,8 @@
   margin-left: 100px;
   display: block;
   left: 200px;
+  white-space: pre-line;
+  padding-bottom: 20px;
 }
 
 .btn-default {
