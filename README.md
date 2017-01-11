@@ -1,4 +1,4 @@
-# L-Type (Lava/Laser Type)
+# Lava Typer
 [App Website](https://lava-typer.herokuapp.com)
 
 ## Team
