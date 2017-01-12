@@ -98,6 +98,8 @@ Game.prototype.drawGame = function() {
   requestAnimationFrame(this.drawGame.bind(this));
 };
 
+
+
 Game.prototype.collisionTest = function() {
   for (var i in this.activeWords) {
     if (this.activeWords[i].y > this.canvas.height - 110) {
